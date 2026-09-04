@@ -21,6 +21,8 @@
   4. _**I**nterface Segregation Principle (ISP)_
   5. _**D**ependency Inversion Principle (DI)_
 
+[⬆️](#table-of-contents)
+
 #### Single Responsibility Principle (SRP)
 
 - SRP states that: __there should never be more than one reason for a class to change__.
@@ -35,3 +37,5 @@
   - This way, whenever something changes, our code can be changed in an organised manner, ensuring that the core class/module isn't changed, and the changes are minimal in nature.
 
 SRP: **THERE SHOULD NEVER BE MORE THAN ONE REASON FOR A CLASS TO CHANGE**.
+
+[⬆️](#table-of-contents)
