@@ -13,9 +13,11 @@
    - [Open Closed Principle (OCP)](#open-closed-principle-ocp)
      - [Code &mdash; OCP Violation](./src/main/java/com/ram/java/solid/openclosedprinciple/violation/)
      - [Code &mdash; OCP Violation: Resolved](./src/main/java/com/ram/java/solid/openclosedprinciple/resolved/)
-   - [Liskov Substitution Principle](#listkov-substitution-principle-lsp)
+   - [Liskov Substitution Principle (LSP)](#liskov-substitution-principle-lsp)
      - [Code &mdash; LSP Violation](./src/main/java/com/ram/java/solid/liskovsubstitutionprinciple/violation/)
      - [Code &mdash; LSP Violation: Resolved](./src/main/java/com/ram/java/solid/liskovsubstitutionprinciple/resolved/)
+   - [Interface Segregation Principle (ISP)](#interface-segregation-principle-isp)
+     - [Code &mdash; ISP Violation](./src/main/java/com/ram/java/solid/interfacesegregation/violation/)
 
 ### SOLID Principles
 
@@ -59,11 +61,29 @@ SRP: **THERE SHOULD NEVER BE MORE THAN ONE REASON FOR A CLASS TO CHANGE**.
 
 [ꜛ️](#table-of-contents)
 
-#### Listkov Substitution Principle (LSP)
+#### Liskov Substitution Principle (LSP)
 
 - LSP states that: __We should be able to substitute *Base* class objects with *Child* class objects & this should not alter the desired behaviour/characteristics of the program__.
 - Here, we're not simply talking about type level replacement of *Base* class object with *Child* class object.
   We're also talking about the behaviour being unaffected for the overall program if there's a change from *Base* class' object, to *Child* class' object.
+
+
+[ꜛ️](#table-of-contents)
+
+#### Interface Segregation Principle (ISP)
+
+- ISP states that: __Clients should not be forced to depend upon interfaces that they do NOT use__.
+- In particular, we're talking about methods. Clients shouldn't have to depend on methods that are defined in interfaces that they don't use.
+- More in particular, we're talking about a term known as Interface Pollution.
+  - __Interface Pollution__:
+    1. Unnecessarily Large Interfaces.
+    2. Crammed-in, Unrelated Methods into the Interface.
+  - __Signs of Interface Pollution__:
+    1. Classes have empty method implementations.
+    2. Method implementations throw UnsupportedOperationException (or similar).
+    3. Method implementations return null or default/dummy values.
+- In essense, ISP is asking to __Write Highly Cohesive Interfaces__, meaning, break down larger interfaces, so that methods or behaviours/contracts that are defined in an interface,
+  are cohesive, and are related to each other, and we don't run into a situation where a class is forced to provide an implementation for a method, for which it doesn't make any sense.
 
 
 [ꜛ️](#table-of-contents)
