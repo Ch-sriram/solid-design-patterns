@@ -7,14 +7,15 @@
 
 1. [SOLID Principles](#solid-principles)
    - [Single Responsibility Principle (SRP)](#single-responsibility-principle-srp)
-     - [Code With SRP Violations](./src/main/java/com/ram/java/solid/singleresponsibilityprinciple/UserController.java#L30-L120)
-     - [Clean Code](./src/main/java/com/ram/java/solid/singleresponsibilityprinciple/UserController.java#L1-L29)
+     - [Code &mdash; SRP Violation](./src/main/java/com/ram/java/solid/singleresponsibilityprinciple/UserController.java#L30-L120)
+     - [Code &mdash; SRP Violation: Resolved](./src/main/java/com/ram/java/solid/singleresponsibilityprinciple/UserController.java#L1-L29)
      - [Full Code](./src/main/java/com/ram/java/solid/singleresponsibilityprinciple)
    - [Open Closed Principle (OCP)](#open-closed-principle-ocp)
      - [Code &mdash; OCP Violation](./src/main/java/com/ram/java/solid/openclosedprinciple/violation/)
-     - [Code &mdash; OCP Violation Resolved](./src/main/java/com/ram/java/solid/openclosedprinciple/resolved/)
+     - [Code &mdash; OCP Violation: Resolved](./src/main/java/com/ram/java/solid/openclosedprinciple/resolved/)
    - [Liskov Substitution Principle](#listkov-substitution-principle-lsp)
      - [Code &mdash; LSP Violation](./src/main/java/com/ram/java/solid/liskovsubstitutionprinciple/violation/)
+     - [Code &mdash; LSP Violation: Resolved](./src/main/java/com/ram/java/solid/liskovsubstitutionprinciple/resolved/)
 
 ### SOLID Principles
 
