@@ -10,7 +10,7 @@
      - [Code With SRP Violations](./src/main/java/com/ram/java/solid/singleresponsibilityprinciple/UserController.java#L30-L120)
      - [Clean Code](./src/main/java/com/ram/java/solid/singleresponsibilityprinciple/UserController.java#L1-L29)
      - [Full Code](./src/main/java/com/ram/java/solid/singleresponsibilityprinciple)
-
+   - [Open Closed Principle (OCP)](#open-closed-principle-ocp)
 
 ### SOLID Principles
 
@@ -37,5 +37,19 @@
   - This way, whenever something changes, our code can be changed in an organised manner, ensuring that the core class/module isn't changed, and the changes are minimal in nature.
 
 SRP: **THERE SHOULD NEVER BE MORE THAN ONE REASON FOR A CLASS TO CHANGE**.
+
+[ꜛ️](#table-of-contents)
+
+#### Open Closed Principle (OCP)
+
+- OCP states that: __Software entities (classes, modules, methods, etc) should be Open for extension, but Closed for modification__.
+- **Open for Extension** &mdash; `extend` existing behaviour (IS-A relationship establishment in OOP).
+- **Closed for Modification** &mdash; Existing code remains unchanged.
+- Example:
+  - _Base_ class is `extend`ed by a _Derived_ class, where the _Base_ class should not be changed again, since it's already well tested.
+  - But since it's a _Base_ class, it's Open for extension via the _Derived_ class.
+  - Therefore:
+    1. Open for Extension => can derive from base, and override methods.
+    2. Closed for Modification => avoid modifying base class.
 
 [ꜛ️](#table-of-contents)
