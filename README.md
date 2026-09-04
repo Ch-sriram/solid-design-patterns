@@ -17,7 +17,8 @@
      - [Code &mdash; LSP Violation](./src/main/java/com/ram/java/solid/liskovsubstitutionprinciple/violation/)
      - [Code &mdash; LSP Violation: Resolved](./src/main/java/com/ram/java/solid/liskovsubstitutionprinciple/resolved/)
    - [Interface Segregation Principle (ISP)](#interface-segregation-principle-isp)
-     - [Code &mdash; ISP Violation](./src/main/java/com/ram/java/solid/interfacesegregation/violation/)
+     - [Code &mdash; ISP Violation](./src/main/java/com/ram/java/solid/interfacesegregation/services/violation/)
+     - [Code &mdash; ISP Violation: 1st Resolution](./src/main/java/com/ram/java/solid/interfacesegregation/resolved_1/)
 
 ### SOLID Principles
 

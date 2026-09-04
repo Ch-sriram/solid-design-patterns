@@ -1,10 +1,10 @@
-package com.ram.java.solid.interfacesegregation.violation.services;
+package com.ram.java.solid.interfacesegregation.services.violation;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.ram.java.solid.interfacesegregation.violation.entities.Order;
+import com.ram.java.solid.interfacesegregation.entities.Order;
 
 public class OrderPersistenceService implements PersistenceService<Order> {
 	
@@ -37,4 +37,3 @@ public class OrderPersistenceService implements PersistenceService<Order> {
 		throw new UnsupportedOperationException("Find by name operation for Orders, not supported!");
 	}
 }
-`

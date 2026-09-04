@@ -1,11 +1,11 @@
-package com.ram.java.solid.interfacesegregation.violation.services;
+package com.ram.java.solid.interfacesegregation.services.resolved_1;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import com.ram.java.solid.interfacesegregation.violation.entities.User;
+import com.ram.java.solid.interfacesegregation.entities.User;
 
 public class UserPersistenceService implements PersistenceService<User> {
 	
@@ -32,7 +32,8 @@ public class UserPersistenceService implements PersistenceService<User> {
 		}
 	}
 
-	@Override
+	// This class still can implement findByName, only thing is that it's
+	// no longer Overriding findByName, it's defining its own class method(s).
 	public List<User> findByName(String name) {
 		synchronized(USERS) {
 			return USERS.values().stream().filter(user -> user.getName().equalsIgnoreCase(name)).collect(Collectors.toList());

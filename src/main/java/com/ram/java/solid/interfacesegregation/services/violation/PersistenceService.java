@@ -1,8 +1,8 @@
-package com.ram.java.solid.interfacesegregation.violation.services;
+package com.ram.java.solid.interfacesegregation.services.violation;
 
 import java.util.List;
 
-import com.ram.java.solid.interfacesegregation.violation.entities.Entity;
+import com.ram.java.solid.interfacesegregation.entities.Entity;
 
 /**
  * Common interface to be implemented by all services that persist data into memory/disk.

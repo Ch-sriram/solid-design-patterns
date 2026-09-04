@@ -1,4 +1,4 @@
-package com.ram.java.solid.interfacesegregation.violation.entities;
+package com.ram.java.solid.interfacesegregation.entities;
 
 /**
  * Base class for all entities in the current entities package 
