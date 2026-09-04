@@ -55,3 +55,12 @@ SRP: **THERE SHOULD NEVER BE MORE THAN ONE REASON FOR A CLASS TO CHANGE**.
     2. Closed for Modification => avoid modifying base class.
 
 [ꜛ️](#table-of-contents)
+
+#### Listkov Substitution Principle (LSP)
+
+- LSP states that: __We should be able to substitute *Base* class objects with *Child* class objects & this should not alter the desired behaviour/characteristics of the program__.
+- Here, we're not simply talking about type level replacement of *Base* class object with *Child* class object.
+  We're also talking about the behaviour being unaffected for the overall program if there's a change from *Base* class' object, to *Child* class' object.
+
+
+[ꜛ️](#table-of-contents)
