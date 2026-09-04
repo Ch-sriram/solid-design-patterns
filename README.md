@@ -21,7 +21,7 @@
   4. _**I**nterface Segregation Principle (ISP)_
   5. _**D**ependency Inversion Principle (DI)_
 
-[⬆️](#table-of-contents)
+[ꜛ️](#table-of-contents)
 
 #### Single Responsibility Principle (SRP)
 
@@ -38,4 +38,4 @@
 
 SRP: **THERE SHOULD NEVER BE MORE THAN ONE REASON FOR A CLASS TO CHANGE**.
 
-[⬆️](#table-of-contents)
+[ꜛ️](#table-of-contents)
