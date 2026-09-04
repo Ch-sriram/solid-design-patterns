@@ -11,7 +11,8 @@
      - [Clean Code](./src/main/java/com/ram/java/solid/singleresponsibilityprinciple/UserController.java#L1-L29)
      - [Full Code](./src/main/java/com/ram/java/solid/singleresponsibilityprinciple)
    - [Open Closed Principle (OCP)](#open-closed-principle-ocp)
-     - [Code with OCP Violation](./src/main/java/com/ram/java/solid/openclosedprinciple/violation/)
+     - [Code &mdash; OCP Violation](./src/main/java/com/ram/java/solid/openclosedprinciple/violation/)
+     - [Code &mdash; OCP Violation Resolved](./src/main/java/com/ram/java/solid/openclosedprinciple/resolved/)
 
 ### SOLID Principles
 

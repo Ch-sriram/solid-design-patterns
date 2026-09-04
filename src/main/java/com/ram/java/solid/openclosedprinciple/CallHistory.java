@@ -64,7 +64,7 @@ private static final Map<Long, List<Call>> CALLS = new HashMap<>();
 		/**
 		 * @return the dataUsed
 		 */
-		public long getDataUsed() {
+		public long getDuration() {
 			return duration;
 		}
 	}
