@@ -13,6 +13,8 @@
    - [Open Closed Principle (OCP)](#open-closed-principle-ocp)
      - [Code &mdash; OCP Violation](./src/main/java/com/ram/java/solid/openclosedprinciple/violation/)
      - [Code &mdash; OCP Violation Resolved](./src/main/java/com/ram/java/solid/openclosedprinciple/resolved/)
+   - [Liskov Substitution Principle](#listkov-substitution-principle-lsp)
+     - [Code &mdash; LSP Violation](./src/main/java/com/ram/java/solid/liskovsubstitutionprinciple/violation/)
 
 ### SOLID Principles
 
