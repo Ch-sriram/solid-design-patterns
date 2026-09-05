@@ -103,12 +103,12 @@ ISP: **CLIENTS SHOULD NOT BE FORCED TO DEPEND UPON INTERFACES THAT THEY DO NOT U
   1. __High level modules should not depend upon low level modules__ &mdash; __both should depend upon abstractions__.
   2. __Abstractions should not depend upon details__ &mdash; __details should depend upon abstractions__.
 - What exactly is a _Dependency_?
-  - E.g. 1: Assume the following code:
+  - E.g. 1: Let's say we've our own method called `printMe`:
 
     ```java
     public void printMe() {
 		System.out.println("Hello!");
-		//     ^^^	<----------------	dependency
+		//     ^^^	<------------------------------------------ Dependency (makes use of `out` object from inside System class)
 	}
     ```
 
@@ -118,15 +118,15 @@ ISP: **CLIENTS SHOULD NOT BE FORCED TO DEPEND UPON INTERFACES THAT THEY DO NOT U
   
     ```java
     public void writeReport() {
-		Report report = new Report(); 	// This is not a dependency because this method is supposed to write a Report.
+		Report report = new Report(); 	// This is NOT a Dependency because this method is supposed to write a Report.
 
 		// Build the report
 		JSONFormatter formatter = new JSONFormatter();
-		//            ^^^^^^^^^ <------------------------------ dependency
+		//            ^^^^^^^^^ <------------------------------ Dependency (being created inside `writeReport` method)
 
 		String report = formatter.format(report);
 		FileWriter writer = new FileWriter("report.json");
-		//		   ^^^^^^ <------------------------------------ dependency
+		//		   ^^^^^^ <------------------------------------ Dependency (being created inside `writeReport` method)
 
 		// Write out the report
 		writer.write();
@@ -134,7 +134,7 @@ ISP: **CLIENTS SHOULD NOT BE FORCED TO DEPEND UPON INTERFACES THAT THEY DO NOT U
 	}
     ```
 
-    > `writeReport` is dependent on `formatter` and `writer`, therefore, both `formatter` and `writer` are dependencies `writeReport` method.
+    > `writeReport` is dependent on `formatter` and `writer`, therefore, both `formatter` and `writer` are dependencies in `writeReport` method.
 
 - Dependency Inversion is asking the programmer to not create dependencies inside the `writeReport` method, but those dependencies must be provided to `writeReport` method.
   - Because both `formatter` and `writer` objects are created inside the `writeReport` method, 
@@ -160,13 +160,13 @@ ISP: **CLIENTS SHOULD NOT BE FORCED TO DEPEND UPON INTERFACES THAT THEY DO NOT U
 		String report = formatter.format(report);						// We're NOT creating the dependency here anymore.
 		
 		// Write out the report
-		writer.write("myreport.json");									// We're NOT creating the dependency here as well.
+		writer.write(report, "myreport.json");							// We're NOT creating the dependency here as well.
 	}
     ```
     
     > Anyone who now wants to fulfil the previous requirements like:
-    > 1. Write the report in HTML format: The caller can simply pass in a different implementation of the Formatter, and this should work as expected.
-    > 2. Write the report to memory/network, instead of disk: The caller can simply pass in a different implementation of the Writer, and that should take care of the report being written to memory/network.
+    > 1. Write the report in HTML format: The caller can simply pass in a different implementation of the `Formatter`, and this should work as expected.
+    > 2. Write the report to memory/network, instead of disk: The caller can simply pass in a different implementation of the `Writer`, and that should take care of the report being written to memory/network.
 
 DI:
 
