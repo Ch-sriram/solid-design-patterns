@@ -60,6 +60,8 @@ SRP: **THERE SHOULD NEVER BE MORE THAN ONE REASON FOR A CLASS TO CHANGE**.
   - Therefore:
     1. Open for Extension => can derive from base, and override methods.
     2. Closed for Modification => avoid modifying base class.
+    
+ OCP: **SOFTWARE ENTITIES (CLASSES, MODULES, METHODS, etc) SHOULD BE OPEN FOR EXTENSION, BUT CLOSED FOR MODIFICATION**
 
 [ꜛ️](#table-of-contents)
 
@@ -69,6 +71,7 @@ SRP: **THERE SHOULD NEVER BE MORE THAN ONE REASON FOR A CLASS TO CHANGE**.
 - Here, we're not simply talking about type level replacement of *Base* class object with *Child* class object.
   We're also talking about the behaviour being unaffected for the overall program if there's a change from *Base* class' object, to *Child* class' object.
 
+LSP: **WE SHOULD BE ABLE TO SUBSTITUTE BASE CLASS OBJECTS WITH CHILD CLASS OBJECTS, AND THIS SUBSTITUTION SHOULD NOT ALTER THE DESIRED BEHAVIOUR/CHARACTERISTIC OF THE PROGRAM**
 
 [ꜛ️](#table-of-contents)
 
@@ -87,5 +90,6 @@ SRP: **THERE SHOULD NEVER BE MORE THAN ONE REASON FOR A CLASS TO CHANGE**.
 - In essense, ISP is asking to __Write Highly Cohesive Interfaces__, meaning, break down larger interfaces, so that methods or behaviours/contracts that are defined in an interface,
   are cohesive, and are related to each other, and we don't run into a situation where a class is forced to provide an implementation for a method, for which it doesn't make any sense.
 
+ISP: **CLIENTS SHOULD NOT BE FORCED TO DEPEND UPON INTERFACES THAT THEY DO NOT USE**
 
 [ꜛ️](#table-of-contents)
