@@ -20,6 +20,8 @@
      - [Code &mdash; ISP Violation](./src/main/java/com/ram/java/solid/interfacesegregation/services/violation/)
      - [Code &mdash; ISP Violation: 1st Resolution](./src/main/java/com/ram/java/solid/interfacesegregation/services/resolved_1/)
      - [Code &mdash; ISP Violation: 2nd Resolution](./src/main/java/com/ram/java/solid/interfacesegregation/services/resolved_2/)
+   - [Dependency Injection Principle (DI)](#dependency-inversion-principle-di)
+     - [Code &mdash; DI Violation](./src/main/java/com/ram/java/solid/dependencyinversion/violation/services/MessagePrinter.java)
 
 ### SOLID Principles
 
@@ -91,5 +93,80 @@ LSP: **WE SHOULD BE ABLE TO SUBSTITUTE BASE CLASS OBJECTS WITH CHILD CLASS OBJEC
   are cohesive, and are related to each other, and we don't run into a situation where a class is forced to provide an implementation for a method, for which it doesn't make any sense.
 
 ISP: **CLIENTS SHOULD NOT BE FORCED TO DEPEND UPON INTERFACES THAT THEY DO NOT USE**
+
+[ꜛ️](#table-of-contents)
+
+#### Dependency Inversion Principle (DI)
+
+- DI states the following:
+  1. __High level modules should not depend upon low level modules__ &mdash; __both should depend upon abstractions__.
+  2. __Abstractions should not depend upon details__ &mdash; __details should depend upon abstractions__.
+- What exactly is a _Dependency_?
+  - E.g. 1: Assume the following code:
+
+    ```java
+    public void printMe() {
+		System.out.println("Hello!");
+		//     ^^^	<----------------	dependency
+	}
+    ```
+
+    > `out` object is the _dependency_ in this situation, for the code inside `printMe` method.
+
+  - E.g. 2: Let's say we're writing a method that will generate a report in JSON format, and the method will write that JSON formatted report on the disk:
+  
+    ```java
+    public void writeReport() {
+		Report report = new Report(); 	// This is not a dependency because this method is supposed to write a Report.
+
+		// Build the report
+		JSONFormatter formatter = new JSONFormatter();
+		//            ^^^^^^^^^ <------------------------------ dependency
+
+		String report = formatter.format(report);
+		FileWriter writer = new FileWriter("report.json");
+		//		   ^^^^^^ <------------------------------------ dependency
+
+		// Write out the report
+		writer.write();
+		writer.close();
+	}
+    ```
+
+    > `writeReport` is dependent on `formatter` and `writer`, therefore, both `formatter` and `writer` are dependencies `writeReport` method.
+
+- Dependency Inversion is asking the programmer to not create dependencies inside the `writeReport` method, but those dependencies must be provided to `writeReport` method.
+  - Because both `formatter` and `writer` objects are created inside the `writeReport` method, 
+    the `writeReport`'s implementation is now tightly coupled to the implementation of `JSONFormatter`'s object,
+    and `Writer` object, specifically `FileWriter` object.
+  - __WRENCH IN THE WORKS__: If there's a new requirement that asks for the following changes?
+    1. Write the report in HTML format.
+    2. Write the report to memory/network, instead of disk.
+    > Just these bunch of changes would invoke a change in the existing `writeReport` method, which is something we, as developers should avoid.
+    > The more code changes we do, the more there's a good chance of breaking existing behaviour of already tested code, and more inclusion of bugs.
+  - DI basically is asking for the High level module(s) (the module that defines the business rules, like `writeReport` method)
+    NOT to depend on Low level module(s) (the modules that are basic functionalities and can be used anywhere, a good example is `JSONFormatter`).
+  - Both High level module(s) and Low level module(s) should NOT be tightly coupled, and ideally, both should depend on Abstractions.
+    - Instead of creating `JSONFormatter` and `FileWriter` objects inside `writeReport` method, why not let the caller of the method provide those
+      dependencies for you, so that you don't have the responsibilit of creating such objects at your end.
+    - Also, this way, `writeReport` only knows that it's dealing with some instance of `Formatter` and `Writer` (as interfaces, and not actual instances).
+
+    ```java
+    public void writeReport(Formatter formatter, Writer writer) {		// Both Formatter & Writer are interface references provided to `writeReport` method.
+		Report report = new Report();
+
+		// Build the report
+		String report = formatter.format(report);						// We're NOT creating the dependency here anymore.
+		
+		// Write out the report
+		writer.write("myreport.json");									// We're NOT creating the dependency here as well.
+	}
+    ```
+    
+    > Anyone who now wants to fulfil the previous requirements like:
+    > 1. Write the report in HTML format: The caller can simply pass in a different implementation of the Formatter, and this should work as expected.
+    > 2. Write the report to memory/network, instead of disk: The caller can simply pass in a different implementation of the Writer, and that should take care of the report being written to memory/network.
+
+DI: **CLIENTS SHOULD NOT BE FORCED TO DEPEND UPON INTERFACES THAT THEY DO NOT USE**
 
 [ꜛ️](#table-of-contents)
