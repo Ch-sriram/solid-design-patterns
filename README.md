@@ -160,7 +160,7 @@ ISP: **CLIENTS SHOULD NOT BE FORCED TO DEPEND UPON INTERFACES THAT THEY DO NOT U
 		String report = formatter.format(report);						// We're NOT creating the dependency here anymore.
 		
 		// Write out the report
-		writer.write(report, "myreport.json");							// We're NOT creating the dependency here as well.
+		writer.write(report);											// We're NOT creating the dependency here as well.
 	}
     ```
     
