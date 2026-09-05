@@ -6,23 +6,26 @@
 ## Table of Contents
 
 1. [SOLID Principles](#solid-principles)
-   - [Single Responsibility Principle (SRP)](#single-responsibility-principle-srp)
-     - [Code &mdash; SRP Violation](./src/main/java/com/ram/java/solid/singleresponsibilityprinciple/UserController.java#L30-L120)
-     - [Code &mdash; SRP Violation: Resolved](./src/main/java/com/ram/java/solid/singleresponsibilityprinciple/UserController.java#L1-L29)
-     - [Full Code](./src/main/java/com/ram/java/solid/singleresponsibilityprinciple)
-   - [Open Closed Principle (OCP)](#open-closed-principle-ocp)
-     - [Code &mdash; OCP Violation](./src/main/java/com/ram/java/solid/openclosedprinciple/violation/)
-     - [Code &mdash; OCP Violation: Resolved](./src/main/java/com/ram/java/solid/openclosedprinciple/resolved/)
-   - [Liskov Substitution Principle (LSP)](#liskov-substitution-principle-lsp)
-     - [Code &mdash; LSP Violation](./src/main/java/com/ram/java/solid/liskovsubstitutionprinciple/violation/)
-     - [Code &mdash; LSP Violation: Resolved](./src/main/java/com/ram/java/solid/liskovsubstitutionprinciple/resolved/)
-   - [Interface Segregation Principle (ISP)](#interface-segregation-principle-isp)
-     - [Code &mdash; ISP Violation](./src/main/java/com/ram/java/solid/interfacesegregation/services/violation/)
-     - [Code &mdash; ISP Violation: 1st Resolution](./src/main/java/com/ram/java/solid/interfacesegregation/services/resolved_1/)
-     - [Code &mdash; ISP Violation: 2nd Resolution](./src/main/java/com/ram/java/solid/interfacesegregation/services/resolved_2/)
-   - [Dependency Injection Principle (DI)](#dependency-inversion-principle-di)
-     - [Code &mdash; DI Violation](./src/main/java/com/ram/java/solid/dependencyinversion/services/violation/)
-     - [Code &mdash; DI Violation: Resolved](./src/main/java/com/ram/java/solid/dependencyinversion/services/resolved/)
+   1. [Single Responsibility Principle (SRP)](#single-responsibility-principle-srp)
+      - [Code &mdash; SRP Violation](./src/main/java/com/ram/java/solid/singleresponsibilityprinciple/UserController.java#L30-L120)
+      - [Code &mdash; SRP Violation: Resolved](./src/main/java/com/ram/java/solid/singleresponsibilityprinciple/UserController.java#L1-L29)
+      - [Full Code](./src/main/java/com/ram/java/solid/singleresponsibilityprinciple)
+   2. [Open Closed Principle (OCP)](#open-closed-principle-ocp)
+      - [Code &mdash; OCP Violation](./src/main/java/com/ram/java/solid/openclosedprinciple/violation/)
+      - [Code &mdash; OCP Violation: Resolved](./src/main/java/com/ram/java/solid/openclosedprinciple/resolved/)
+   3. [Liskov Substitution Principle (LSP)](#liskov-substitution-principle-lsp)
+      - [Code &mdash; LSP Violation](./src/main/java/com/ram/java/solid/liskovsubstitutionprinciple/violation/)
+      - [Code &mdash; LSP Violation: Resolved](./src/main/java/com/ram/java/solid/liskovsubstitutionprinciple/resolved/)
+   4. [Interface Segregation Principle (ISP)](#interface-segregation-principle-isp)
+      - [Code &mdash; ISP Violation](./src/main/java/com/ram/java/solid/interfacesegregation/services/violation/)
+      - [Code &mdash; ISP Violation: 1st Resolution](./src/main/java/com/ram/java/solid/interfacesegregation/services/resolved_1/)
+      - [Code &mdash; ISP Violation: 2nd Resolution](./src/main/java/com/ram/java/solid/interfacesegregation/services/resolved_2/)
+   5. [Dependency Injection Principle (DI)](#dependency-inversion-principle-di)
+      - [Code &mdash; DI Violation](./src/main/java/com/ram/java/solid/dependencyinversion/services/violation/)
+      - [Code &mdash; DI Violation: Resolved](./src/main/java/com/ram/java/solid/dependencyinversion/services/resolved/)
+
+2. [Design Patterns](#design-patterns)
+   1. [Creational Design Patterns](#creational-design-patterns)
 
 ### SOLID Principles
 
@@ -175,5 +178,38 @@ DI:
 
 1. __HIGH LEVEL MODULES SHOULD NOT DEPEND UPON LOW LEVEL MODULES__ &mdash; __BOTH SHOULD DEPEND UPON ABSTRACTIONS__.
 2. __ABSTRACTIONS SHOULD NOT DEPEND UPON DETAILS__ &mdash; __DETAILS SHOULD DEPEND UPON ABSTRACTIONS__.
+
+[ꜛ️](#table-of-contents)
+
+### Design Patterns
+
+- There are 26 design patterns, and remembering every design pattern is almost impossible.
+- That's why, all these 26 design patterns are divided into 3 categories:
+  1. CREATIONAL: patterns that deal with the process of creation of objects of classes.
+  2. STRUCTURAL: patterns that deal with how classes and objects are arranged or composed.
+     These design patterns deal with how we can arrange our classes and objects so that we can derive a functionality out of them.
+  3. BEHAVIORAL: patterns that deal with how classes and objects interact & communicate with each other.
+     Mainly, these patterns are responsible for how we can design the interaction/communication between classes and objects,
+     so that we can achieve the desired goal with these objects.
+
+[ꜛ️](#table-of-contents)
+
+#### Creational Design Patterns
+
+- Creational design patterns deal with the process of creation of objects of classes.
+- Why do we need a category of design patterns to create the object of a class when we already have the `new` operator?
+  - Answer: __It's not that simple__!
+  - In real life software development, a single object may need multiple other objects before it can even be instantiated.
+  - Sometimes there might be a requirement that there should only be a single object of your class in the entire application.
+    That class might just be representing something like a Configuration, and therefore, you want only 1 object of that class,
+    from which the entire application can read the configuration, from a single source of truth, which is a single object.
+- The following are some of the Creational Design Patterns:
+  1. Builder
+  2. Simple Factory
+  3. Factory Method
+  4. Prototype
+  5. Singleton
+  6. Abstract Factory
+  7. Object Pool
 
 [ꜛ️](#table-of-contents)
