@@ -181,6 +181,8 @@ DI:
 
 [ꜛ️](#table-of-contents)
 
+---
+
 ### Design Patterns
 
 - There are 26 design patterns, and remembering every design pattern is almost impossible.
