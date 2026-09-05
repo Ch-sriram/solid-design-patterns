@@ -167,6 +167,9 @@ ISP: **CLIENTS SHOULD NOT BE FORCED TO DEPEND UPON INTERFACES THAT THEY DO NOT U
     > 1. Write the report in HTML format: The caller can simply pass in a different implementation of the Formatter, and this should work as expected.
     > 2. Write the report to memory/network, instead of disk: The caller can simply pass in a different implementation of the Writer, and that should take care of the report being written to memory/network.
 
-DI: **CLIENTS SHOULD NOT BE FORCED TO DEPEND UPON INTERFACES THAT THEY DO NOT USE**
+DI:
+
+1. __HIGH LEVEL MODULES SHOULD NOT DEPEND UPON LOW LEVEL MODULES__ &mdash; __BOTH SHOULD DEPEND UPON ABSTRACTIONS__.
+2. __ABSTRACTIONS SHOULD NOT DEPEND UPON DETAILS__ &mdash; __DETAILS SHOULD DEPEND UPON ABSTRACTIONS__.
 
 [ꜛ️](#table-of-contents)
