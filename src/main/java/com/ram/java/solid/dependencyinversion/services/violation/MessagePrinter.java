@@ -1,12 +1,12 @@
-package com.ram.java.solid.dependencyinversion.violation.services;
+package com.ram.java.solid.dependencyinversion.services.violation;
 
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import com.ram.java.solid.dependencyinversion.Formatter;
+import com.ram.java.solid.dependencyinversion.JsonFormatter;
 import com.ram.java.solid.dependencyinversion.entities.Message;
-import com.ram.java.solid.dependencyinversion.violation.Formatter;
-import com.ram.java.solid.dependencyinversion.violation.JsonFormatter;
 
 /**
  * Prints the given {@link Message} object. 

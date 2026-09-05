@@ -1,4 +1,4 @@
-package com.ram.java.solid.dependencyinversion.violation;
+package com.ram.java.solid.dependencyinversion;
 
 import com.ram.java.solid.dependencyinversion.entities.Message;
 import com.ram.java.solid.dependencyinversion.exceptions.FormatException;

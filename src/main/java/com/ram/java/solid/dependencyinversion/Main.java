@@ -1,9 +1,9 @@
-package com.ram.java.solid.dependencyinversion.violation;
+package com.ram.java.solid.dependencyinversion;
 
 import java.io.IOException;
 
 import com.ram.java.solid.dependencyinversion.entities.Message;
-import com.ram.java.solid.dependencyinversion.violation.services.MessagePrinter;
+import com.ram.java.solid.dependencyinversion.services.violation.MessagePrinter;
 
 /**
  * Driver program for showing the violation of DI principle. 

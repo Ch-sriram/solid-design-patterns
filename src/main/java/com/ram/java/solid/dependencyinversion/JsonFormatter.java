@@ -1,4 +1,4 @@
-package com.ram.java.solid.dependencyinversion.violation;
+package com.ram.java.solid.dependencyinversion;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
