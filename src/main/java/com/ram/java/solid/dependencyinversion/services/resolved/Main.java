@@ -10,7 +10,7 @@ import com.ram.java.solid.dependencyinversion.TextFormatter;
 import com.ram.java.solid.dependencyinversion.entities.Message;
 
 /**
- * Driver program for showing the violation of DI principle. 
+ * Driver program for showing the violation of DI principle – resolved!
  */
 public class Main {
 	private static final String FILE_NAME = "message-print-test-2.txt";
