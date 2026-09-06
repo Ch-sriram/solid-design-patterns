@@ -298,7 +298,7 @@ DI:
     - The builder must provide a way/method to get the fully built object out. _Optionally_, the builder can keep the instance of the object that was built
       (`Product` in this case), so the same reference can be returned again in future.
   - A `Director` can be a separate class, OR, the client (wherever the `Builder` instance is created) themselves can play the role of director.
-    - __NOTE__: Creating a separate `Director` class is really rare nowadays. A `Builder` class' entire flow and logic is almost always taken
-      care by a client/caller class.
+    - __NOTE__: Flow, and logic related to `Builder` class' instance creation is almost always taken care by a client/caller class, creating a separate
+    `Director` class is really rare nowadays.
 
 [ꜛ️](#table-of-contents)
