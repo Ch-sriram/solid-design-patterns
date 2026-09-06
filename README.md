@@ -215,3 +215,89 @@ DI:
   7. Object Pool
 
 [ꜛ️](#table-of-contents)
+
+##### Builder Design Pattern
+
+- Why use Builder pattern?
+  - Let's say, you want a `Product` class that needs to have its object, to be immutable => once `Product`'s object is created, none of its internal values should ever change.
+  - Therefore, for an object (like `Product`) that needs to be immutable (whose state cannot change once created), we've an example of that in Java, which is `String` class object.
+  - But when you, as a programmer, is writing a class whose instance needs to be immutable, you might have a scenario where the class' constructor can have many parameters,
+    and therefore, it can become really difficult to keep track of which argument is to be sent where, whenever the object is to be created for that class.
+    - Example-1: let's take a real-world example of `Product` class:
+
+      ```java
+      class Product {
+		public Product(int weight, double price, int shipVolume, int shipCode) {
+			// Code to initialize the class members
+		}
+		
+		// Other code for methods and behaviour
+	  }
+      ```
+
+	  > IMPORTANT NOTE
+	  > --------------
+      > In this class, as can be seen, there are different data typed variables like <int, double, int, int>, that can be confused when passing via `new` keyword to create a `Product`
+      > class' instance, and there can be an argument made where the variable name themselves can be considered a self-documentation of what values to be passed where.
+      > But that assumption quickly fails &mdash; the code when shared to another vendor, or imported as a library, is usually shared as a JAR/WAR file, which goes through the phases
+      > of compilation, where variable names are usually replaced with generic variable names decided by the compiler during compilation. Therefore, self-documenting variable naming
+      > also doesn't help in this case.
+   
+	  - Therefore, Builder design pattern helps us mitigate this in 2 ways:
+	    1. Builder makes it easy to make use of such (relatively large) constructors, so that we can create immutable objects of such a class.
+	    2. Builder pattern also helps us avoid writing a constructor so large, and force us to think about writing constructors which are smaller in nature, and easier to deal with as well.
+	
+	- Example-2: Objects that need other objects, or "parts" of other objects to construct them, would be a good place, to make use of Builder pattern, to replace such instances for
+	  maintaining clean code. If you've an `Address` object, which is used as a part of `User` object, then, you need to be able to build the `Address` object first, and then build the
+	  `User` object post that.
+
+	  ```java
+	  class Address {
+		public Address(String houseNumber, String street, ...) {
+			// Initialisation code for Address object...
+		}
+		
+		// Other code
+	  }
+	  ```
+
+	  ```java
+	  class User {
+		public User(String name, Address address, LocalDate birthdate, List<Role> roles) {
+			//														   ^^^^^^^^^^  <----------- List of Role objects also have to be maintained immutably.
+			//                   ^^^^^^^  <---------------------------------------------------- Address object being used here.
+			// Initialising code for User object...
+		}
+		
+		// Other code
+	  }
+	  ```
+	  
+	  > In such a situation, the Builder design pattern makes a lot of sense.
+
+- What is a Builder?
+  - Whenever we've a complex process to construct an object involving multiple steps, thinking of clean coding using _Builder_ design pattern, can help us.
+  - In _Builder_, we abstract away (or more precisely, obscure away) the burden of creation from the caller (client) code, to a separate class, which when used
+    by the user of the object, makes it really easy to create the object, in an immutable way, makes a lot of sense to the user (the code to generate the
+    following UML diagram can be found inside [/resources/uml/builder-design-pattern-product-example.puml](./resources/uml/builder-design-pattern-product-example.puml))
+
+    ![builder-pattern-example-design](./resources/images/Builder-Design-Pattern-Example.svg)
+    
+
+    > Usually, there's an abstract `Builder` class, which is implemented by a `ConcreteBuilder` class, which loosely associates and is composed of the actual
+    > immutable instance the user wants to create, in this instance, it's `Product` class' instance.
+    >
+    > The `Director` class loosely composes of `Builder` class' instance (meaning `Builder` is created inside `Director`), and from the `Builder` instance,
+    > we get the the required class' immutable instance &mdash; `Product` instance. Therefore, `Director` class is like a driver program which drives the
+    > building of the instance in question.
+
+- How to implement a Builder?
+  - We start by creating a `Builder` class:
+    - Identify the "__parts__" of the class you want to build builder for (in this case `Product`), and provide methods to create methods for those "__parts__".
+    - Provide a method to "__assemble__" of build the final object (in this case `Product` object is to be provided).
+    - The builder must provide a way/method to get the fully built object out. _Optionally_, the builder can keep the instance of the object that was built
+      (`Product` in this case), so the same reference can be returned again in future.
+  - A `Director` can be a separate class, OR, the client (wherever the `Builder` instance is created) themselves can play the role of director.
+    - __NOTE__: Creating a separate `Director` class is really rare nowadays.
+
+[ꜛ️](#table-of-contents)

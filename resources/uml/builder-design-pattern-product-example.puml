@@ -1,0 +1,35 @@
+@startuml
+
+title Builder - Design Pattern
+
+class Product {
+    - productId: Integer
+    - weight: Integer
+    - shippingCode: Integer
+    - price: Double
+}
+
+abstract class Builder {
+    + build(): void
+    + getProduct(): Product;
+}
+
+class ConcreteBuilder extends Builder {
+    + build(): void {}
+    + getProduct(): Product {}
+    + withProductId(productId: Integer): ConcreteBuilder {}
+    + withWeightCode(weight: Integer): ConcreteBuilder {}
+    + withShippingCode(shippingCode: Integer): ConcreteBuilder {}
+    + withPrice(price: Double): ConcreteBuilder {}
+}
+
+class Director {
+    + static main(args: String[]): void {}
+    + static createProduct(): Product {}
+}
+
+
+ConcreteBuilder *..> Product
+Director *--> Builder
+
+@enduml
