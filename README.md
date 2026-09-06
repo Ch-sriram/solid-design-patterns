@@ -3,6 +3,8 @@
 - This repository contains code and implementation related to SOLID principles, and Design Patterns, all implemented using Java.
 - The entire repository will be well structured, and have a table of contents to reflect each topic, and where to find related to text along with the code.
 
+> __NOTE-1__: All UML diagrams are generated using [`PlantUML`](https://plantuml.com) specification, and are generated using [`PlantText`](https://planttext.com) application. 
+
 ## Table of Contents
 
 1. [SOLID Principles](#solid-principles)
@@ -26,6 +28,9 @@
 
 2. [Design Patterns](#design-patterns)
    1. [Creational Design Patterns](#creational-design-patterns)
+      1. [Builder Pattern](#builder-design-pattern):
+         - [UML Diagram  &mdash; `UserDTOBuilder`](./resources/images/builder-pattern-example-userdto.svg) | [Code to generate UML diagram](./resources/uml/builder-pattern-example-userdto.puml)
+         - [Traditional Code &mdash; `UserDTOBuilder`](./src/main/java/com/ram/java/designpatterns/builder/traditional/)
 
 ### SOLID Principles
 
