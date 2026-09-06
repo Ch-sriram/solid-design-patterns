@@ -307,4 +307,27 @@ DI:
     - __NOTE__: Flow, and logic related to `Builder` class' instance creation is almost always taken care by a client/caller class, creating a separate
     `Director` class is really rare nowadays.
 
+- Implementation Details
+  1. Implementing builder pattern as a inner static class, creates an immutable class iff members & setters are private.
+     - Even if immutability is not the concern, finding this kind of implementation of builder, where the builder class is an inner static class, is very common.
+
+- Design Considerations
+  1. The director role is rarely implemented as a separate class, typically the consumer of the object (viz. client) handles that role.
+  1. Abstract builder (like in [`UserDTOBuilder`](./src/main/java/com/ram/java/designpatterns/builder/traditional/UserDTOBuilder.java)) is not required if the
+     class itself is NOT a part of any inheritance hierarchy, meaning, if you've `UserDTO` being implemented by `UserRestDTO` and `UserWebDTO`, then in that
+     case, you'd need a `UserDTOBuilder` abstract builder, and that can be implemented by `UserRestDTOBuilder` and `UserWebDTOBuilder`s respectively.
+     - In most of the cases, you can write a concrete builder without any abstract builder.
+  1. If you're running into "__too many constructor arguments__" problem, then it's a good indication that builder pattern may help (this is just an indication,
+     and NOT actually probably the actual solution for the problem, depending on the problem itself).
+
+- Real World Builder Examples
+  | Example | Is good builder pattern example? | Why/not? | Should use example in interview? |
+  | ------- | -------------------------------- | -------- | -------------------------------- |
+  | `java.lang.StringBuilder` | PARTIALLY | Allows the user to build the final object in parts, but the code actually doesn't follow the builder pattern as described by GoF. | NO |
+  | `java.util.Calendar.Builder` | YES | This is a properly implemented builder pattern code for getting the `Calendar` object. The code follows GoF | YES |
+
+  > * GoF: [Gang of Four](https://en.wikipedia.org/wiki/Design_Patterns#:~:text=to%20as%20the-,Gang%20of%20Four%20(GoF).,-%5B2%5D), are __4 famous authors__ who wrote the book
+  >        and introduced clean code using design patterns to the world. The name of the book is [Design Patterns: Elements of Reusable Object-Oriented Software](https://www.amazon.in/Design-Patterns-Object-Oriented-Addison-Wesley-Professional-ebook/dp/B000SEIBB8),
+  >        written by __Erich Gamma__, __Richard Helm__, __Ralph Johnson__, and __John Vlissides__.
+
 [ꜛ️](#table-of-contents)
