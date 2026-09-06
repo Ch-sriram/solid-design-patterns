@@ -4,8 +4,6 @@ import java.time.LocalDate;
 import java.time.Period;
 
 import com.ram.java.designpatterns.builder.Address;
-import com.ram.java.designpatterns.builder.UserDTO;
-import com.ram.java.designpatterns.builder.UserWebDTO;
 
 /**
  * The concrete builder for {@link UserDTOBuilder}.

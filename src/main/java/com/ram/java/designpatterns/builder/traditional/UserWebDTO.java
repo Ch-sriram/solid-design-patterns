@@ -1,4 +1,4 @@
-package com.ram.java.designpatterns.builder;
+package com.ram.java.designpatterns.builder.traditional;
 
 /**
  * Represents a concrete implementation of

@@ -3,7 +3,6 @@ package com.ram.java.designpatterns.builder.traditional;
 import java.time.LocalDate;
 
 import com.ram.java.designpatterns.builder.Address;
-import com.ram.java.designpatterns.builder.UserDTO;
 
 /**
  * Defines the behaviour for builders that need

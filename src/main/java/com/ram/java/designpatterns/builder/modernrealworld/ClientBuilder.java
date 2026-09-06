@@ -1,24 +1,23 @@
-package com.ram.java.designpatterns.builder.traditional;
+package com.ram.java.designpatterns.builder.modernrealworld;
 
 import java.time.LocalDate;
 
 import com.ram.java.designpatterns.builder.Address;
 import com.ram.java.designpatterns.builder.User;
+import com.ram.java.designpatterns.builder.modernrealworld.UserDTO.UserDTOBuilder;
 
 /**
- * Director/Driver program that creates and controls
- * {@link UserDTO} related object(s) via
- * {@link UserDTOBuilder}. 
+ * Demonstrates the workings of Builder design pattern
+ * using {@link UserDTOBuilder} via {@link UserDTO},
+ * and {@link User} object(s).
  */
-public class Client {
-
+public class ClientBuilder {
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
 		User user = createUser();
-		UserDTOBuilder builder = new UserWebDTOBuilder();
-		UserDTO userDTO = directBuild(builder, user);
+		UserDTO userDTO = directBuild(UserDTO.getBuilder(), user);
 		System.out.println(userDTO);
 	}
 
