@@ -32,8 +32,9 @@
          - [UML Diagram  &mdash; `UserDTOBuilder`](./resources/images/builder-pattern-example-userdto.svg) | [Code to generate UML diagram](./resources/uml/builder-pattern-example-userdto.puml)
          - [Traditional Code &mdash; `UserDTOBuilder`](./src/main/java/com/ram/java/designpatterns/builder/traditional/)
          - [Modern Real World Code &mdash; `UserDTOBuilder`](./src/main/java/com/ram/java/designpatterns/builder/modernrealworld/)
+      2. [Simple Factory Pattern](#simple-factory-pattern)
 
-### SOLID Principles
+## SOLID Principles
 
 - SOLID is an acronym for the following principles underlying:
   1. _**S**ingle Responsibility Principle (SRP)_
@@ -44,7 +45,7 @@
 
 [ꜛ️](#table-of-contents)
 
-#### Single Responsibility Principle (SRP)
+### Single Responsibility Principle (SRP)
 
 - SRP states that: __there should never be more than one reason for a class to change__.
 - The class should provide a focussed, single functionality, and address a specific concern.
@@ -61,7 +62,7 @@ SRP: **THERE SHOULD NEVER BE MORE THAN ONE REASON FOR A CLASS TO CHANGE**.
 
 [ꜛ️](#table-of-contents)
 
-#### Open Closed Principle (OCP)
+### Open Closed Principle (OCP)
 
 - OCP states that: __Software entities (classes, modules, methods, etc) should be Open for extension, but Closed for modification__.
 - **Open for Extension** &mdash; `extend` existing behaviour (IS-A relationship establishment in OOP).
@@ -77,7 +78,7 @@ SRP: **THERE SHOULD NEVER BE MORE THAN ONE REASON FOR A CLASS TO CHANGE**.
 
 [ꜛ️](#table-of-contents)
 
-#### Liskov Substitution Principle (LSP)
+### Liskov Substitution Principle (LSP)
 
 - LSP states that: __We should be able to substitute *Base* class objects with *Child* class objects & this should not alter the desired behaviour/characteristics of the program__.
 - Here, we're not simply talking about type level replacement of *Base* class object with *Child* class object.
@@ -87,7 +88,7 @@ LSP: **WE SHOULD BE ABLE TO SUBSTITUTE BASE CLASS OBJECTS WITH CHILD CLASS OBJEC
 
 [ꜛ️](#table-of-contents)
 
-#### Interface Segregation Principle (ISP)
+### Interface Segregation Principle (ISP)
 
 - ISP states that: __Clients should not be forced to depend upon interfaces that they do NOT use__.
 - In particular, we're talking about methods. Clients shouldn't have to depend on methods that are defined in interfaces that they don't use.
@@ -106,7 +107,7 @@ ISP: **CLIENTS SHOULD NOT BE FORCED TO DEPEND UPON INTERFACES THAT THEY DO NOT U
 
 [ꜛ️](#table-of-contents)
 
-#### Dependency Inversion Principle (DI)
+### Dependency Inversion Principle (DI)
 
 - DI states the following:
   1. __High level modules should not depend upon low level modules__ &mdash; __both should depend upon abstractions__.
@@ -189,7 +190,7 @@ DI:
 
 ---
 
-### Design Patterns
+## Design Patterns
 
 - There are 26 design patterns, and remembering every design pattern is almost impossible.
 - That's why, all these 26 design patterns are divided into 3 categories:
@@ -202,7 +203,7 @@ DI:
 
 [ꜛ️](#table-of-contents)
 
-#### Creational Design Patterns
+### Creational Design Patterns
 
 - Creational design patterns deal with the process of creation of objects of classes.
 - Why do we need a category of design patterns to create the object of a class when we already have the `new` operator?
@@ -222,7 +223,7 @@ DI:
 
 [ꜛ️](#table-of-contents)
 
-##### Builder Design Pattern
+#### Builder Design Pattern
 
 <details><summary><em>Why use Builder pattern?</em></summary>
 
@@ -627,5 +628,9 @@ DI:
   the Builder pattern starts providing a real benefit.
 
 </details>
+
+[ꜛ️](#table-of-contents)
+
+#### Simple Factory Pattern
 
 [ꜛ️](#table-of-contents)
