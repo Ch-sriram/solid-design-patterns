@@ -224,7 +224,8 @@ DI:
 
 ##### Builder Design Pattern
 
-- Why use Builder pattern?
+- __Why use Builder pattern?__
+
   - Let's say, you want a `Product` class that needs to have its object, to be immutable => once `Product`'s object is created, none of its internal values should ever change.
   - Therefore, for an object (like `Product`) that needs to be immutable (whose state cannot change once created), we've an example of that in Java, which is `String` class object.
   - But when you, as a programmer, is writing a class whose instance needs to be immutable, you might have a scenario where the class' constructor can have many parameters,
@@ -281,7 +282,8 @@ DI:
 	  
 	  > In such a situation, the Builder design pattern makes a lot of sense.
 
-- What is a Builder?
+- __What is a Builder?__
+
   - Whenever we've a complex process to construct an object involving multiple steps, thinking of clean coding using _Builder_ design pattern, can help us.
   - In _Builder_, we abstract away (or more precisely, obscure away) the burden of creation from the caller (client) code, to a separate class, which when used
     by the user of the object, makes it really easy to create the object, in an immutable way, makes a lot of sense to the user (the code to generate the
@@ -297,7 +299,8 @@ DI:
     > we get the the required class' immutable instance &mdash; `Product` instance. Therefore, `Director` class is like a driver program which drives the
     > building of the instance in question.
 
-- How to implement a Builder?
+- __How to implement a Builder?__
+
   - We start by creating a `Builder` class:
     - Identify the "__parts__" of the class you want to build builder for (in this case `Product`), and provide methods to create methods for those "__parts__".
     - Provide a method to "__assemble__" of build the final object (in this case `Product` object is to be provided).
@@ -307,11 +310,13 @@ DI:
     - __NOTE__: Flow, and logic related to `Builder` class' instance creation is almost always taken care by a client/caller class, creating a separate
     `Director` class is really rare nowadays.
 
-- Implementation Details
+- __Implementation Details__
+
   1. Implementing builder pattern as a inner static class, creates an immutable class iff members & setters are private.
      - Even if immutability is not the concern, finding this kind of implementation of builder, where the builder class is an inner static class, is very common.
 
-- Design Considerations
+- __Design Considerations__
+
   1. The director role is rarely implemented as a separate class, typically the consumer of the object (viz. client) handles that role.
   1. Abstract builder (like in [`UserDTOBuilder`](./src/main/java/com/ram/java/designpatterns/builder/traditional/UserDTOBuilder.java)) is not required if the
      class itself is NOT a part of any inheritance hierarchy, meaning, if you've `UserDTO` being implemented by `UserRestDTO` and `UserWebDTO`, then in that
@@ -320,7 +325,8 @@ DI:
   1. If you're running into "__too many constructor arguments__" problem, then it's a good indication that builder pattern may help (this is just an indication,
      and NOT actually probably the actual solution for the problem, depending on the problem itself).
 
-- Real World Builder Examples
+- __Real World Builder Examples__
+
   | Example | Is good builder pattern example? | Why/not? | Should use example in interview? |
   | ------- | -------------------------------- | -------- | -------------------------------- |
   | `java.lang.StringBuilder` | PARTIALLY | Allows the user to build the final object in parts, but the code actually doesn't follow the builder pattern as described by GoF. | NO |
@@ -329,5 +335,284 @@ DI:
   > * GoF: [Gang of Four](https://en.wikipedia.org/wiki/Design_Patterns#:~:text=to%20as%20the-,Gang%20of%20Four%20(GoF).,-%5B2%5D), are __4 famous authors__ who wrote the book
   >        and introduced clean code using design patterns to the world. The name of the book is [Design Patterns: Elements of Reusable Object-Oriented Software](https://www.amazon.in/Design-Patterns-Object-Oriented-Addison-Wesley-Professional-ebook/dp/B000SEIBB8),
   >        written by __Erich Gamma__, __Richard Helm__, __Ralph Johnson__, and __John Vlissides__.
+
+- __Pitfalls of Builder Pattern__
+
+  1. More Boilerplate Code:
+
+	 Instead of simply:
+
+     ```java
+     User user = new User("Ram", "ram@example.com");
+     ```
+
+     you may end up with:
+
+	 ```java
+	 User user = new User.Builder()
+	 			         .name("Ram")
+	 			         .email("ram@example.com")
+	 			         .age(31)
+	 			         .build();
+	 ```
+
+     - You typically need:
+
+       1. A `Builder` class.
+       1. Builder fields.
+       1. Builder methods.
+       1. A `build()` method.
+       1. Constructor logic to transfer builder state.
+
+       For smaller classes, this can be unnecessary complexity.
+
+  2. Duplication of Fields: The builder often has the same fields as the original class, and therefore, changes to the actual class' fields, may require changes in 2 places instead of 1 before using a `Builder` pattern.
+
+     ```java
+     class User {
+		private String name;
+		private String email;
+		private int age;
+		
+		// Private Setters to be used by `Builder` inner static class
+
+        public static class Builder {
+			private String name;
+			private String email;
+			private int age;
+		}
+
+		// Builder methods for setting the `User` objects fields
+	 }
+     ```
+
+  3. Validation Can Become Complicated
+  
+     Assume the following code:
+  
+     ```java
+     User user = new User.Builder()
+  	 			         .email(null)
+  	 			         .age(-10)
+  	 			         .build();
+     ```
+  
+     > Where should validation happen?
+     >
+     > 1. You could validate in each setter:
+     >
+     >    ```java
+     >    public Builder age(int age) {
+     >		if (age < 0) {
+     >			throw new IllegalArgumentException();
+     >        }
+     >
+     >        this.age = age;
+     >        return this;
+     >    }
+     >    ```
+     >
+     > 2. But if there are multiple fields to be validated, then what?
+     >
+     >    ```java
+     >    startDate < endDate
+     >    ```
+     >
+     >    That usually belongs in `build()`.
+  
+     _As a resilt, validation can become spread across the builder and constructed object_.
+
+  4. Mutable Builder State
+  
+     - A builder is generally mutable (consider the code below):
+  
+       ```java
+       User.Builder builder = new User.Builder();
+       builder.name("Ram");						// Using User.Builder's instance to set "Ram" as name for User object.
+       User user1 = builder.build();			// User object with name as "Ram".
+  
+       builder.name("Sai");						// Using the previous User.Builder's instance to set the name to "Sai".
+       User user2 = builder.build();			// User object with name as "Sai" now.
+       ```
+  
+       > This means that you need to understand whether reusing a builder is sage and what state it currently contains.
+       > This becomes particularly problematic if builders are shared across threads.
+
+  5. Builder doesn't automatically guarantee immutability.
+  
+     - A common misconception is: "If I use Builder, my object is immutable"
+     - An example of how Builder can make mutable objects:
+  
+       ```java
+       class User {
+           private final List<String> roles;
+  
+           private User(Builder builder) {
+               this.roles = builder.roles;
+           }
+       }
+       ```
+  
+       The `User` field is `final`, but the underlying list can still be modified through the builder/reference.
+  
+       You may need to resolve this by making use of `List.copyOf(builder.roles)` to ensure immutability:
+  
+       ```java
+       this.roles = List.copyOf(builder.roles);
+       ```
+  
+       __So, Immutability has to be deliberately implemented, instead of assuming it to be the case with Builder pattern__.
+
+  6. Can Hide Expensive Construction
+  
+     The following code:
+  
+     ```java
+     User user = new User.Builder()
+                         .name("Ram")
+                         .email("ram@example.com")
+                         .age(31)
+                         .build();
+     ```
+  
+     looks simple, but `build()` might be doing significant work:
+  
+     1. Validation
+     1. Defensive Copying
+     1. Created Nested Objects
+     1. Parsing Values
+     1. Loading Resources
+     1. Applying Defaults
+  
+     The fluent syntax can make construction appear cheaper/simpler that it actually is, thereby hiding the internal complications and cost.
+
+  7. Too Many Builders Can Clutter the API
+  
+     If every class has a builder:
+  
+     ```
+     User
+     User.Builder
+  
+     Address
+     Address.Builder
+  
+     Order
+     Order.Builder
+  
+     Product
+     Product.Builder
+     ```
+  
+     the codebase can become builder-heavy.
+  
+     __This is especially noticeable in projects where builders are often generated by Lombok or IDEs__.
+
+  8. Telescoping Constructors May Sometimes Be Better
+  
+     > Builder isn't automatically superior
+  
+     For a class with only a couple of parameters:
+  
+     ```java
+     new Point(10, 20);
+     ```
+  
+     is arguably better than:
+  
+     ```java
+     new Pointer.Builder()
+                .x(10)
+                .y(20)
+                .build();
+     ```
+  
+     The _Builder_ pattern becomes more compelling as construction becomes more complex of has any optional parameters.
+
+  9. Builder Can Become a "God Builder"
+  
+     A poorly designed builder can accumulate lots of logic:
+  
+     ```java
+     new User.Builder()
+         .name(...)
+         .email(...)
+         .validateEmail(...)
+         .loadPermissions(...)
+         .calculateDefaults(...)
+         .createAddress(...)
+         .sendNotification(...)
+         .build();
+     ```
+  
+     At that point, the builder is doing far more than __constructing the object__.
+  
+     The pattern itself isn't the problem &mdash; the builder has simply accumulated responsibilities that belong elsewhere.
+     - This one can be termed as a programmer's mistake being inexperienced.
+
+  10. Required Parameters Can Be Forgotten
+  
+      With a conventional builder:
+  
+      ```java
+      User user = new User.Builder()
+                          .email("ram@example.com")
+                          .build();
+      ```
+  
+      What if `name` is mandatory?
+  
+      You only find out at runtime unless `build()` validates it.
+  
+      There are more sophisticated approaces, such as a __step builder__, to enforce construction order/required fields at compile time, but the add even more complexity.
+
+- __Summary__
+
+  | Pitfall           | Consequence                           |
+  | ----------------- | ------------------------------------- |
+  | Boilerplate       | More code                             |
+  | Duplicate fields  | Maintenance burden                    |
+  | Mutable builder   | Potential state/thread-safety issues  |
+  | Validation        | Can become complicated                |
+  | Immutability      | Not guaranteed automatically          |
+  | Too many builders | API/codebase clutter                  |
+  | Simple objects    | Builder may be overengineering        |
+  | Required fields   | May only fail at runtime              |
+  | Complex `build()` | Construction logic can become bloated |
+
+  - __The Key Rule__:
+
+    _Don't use Builder merely because a class has multiple fields_.
+
+    > Use it when the construction process itself benefits from being explicity and readable &mdash; particularly when there are many:
+    > 1. Optional Parameters,
+    > 1. Combinations of Parameters,
+    > 1. Defaults,
+    > 1. Validation, OR,
+    > 1. When you want to construct an immutable object without a huge constructor!
+
+    For something like:
+
+    ```java
+    new User(name, email);
+    ```
+
+    a builder is unnecessary.
+
+    For something like:
+
+    ```java
+    new User.Builder()
+        .name(name)
+        .email(email)
+        .age(age)
+        .phone(phone)
+        .address(address)
+        .roles(roles)
+        .preferences(preferences)
+        .build();
+    ```
+
+    the Builder pattern starts providing a real benefit.
 
 [ꜛ️](#table-of-contents)
