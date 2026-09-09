@@ -41,7 +41,7 @@
          - [Code &mdash; `Factory Method` Example Implementation](./src/main/java/com/ram/java/designpatterns/factorymethod/)
       4. [Prototype Pattern](#prototype-pattern)
          - [UML Diagram &mdash; Generic Prototype Pattern](./resources/images/prototype-pattern-uml.svg) | [Code to generate UML diagram for Generic Prototype Pattern](./resources/uml/prototype-pattern-uml.puml)
-         - [UML Diagram for Example Prototype Pattern](./resources/uml/prototype-pattern-example.svg) | [Code to generate UML diagram for Example Prototype Pattern](./resources/images/prototype-pattern-example.puml)
+         - [UML Diagram for Example Prototype Pattern](./resources/images/prototype-pattern-example.svg) | [Code to generate UML diagram for Example Prototype Pattern](./resources/uml/prototype-pattern-example.puml)
          - [Code &mdash; Example Factory "`GameUnit`" Method Implementation](./src/main/java/com/ram/java/designpatterns/prototype/)
 
 ## SOLID Principles
@@ -1113,8 +1113,8 @@ __Elasticsearch__:
 - You can find the Generic/Example UML diagram (and the code to generate the UML diagram), along with Example's implementation code at:
   1. UML Diagram for Generic Prototype Pattern: [`/resources/images/prototype-pattern-uml.svg`](./resources/images/prototype-pattern-uml.svg)
   1. Code to generate UML diagram for Generic Prototype Pattern: [`/resources/uml/prototype-pattern-uml.puml`](./resources/uml/prototype-pattern-uml.puml)
-  1. UML Diagram for Example Prototype Pattern: [`/resources/uml/prototype-pattern-example.svg`](./resources/uml/prototype-pattern-example.svg)
-  1. Code to generate UML diagram for Example Prototype Pattern: [`/resources/uml/prototype-pattern-example.puml`](./resources/images/prototype-pattern-example.puml)
+  1. UML Diagram for Example Prototype Pattern: [`/resources/images/prototype-pattern-example.svg`](./resources/images/prototype-pattern-example.svg)
+  1. Code to generate UML diagram for Example Prototype Pattern: [`/resources/uml/prototype-pattern-example.puml`](./resources/uml/prototype-pattern-example.puml)
   1. Code for Example Factory Method Implementation: [`/src/main/java/com/ram/java/designpatterns/prototype/`](./src/main/java/com/ram/java/designpatterns/prototype/)
 
 </details>
