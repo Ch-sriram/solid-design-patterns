@@ -224,7 +224,7 @@ DI:
 
 ##### Builder Design Pattern
 
-- __Why use Builder pattern?__
+- <details><summary>__Why use Builder pattern?__</summary>
 
   - Let's say, you want a `Product` class that needs to have its object, to be immutable => once `Product`'s object is created, none of its internal values should ever change.
   - Therefore, for an object (like `Product`) that needs to be immutable (whose state cannot change once created), we've an example of that in Java, which is `String` class object.
@@ -281,6 +281,7 @@ DI:
 	  ```
 	  
 	  > In such a situation, the Builder design pattern makes a lot of sense.
+  </details>
 
 - __What is a Builder?__
 
