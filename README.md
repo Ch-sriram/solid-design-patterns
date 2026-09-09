@@ -32,7 +32,9 @@
          - [UML Diagram  &mdash; `UserDTOBuilder`](./resources/images/builder-pattern-example-userdto.svg) | [Code to generate UML diagram](./resources/uml/builder-pattern-example-userdto.puml)
          - [Traditional Code &mdash; `UserDTOBuilder`](./src/main/java/com/ram/java/designpatterns/builder/traditional/)
          - [Modern Real World Code &mdash; `UserDTOBuilder`](./src/main/java/com/ram/java/designpatterns/builder/modernrealworld/)
-      2. [Simple Factory Pattern](#simple-factory-pattern)
+      2. [Simple Factory Pattern](#simple-factory-pattern):
+         - [UML Diagram &mdash; `SimpleFactory`](./resources/images/simple-factory-uml.svg) | [Code to generate UML diagram](./resources/uml/simple-factory-uml.puml)
+         - [Code &mdash; `SimpleFactory` Implementation]()
 
 ## SOLID Principles
 
@@ -632,5 +634,102 @@ DI:
 [ꜛ️](#table-of-contents)
 
 #### Simple Factory Pattern
+
+<details><summary><em>What Problem <strong>Simple Factory</strong> Solves?</em></summary>
+
+> Often, Simple Factory, by a lot of computer scientists and academicians, and developers, DO NOT consider Simple Factory, as a design pattern, and that will be evident why if you read more on it.
+
+When multiple types can be instantiated, and the choice is based on some simple criteria.
+
+Take the following code for example:
+
+```java
+if (key.equalsIgnoreCase("pudding")) {
+	// Create Pudding Object
+} else if (key.equalsIgnoreCase("cake")) {
+	// Create Cake Object
+}
+```
+
+this is the type of code where a Simple Factory is often used.
+
+</details>
+
+<details><summary><em>What is a <strong>Simple Factory</strong>?</em></summary>
+
+- Here, we simple move the instantiation logic to a separate class, and most commonly, to a static method of this class.
+- Some do not consider simple factory to be a "design pattern", as it's simply a method that encapsulates object instantiation. Nothing complex goes on in that method.
+  - We are studing _simple factory_ as it's often confused with "Factory Method" pattern.
+- Typically, we want to implement a _simple factory_ if we've more than one option when instantiating an object and a simple logic is used to choose correct class.
+
+![simple-factory-uml-diagram](./resources/images/simple-factory-uml.svg)
+
+> Find the code for `SimpleFactory` UML at [`/resources/uml/simple-factory-uml.puml`](./resources/uml/simple-factory-uml.puml)
+
+</details>
+
+<details><summary><em>Steps to implement a <strong>Simple Factory</strong></em></summary>
+
+- We start by creating a separate class for our Simple Factory:
+  - Add a method which returns desired object instance.
+    - This method is static (typically), and accepts some argument (of String type, or the parent reference type) to decide which class to instantiate and return to the Client/caller.
+    - You can also provide additional arguments which will be used to instantiate objects.
+
+</details>
+
+<details><summary><em>Implementation Considerations</em></summary>
+
+- Simple factory can be just a method in existing class. Adding a separate class however allows other parts of your code to use simple factory, more easily.
+- Simple factory itself doesn't need any state tracking any object/variable's value(s), so it's best to keep this as a `static` method.
+
+</details>
+
+<details><summary><em>Design Considerations</em></summary>
+
+- Simple factory will in turn may use other design patterns like _Builder_ to construct objects.
+- In case you want to specialise your simple factory in sub-classes, you need __Factory Method__ design pattern instead.
+
+</details>
+
+<details><summary><em>Real World Examples of Simple Factory</em></summary>
+
+- The [`java.text.NumberFormat`](https://apidia.net/java/OpenJDK/26/?pck=java.text&cls=.NumberFormat) class has [`getInstance()` method](https://github.com/openjdk/jdk26u/blob/baf63fbe42b8758448fee570a9d9bb914272d259/src/java.base/share/classes/java/text/NumberFormat.java#L1122-L1148), which is an example of simple factory.
+- In case you want to specialise your simple factory in sub-classes, you need __Factory Method__ design pattern instead.
+
+</details>
+
+<details><summary><em>Simple Factory vs. Factory Method</em></summary>
+
+| Simple Factory | Factory Method |
+| -------------- | -------------- |
+| - We simply move out instantiation logic away from client code. Typically into a `static` method. | - Factory method is more useful when you want to delegate object creation to subclasses. |
+| - Simple Factory knows about all classes whose objects it can create. | - In Factory Method, we don't know in advance about all product subclasses. | 
+
+</details>
+
+<details><summary><em>Pitfalls of Simple Factory Pattern</em></summary>
+
+| Pitfall                     | Consequence                                  | Reason | Example |
+| --------------------------- | -------------------------------------------- | ------ | ------- |
+| Violates OCP                | Factory must change for new products         | The simple factory is closed for modification only in theory. To add a new `Triangle` that implements `Shape`, the `ShapeFactory` must modify `ShapeFactory` as shown in the Example section | <pre><code><br/>else if(type.equals("triangle")) {<br/>&nbsp;&nbsp;return new Triangle();<br/>}</code></pre> |
+| Concrete-class dependencies | Factory is tightly coupled                   | Tight coupling to concrete classes => that `ShapeFactory` is coupled to all concrete implementations of `Circle`, `Rectangle, `Triangle`, etc. The __client is nicely decoupled, the factory itself isn't__.  | <pre><code><br/>// Client.java: no coupling here<br/>Shape shape = ShapeFactory.create("circle");<br/><br/>//&nbsp;ShapeFactory.java: there's tight coupling<br/>new Circle();<br/>new Rectangle();<br/>new Square();new Triangle();</code></pre> |
+| Growing conditional logic   | Factory becomes harder to maintain           | This inherently isn't bad for a small, stable set of products. The problem is when this becomes the primary mechanism for managing a large and frequently changing product family. | New product => another `else-if` => large `else-if` ladder, or `switch-case` becoming too large. |
+| God-class tendency          | Too much creation knowledge in one place     | `ShapeFactory` can control creation of `Circle`, `Rectangle`, `Square`, `Triangle`, `Polygon`, etc. The factory starts accumulating knowledge about __every concrete product__. | _self-explanatory_ |
+| Central modification point  | Teams/features can interfere with each other | Imagine different teams owning different products. With a centralised factory, the `ShapeFactory` has to be potentially modified everywhere. This creates a bottleneck, and __increases the chance of merge conflicts__. | _self-explanatory_ |
+| String-based selection      | Runtime errors / typos                       | String errors are very common, where a misspelled string can get runtime errors. | <pre><code><br/>// Instead of the following<br/>Shape shape = ShapeFactory.create("circle");<br/><br/>// User may give a wrong string parameter as follows:<br/>ShapeFactory.create("circl");<br/>ShapeFactory.create("circel");<br/>ShapeFactory.create("Circle");</code></pre> |
+| Complex construction        | Factory accumulates creation logic           | Initially, the logic for creation might just be easier, but as time goes, the creation of any new object, becomes more and more complicated. The factory starts becoming responsible not only for __which object to create__, but also for increasingly complicated __how to create it__. | <pre><code><br/>// ShapeFactory.java: Initially<br/>return new Circle();<br/><br/>// A little later:<br/>if (type.equals("circle")) {<br/>&nbsp;&nbsp;return new Circle(radius, color, renderer, configuration);<br/>}<br/><br/>// And then:<br/>else if(type.equals("rectangle")) {<br/>&nbsp;&nbsp;return new Rectangle(width, height, color, renderer, configuration);<br/>}></code></pre> |
+| Testing Complexities        | New products implies adding new tests        | Adding a `Triangle` shape just isn't adding a new class, it's also having to modify the factory, test the new branch, potentially modify existing tests, and recompile/deploy the factory. | _self-explanatory_ |
+
+The core pitfall is: __Simple Factory moves object-creation knowledge out of the client, but doesn't eliminate the need to modify that knowledge when new product types are added.__
+
+</details>
+
+<details><summary><em>Summary</em></summary>
+
+- Simple Factory encapsulates away the object instantiation in a separate method.
+- We can pass an argument to this method to indicate product type and/or additional arguments to help create objects.
+- You can revise the design of the Simple Factory using the UML diagram at [`/resources/images/simple-factory-uml.svg`](./resources/images/simple-factory-uml.svg)
+
+</details>
 
 [ꜛ️](#table-of-contents)

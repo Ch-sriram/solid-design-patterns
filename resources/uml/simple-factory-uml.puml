@@ -1,0 +1,31 @@
+@startuml
+
+title UML Diagram - Simple Factory
+
+<style>
+arrow {
+  HorizontalAlignment center
+}
+</style>
+
+class Client {}
+interface Product <<interface-or-abstract>> {}
+class ProductA implements Product {}
+class ProductB implements Product {}
+
+class SimpleFactory <<static>> {
+  + {static} getProduct(key: String): Product;
+}
+
+Client --> SimpleFactory
+SimpleFactory --> Product : Creates
+
+note right of SimpleFactory::getProduct
+  SimpleFactory provides a static method to get instance of product subclass.
+end note
+
+note right of Product
+  Objects of this class & its subclasses are needed.
+end note
+
+@enduml
