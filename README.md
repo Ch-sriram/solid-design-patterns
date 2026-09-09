@@ -39,6 +39,10 @@
          - [UML Diagram &mdash; `Factory Method` Generic](./resources/images/factory-method-uml.svg) | [Code to generate UML diagram](./resources/uml/factory-method-uml.puml)
          - [UML Diagram &mdash; `Factory Method` Example](./resources/images/factory-method-example.svg) | [Code to generate UML diagram](./resources/uml/factory-method-example.puml)
          - [Code &mdash; `Factory Method` Example Implementation](./src/main/java/com/ram/java/designpatterns/factorymethod/)
+      4. [Prototype Pattern](#prototype-pattern)
+         - [UML Diagram &mdash; Generic Prototype Pattern](./resources/images/prototype-pattern-uml.svg) | [Code to generate UML diagram for Generic Prototype Pattern](./resources/uml/prototype-pattern-uml.puml)
+         - [UML Diagram for Example Prototype Pattern](./resources/uml/prototype-pattern-example.svg) | [Code to generate UML diagram for Example Prototype Pattern](./resources/images/prototype-pattern-example.puml)
+         - [Code &mdash; Example Factory "`GameUnit`" Method Implementation](./src/main/java/com/ram/java/designpatterns/prototype/)
 
 ## SOLID Principles
 
