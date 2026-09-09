@@ -1,0 +1,44 @@
+@startuml
+
+title UML Diagram - MessageCreator & Message using Factory Method Design Pattern
+
+abstract class Message <<abstract>> {
+  + {abstract} getContent(): String
+  + addDefaultHeaders(): void
+  + encrypt(): void
+}
+
+abstract class MessageCreator <<abstract>> {
+  + {abstract} createMessage(): Message
+  + getMessage(): Message
+}
+
+class TextMessage extends Message {}
+class JSONMessage extends Message {}
+
+class TextMessageCreator extends MessageCreator {
+  +createMessage(): Message
+}
+
+class JSONMessageCreator extends MessageCreator {
+  +createMessage(): Message
+}
+
+TextMessageCreator ..> TextMessage : creates
+JSONMessageCreator ..> JSONMessage : creates
+
+note left of Message::getContent
+  Abstract method to be
+  implemented by both
+  JSONMessage & TextMessage
+  classes
+end note
+
+note right of MessageCreator::createMessage
+  Abstract factory method 
+  to be implemented by both
+  JSONMessageCreator and
+  TextMessageCreator
+end note
+
+@enduml

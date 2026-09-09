@@ -34,7 +34,11 @@
          - [Modern Real World Code &mdash; `UserDTOBuilder`](./src/main/java/com/ram/java/designpatterns/builder/modernrealworld/)
       2. [Simple Factory Pattern](#simple-factory-pattern):
          - [UML Diagram &mdash; `SimpleFactory`](./resources/images/simple-factory-uml.svg) | [Code to generate UML diagram](./resources/uml/simple-factory-uml.puml)
-         - [Code &mdash; `SimpleFactory` Implementation]()
+         - [Code &mdash; `SimpleFactory` Implementation](./src/main/java/com/ram/java/designpatterns/simplefactory/)
+      3. [Factory Method Pattern](#factory-method-pattern):
+         - [UML Diagram &mdash; `Factory Method` Generic](./resources/images/factory-method-uml.svg) | [Code to generate UML diagram](./resources/uml/factory-method-uml.puml)
+         - [UML Diagram &mdash; `Factory Method` Example](./resources/images/factory-method-example.svg) | [Code to generate UML diagram](./resources/uml/factory-method-example.puml)
+         - [Code &mdash; `Factory Method` Example Implementation](./src/main/java/com/ram/java/designpatterns/factorymethod/)
 
 ## SOLID Principles
 
@@ -337,10 +341,10 @@ DI:
 
 <details><summary><em>Real World Builder Examples</em></summary>
 
-| Example | Is good builder pattern example? | Why/not? | Should use example in interview? |
-| ------- | -------------------------------- | -------- | -------------------------------- |
-| `java.lang.StringBuilder` | PARTIALLY | Allows the user to build the final object in parts, but the code actually doesn't follow the builder pattern as described by GoF. | NO |
-| `java.util.Calendar.Builder` | YES | This is a properly implemented builder pattern code for getting the `Calendar` object. The code follows GoF | YES |
+| Example                                                                                                                                                                         | Is good builder pattern example? | Why/not?                                                                                                                          | Should use example in interview? |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- | -------------------------------- |
+| `java.lang.StringBuilder`                                                                                                                                                       | PARTIALLY                        | Allows the user to build the final object in parts, but the code actually doesn't follow the builder pattern as described by GoF. | NO                               |
+| [`java.util.Calendar.Builder`](https://github.com/openjdk/jdk26u/blob/baf63fbe42b8758448fee570a9d9bb914272d259/src/java.base/share/classes/java/util/Calendar.java#L1082-L1581) | YES                              | This is a properly implemented builder pattern code for getting the `Calendar` object. The code follows GoF.                      | YES                              |
 
 > * GoF: [Gang of Four](https://en.wikipedia.org/wiki/Design_Patterns#:~:text=to%20as%20the-,Gang%20of%20Four%20(GoF).,-%5B2%5D), are __4 famous authors__ who wrote the book
 >        and introduced clean code using design patterns to the world. The name of the book is [Design Patterns: Elements of Reusable Object-Oriented Software](https://www.amazon.in/Design-Patterns-Object-Oriented-Addison-Wesley-Professional-ebook/dp/B000SEIBB8),
@@ -729,6 +733,252 @@ The core pitfall is: __Simple Factory moves object-creation knowledge out of the
 - Simple Factory encapsulates away the object instantiation in a separate method.
 - We can pass an argument to this method to indicate product type and/or additional arguments to help create objects.
 - You can revise the design of the Simple Factory using the UML diagram at [`/resources/images/simple-factory-uml.svg`](./resources/images/simple-factory-uml.svg)
+
+</details>
+
+[ꜛ️](#table-of-contents)
+
+#### Factory Method Pattern
+
+<details><summary><em>What is a <strong>Factory Method</strong>?</em></summary>
+
+- Whenever we want to move the object creation logic from our code to a separate class, we make use of Factory Method Design Pattern.
+- We use this pattern when we DO NOT KNOW in advance, which class we may need to instantiate beforehand & also to allow new classes to be added to system and handle their creation without affecting the client's code.
+- We let subclasses decide which object to instantiate, by overriding the factory method.
+
+</details>
+
+<details><summary><em>UML Diagram – Factory Method Design Pattern</em></summary>
+
+> UML's code can be found at: [`/resources/uml/factory-method-uml.puml`](./resources/uml/factory-method-uml.puml)
+
+![factory-method-uml-diagram](./resources/images/factory-method-uml.svg)
+
+</details>
+
+<details><summary><em>Factory Method - Implementation Steps</em></summary>
+
+- We start by creating a class for our `Creator`
+  - Creator itself can be concrete if it can provide a default object, or it can be abstract.
+  - Implementations will override the method and return an object.
+
+</details>
+
+<details><summary><em>UML Diagram for <code>MessageCreator</code> & <code>Message</code> using Factory Method</em></summary>
+
+- The code makes use of the following UML diagram for the implementation:
+
+  ![factory-method-example](./resources/images/factory-method-example.svg)
+
+  > The code for generating the UML diagram can be found here: [`/resources/uml/factory-method-example.puml`](./resources/uml/factory-method-example.puml)
+
+</details>
+
+<details><summary><em>Implementation Considerations</em></summary>
+
+- The `Creator` can be a concrete class and provide a default implementation for the factory method. In such cases, you'll create some `default` object in base `Creator` class.
+- You can also use the simple factory way of accepting additional arguments to choose between different object types. Subclasses can then override factory method to selectively create different objects for some criteria.
+
+</details>
+
+<details><summary><em>Design Considerations</em></summary>
+
+- `Creator` hierarchy in factory method pattern reflects the product hierarchy. We typically end up with a `ConcreteCreator` per object type.
+- __Template Method__ design pattern often makes use of factory method design pattern.
+- Another creational design pattern called __"Abstract Factory"__ makes use of Factory Method pattern as well.
+
+</details>
+
+<details><summary><em>Real World Example(s) of Factory Method</em></summary>
+
+- The [`java.util.Collection`](https://apidia.net/java/OpenJDK/26/?pck=java.util&cls=.Collection) (or [`java.util.AbstractCollection`](https://apidia.net/java/OpenJDK/26/?pck=java.util&cls=.AbstractCollection)) has an abstract method called [`iterator()`](https://github.com/openjdk/jdk26u/blob/baf63fbe42b8758448fee570a9d9bb914272d259/src/java.base/share/classes/java/util/AbstractCollection.java#L75-L80). This method is an example of a Factory Method.
+- The most defining characteristic of factory method pattern is "subclasses providing the actual instance". So __`static` methods returning object instances are technically NOT GoF factory methods__.
+
+</details>
+
+<details><summary><em>Pitfalls of Factory Method Design Pattern</em></summary>
+
+__Key Pitfall Takeaway__:
+
+- __Factory Method trades simpler object creation for greater flexibility and extensibility__.
+
+__Pitfall Summary__:
+
+- More complext to implement. More classes involved and need unit testing.
+- You've to start with Factory Method design pattern from the beginning. It's not easy to refactor existing code into factory method pattern.
+- Sometimes, this pattern forces you to subclass just to create appropriate instance.
+
+| Pitfall                    | Problem                                                              |
+| -------------------------- | -------------------------------------------------------------------- |
+| **Class explosion**        | Many products can lead to many creator subclasses                    |
+| **Overengineering**        | Adds abstraction when `new` would have been sufficient               |
+| **Indirection**            | Object creation becomes harder to trace                              |
+| **Inheritance complexity** | Creator hierarchy can become cumbersome                              |
+| **Unnecessary hierarchy**  | Factory Method can force inheritance where composition would suffice |
+| **More maintenance**       | New products may require multiple new classes/configuration          |
+| **Misapplication**         | Often confused with Simple Factory or used merely to hide `new`      |
+
+
+__Pifalls in Detail__:
+
+1. Too Many Classes: Factory Method often requires a separate creator class for each concrete product.
+
+   Example:
+
+   ```
+   Message
+   ├── TextMessage
+   └── JSONMessage
+   
+   MessageCreator
+   ├── TextMessageCreator
+   └── JSONMessageCreator
+   ```
+   
+   - Adding a new product can therefore mean both a product class and a creator class has to be created.
+   - For a simple/small system, this can be unnecessary complexity.
+
+2. Class Explosion (Increases Difficulty in Code Readability)
+
+   As the number of products grow, the number of classes can grow rapidly with that:
+
+   ```
+   ProductA          → CreatorA
+   ProductB          → CreatorB
+   ProductC          → CreatorC
+   ProductD          → CreatorD
+   ...
+   ```
+
+   This can make the codebase harder to navigate and understand
+
+3. More Indirection (Increases Code Complexity)
+
+   Instead of simply doing:
+
+   ```java
+   Message message = new TextMessage();
+   ```
+
+   you might have to do:
+
+   ```java
+   MessageCreator creator = new TextMessageCreator();
+   Message message = creator.getMessage();
+   ```
+
+   - The actual object creation is now several levels away from the client code.
+   - This is useful when the creation logic genuinely needs to be decoupled, but otherwise it can make the code __harder to follow__.
+
+4. Overkill for Simple Object Creation
+
+   If creating an object is trivial as follows:
+
+   ```java
+   new TextMessage();
+   ```
+
+   then, introducing:
+
+   ```
+   Message
+   MessageCreator
+   TextMessage
+   TextMessageCreator
+   ```
+
+   may provide little practical benefit.
+
+   - Factory Method is NOT automatically better just because it removes `new` from client code.
+
+5. Creator Hierarchy can become Complicated
+
+   The pattern commonly relies on inheritance:
+
+   ```
+           MessageCreator
+                ▲
+          ┌─────┴─────┐
+   TextMessageCreator  JSONMessageCreator
+   ```
+
+   - If creators start accumulating their own behavior, the hierarchy can become difficult to maintain.
+   - You can end up with subclasses that exist primarily to select a particular product rather than because they represent meaningful variations in behaviour.
+
+6. Adding a product may require modifying multiple places
+
+   Although Factory Method helps with the Open/Closed Principle, introducing a new product can still require several changes.
+
+   For example, adding `XMLMessage` might require changes/additions such:
+
+   ```
+   XMLMessage
+   XMLMessageCreator
+   ```
+
+   and potentially registration/configuration elsewhere.
+
+   So the pattern doesn't magically make adding functionality completely modification-free.
+
+7. Can be confused with __Simple Factory__
+
+   A common mistake is to implement something like:
+
+   ```java
+   class MessageFactory {
+       Message create(String type) {
+           if (type.equals("text"))
+               return new TextMessage();
+           else if (type.equals("json"))
+               return new JSONMessage();
+   
+           ...
+       }
+   }
+   ```
+
+   and call it __Factory Method__.
+
+   That's generally a _Simple Factory_, __NOT__ the GoF Factory Method.
+
+   - Factory Method typically moves the decision into subclasses:
+
+     ```
+     Creator
+       │
+       ├── TextMessageCreator → TextMessage
+       └── JSONMessageCreator → JSONMessage
+     ```
+
+8. Inheritance may be Unnecessary
+   - Factory Method is fundamentally based around overriding a factory method.
+   - If your problem doesn't naturally have a creator hierarchy, using Factory Method can force inheritance into the design unnecessarily.
+   - In modern code, composition, dependency injection, a registry, or a separate factory may sometimes be cleaner.
+
+
+9. Testing can become more involved
+
+   Because object creation is distributed among creator subclasses, tests may need to cover:
+
+   - each concrete creator
+   - each factory method implementation
+   - the corresponding product
+   - interactions between creator and product
+
+   This isn't necessarily a major problem, but there is more structure to test than with direct construction.
+
+</details>
+
+<details><summary><em>Summary</em></summary>
+
+- Use Factory Method pattern when you want to delegate object instantiation to subclasses, you'd want to do this when you've "product" inheritance hierarchy and possibility of future additions to that.
+- You can find the Generic UML diagram (and the code to generate the UML diagram) at:
+  1. UML Diagram for Generic Factory Method: [`/resources/images/factory-method-uml.svg`](./resources/images/factory-method-uml.svg)
+  1. Code to generate UML diagram for Generic Factory Method: [`/resources/uml/factory-method-uml.puml`](./resources/uml/factory-method-uml.puml)
+- You can find the Example UML diagram (and the code to generate the UML diagram), along with Example's implementation code at:
+  1. UML Diagram for Example Factory Method: [`/resources/images/factory-method-example.svg`](./resources/images/factory-method-example.svg)
+  1. Code to generate UML diagram for Example Factory Method: [`/resources/uml/factory-method-example.puml`](./resources/uml/factory-method-example.puml)
+  1. Code for Example Factory Method Implementation: [`/src/main/java/com/ram/java/designpatterns/factorymethod/`](./src/main/java/com/ram/java/designpatterns/factorymethod/)
 
 </details>
 

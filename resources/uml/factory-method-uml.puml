@@ -1,0 +1,61 @@
+@startuml
+
+title UML Diagram - Factory Method Design Pattern
+
+interface Product <<interface>> {}
+abstract class Creator <<abstract>> {
+  +factoryMethod(): Product
+  +someOperation()
+}
+
+class ConcreteProductA implements Product {}
+class ConcreteProductB implements Product {}
+
+class ConcreteCreatorA extends Creator {
+  +factoryMethod(): Product
+}
+
+class ConcreteCreatorB extends Creator {
+  +factoryMethod(): Product
+}
+
+ConcreteCreatorA ..> ConcreteProductA : creates
+ConcreteCreatorB ..> ConcreteProductB : creates
+
+note bottom of Product
+  Base class/interface
+  of products created
+  by a factory method.
+end note
+
+note bottom of ConcreteProductA
+  Implements the
+  Product interface/class
+  for A type Product.
+end note
+
+note bottom of ConcreteProductB
+  Implements the
+  Product interface/class
+  for B type Product.
+end note
+
+note top of Creator
+  - Declares the abstract factory method.
+  - Additionally uses the factory method
+    to create Product.
+end note
+
+note top of ConcreteCreatorA
+  Implements factory method and
+  returns one of concrete Product
+  instance of type A Product.
+end note
+
+note top of ConcreteCreatorB
+  Implements factory method and
+  returns one of concrete Product
+  instance of type B Product.
+end note
+
+@enduml
