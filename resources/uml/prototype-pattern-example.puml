@@ -1,0 +1,29 @@
+@startuml
+
+title UML Diagram - Prototype Pattern Example (GameUnit)
+
+interface Cloneable {
+  + clone()
+}
+
+class Client {}
+
+abstract class GameUnit <<abstract>> implements Cloneable {
+  + {abstract} clone(): GameUnit
+  + initiallize(): void
+  # resetUnit(): void
+}
+
+class Swordsman extends GameUnit {
+  + clone(): Swordsman
+  # resetUnit(): void
+}
+
+class General extends GameUnit {
+  + clone(): General
+  # resetUnit(): void
+}
+
+Client --> GameUnit : creates
+
+@enduml

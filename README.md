@@ -352,6 +352,15 @@ DI:
 
 </details>
 
+<details><summary><em>Comparing <strong>Builder</strong> with <strong>Prototype</strong></em></summary>
+
+| Builder  | Prototype  |
+| -------- | ---------- |
+| We have complext constructor and Builder allows us to work with that | Prototype allows to skip using a constructor completely |
+| Ww can create a Builder as separate class, and so, it can work with legacy code | In Java, this pattern works using `clone()` method, and needs to modify existing code, so it may not work with legacy code |
+
+</details>
+
 <details><summary><em>Pitfalls of Builder Pattern</em></summary>
 
 1. More Boilerplate Code:
@@ -981,5 +990,130 @@ __Pifalls in Detail__:
   1. Code for Example Factory Method Implementation: [`/src/main/java/com/ram/java/designpatterns/factorymethod/`](./src/main/java/com/ram/java/designpatterns/factorymethod/)
 
 </details>
+
+[ꜛ️](#table-of-contents)
+
+#### Prototype Pattern
+
+<details><summary><em>Why <strong>Prototype</strong> Design Pattern?</em></summary>
+
+- Whenever we've a complex object that is costly to create, we make use of __Prototype__ design pattern.
+  - To create more instances of such a class, we use an existing instance as our prototype.
+- _Prototype_ allows us to make copies of existing object and save us from having to recreate objects from scratch.
+
+</details>
+
+<details><summary><em>UML Diagram – <strong>Prototype</strong> Design Pattern</em></summary>
+
+- Find the code to generate the UML Prototype Design Pattern here: [`/resources/uml/prototype-pattern-uml.puml`](./resources/uml/prototype-pattern-uml.puml)
+
+  ![prototype-pattern-uml-diagram](./resources/images/prototype-pattern-uml.svg)
+
+</details>
+
+<details><summary><em>Prototype Pattern – Implementation Steps</em></summary>
+
+- We start by creating a class which is a Prototype
+  - The class must `implement` `Cloneable` interface (`Cloneable` is an API that's already available in Java).
+  - Class should override `clone` method and return copy of itself.
+  - The method should declare `CloneNotSupportedException` in `throws` clause to give subclasses, a change to decide on whether to support cloning/not.
+- `clone` method implementation should consider the deep and shallow copy, and choose whichever is applicable.
+
+</details>
+
+<details><summary><em>UML Diagram – Prototype Pattern Example (<code>GameUnit</code>)</em></summary>
+
+- Find the code to generate the UML Prototype Example Design Pattern for `GameUnit` here: [`/resources/uml/prototype-pattern-example.puml`](./resources/uml/prototype-pattern-example.puml)
+
+  ![prototype-pattern-example-uml-diagram](./resources/images/prototype-pattern-example.svg)
+
+</details>
+
+<details><summary><em>Implementation Considerations</em></summary>
+
+- Pay attention to the deep copy and shallow copy of references. Immutable fields on clones save the trouble of deep copying.
+- Make sure to reset the mutable state of object before returning the Prototype. It's a good idea to implement this in method to allow subclasses to initalize themselves.
+- `clone()` method is `protected` in `Object` class and must be overridden to be `public` to be callable from outside the class, for whichever client/driver it is called from.
+- `Cloneable` itself, is a "marker" interface, an indication that the class supports cloning.
+
+</details>
+
+<details><summary><em>Design Considerations</em></summary>
+
+- Prototypes are useful when you've large objects where majority of state is unchanged between instances and you can easily identify that state.
+- A prototype registry is a class where in you can register various prototypes which other code can access to clone out instances. This solves the issue of getting access to initial instance.
+- Prototypes are useful when working with `Composite` and `Decorator` patterns.
+
+</details>
+
+<details><summary><em>Real World Example(s) of Prototype Design Pattern</em></summary>
+
+__Java__:
+
+- `Object.clone()` method is an example of a Prototype pattern. 
+  - This method is provided by Java and can clone an existing object, thus allowing any object to act as a Prototype. Classes still need to be `Cloneable`, but the method does the job of cloning the object.
+
+__Spring__:
+
+- Spring framework's `AbstractAutowireCapableBeanFactory` has a method called [`cloneBeanDefinition()`](https://github.com/spring-projects/spring-framework/blob/main/spring-beans/src/main/java/org/springframework/beans/factory/support/AbstractAutowireCapableBeanFactory.java#L1992-L1995), which is essentially a real world implementation of the Prototype pattern.
+- Instead of doing the following:
+
+  ```java
+  BeanDefinition copy = new BeanDefinition();
+
+  copy.setBeanClass(prototype.getBeanClass());
+  copy.setScope(prototype.getScope());
+  copy.setConstructorArguments(prototype.getConstructorArguments());
+  copy.setPropertyValues(prototype.getPropertyValues());
+  // ...
+  ```
+
+  you can simply clone the `BeanDefiniton` as follows:
+
+  ```java
+  BeanDefinition copy = prototype.cloneBeanDefinition(); // all the heavy lifting is taken care by the clone() method
+  ```
+
+__Elasticsearch__:
+
+- _Elasticsearch_ itself exposes a __Clone Index API__, where an existing index can be cloned to create another index.
+- The cloned index inherits the existing index's structure/settings/mappings rather than you manually rebuilding everything from scratch.
+- The code can be found inside [`IndexDirectory$ReopeningIndexInput#clone()`](https://github.com/elastic/elasticsearch/blob/cdc18760e38c06863918798e4f8ba2d5c97d1069/x-pack/plugin/stateless/src/main/java/org/elasticsearch/xpack/stateless/lucene/IndexDirectory.java#L918-L920) method, which is inside the __Lucene__ package, as _Lucene_ is the predecessor to __Elasticsearch__.
+
+</details>
+
+<details><summary><em>Comparing <strong>Prototype</strong> with <strong>Singleton</strong></em></summary>
+
+| Prototype                                                                            | Singleton                                                                  |
+| ------------------------------------------------------------------------------------ | -------------------------------------------------------------------------- |
+| We return a copy of an instance.                                                     | We return the same instance every time.                                    |
+| Some or even all of the state of instances created with prototypes can be different. | Since it's the same object that is returned, the state is always the same. |
+
+</details>
+
+<details><summary><em>Pitfalls of Prototype Design Pattern</em></summary>
+
+- Usability depends upon the number of properties in state that are immutable or can be shallow copied. An object where state is comprised of large number of mutable objects is complicated to clone.
+- In Java, the default `clone` operation will only perform the shallow copy, so if you need a deep copy, you've to implement it yourself.
+- Subclasses may not be able to support clone and so the code becomes complicated as you have to code for situations where an implementation may not support clone. In such cases, those classes can throw a `CloneNotSupportedException`.
+
+</details>
+
+<details><summary><em>Summary</em></summary>
+
+- Think of Prototype pattern when you have an object where construction of a new instance is costly or not possible (object is supplied to your code).
+- In Java, we typically implement this pattern with `clone()` method.
+- Objects which have a majority of their state as immutable are good candidates for prototypes.
+- When implementing `clone()` method, pay attention to the requirement of deep/shallow copy of object of state.
+- Also, we've to ensure that clone is "initialized"; i.e., appropriate states are reset before returning the copy to outside world.
+- You can find the Generic/Example UML diagram (and the code to generate the UML diagram), along with Example's implementation code at:
+  1. UML Diagram for Generic Prototype Pattern: [`/resources/images/prototype-pattern-uml.svg`](./resources/images/prototype-pattern-uml.svg)
+  1. Code to generate UML diagram for Generic Prototype Pattern: [`/resources/uml/prototype-pattern-uml.puml`](./resources/uml/prototype-pattern-uml.puml)
+  1. UML Diagram for Example Prototype Pattern: [`/resources/uml/prototype-pattern-example.svg`](./resources/uml/prototype-pattern-example.svg)
+  1. Code to generate UML diagram for Example Prototype Pattern: [`/resources/uml/prototype-pattern-example.puml`](./resources/images/prototype-pattern-example.puml)
+  1. Code for Example Factory Method Implementation: [`/src/main/java/com/ram/java/designpatterns/prototype/`](./src/main/java/com/ram/java/designpatterns/prototype/)
+
+</details>
+
 
 [ꜛ️](#table-of-contents)

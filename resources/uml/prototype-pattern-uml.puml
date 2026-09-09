@@ -1,0 +1,47 @@
+@startuml
+
+title UML Diagram - Prototype Design Pattern
+
+abstract class Prototype <<abstract>> {
+  + {abstract} clone(): Prototype
+}
+
+class ConcretePrototypeA extends Prototype {
+  +clone(): ConcretePrototypeA
+}
+
+class ConcretePrototypeB extends Prototype {
+  +clone(): ConcretePrototypeB
+}
+
+class Client {}
+
+Client --> Prototype
+
+note left of Prototype
+  Declares
+  a method
+  for cloning
+  itself
+end note
+
+note bottom of ConcretePrototypeA
+  Implements
+  cloning
+  method
+end note
+
+note bottom of ConcretePrototypeB
+  Implements
+  cloning
+  method
+end note
+
+note right of Client
+  Creates new
+  instance using
+  Prototype's
+  clone() method
+end note
+
+@enduml
