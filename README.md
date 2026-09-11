@@ -1244,3 +1244,41 @@ __Elasticsearch__:
 </details>
 
 [ꜛ️](#table-of-contents)
+
+#### Singleton Pattern
+
+<details><summary><em>What is a <strong>Singleton</strong>?</em></summary>
+
+- A singleton class __has only one instance__, accessible _globally_, __through a single point__ (usually via a method/field).
+- Main prooblem this pattern solves is to enssure that only a single instance of this class exists.
+- Any state you add in your singleton becomes part of "global state" of your application.
+
+</details>
+
+<details><summary><em>UML Diagram for <strong>Singleton</strong></em></summary>
+
+> You can find the code to generate the following UML diagram at: [`/resources/uml/singleton-uml.puml`](./resources/uml/singleton-uml.puml)
+
+![singletone-uml-svg](./resources/images/singleton-uml.svg)
+
+</details>
+
+<details><summary><em>Steps to Implement Singleton</em></summary>
+
+- Controlloing instance creation:
+  - Class constructor(s) __must NOT be accessibly globally__.
+  - Subclassing/inheritance __must NOT be allowed__.
+- Keeping track of instance
+  - Class itself is a good place to track the instance.
+- Giving access to the single instance:
+  - A `public static` method is a good choice.
+  - Can expose instance as final `public static` field but it won't work for all singleton implementations.
+- Two options for Implementing a Singleton:
+  1. Early Initialization - Eager Singleton
+     - Create singleton as soon as class is loaded.
+  2. Lazy Initialization - Lazy Singleton
+     - Singleton is created when it is first required.
+
+</details>
+
+[ꜛ️](#table-of-contents)

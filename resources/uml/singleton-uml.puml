@@ -1,0 +1,31 @@
+@startuml
+
+title UML Diagram - Singleton Pattern
+
+class Singleton {
+  - {static} INSTANCE: Singleton
+  + {static} getInstance(): Singleton
+  + operation1(): void
+  + operation2(): void
+}
+
+note right of Singleton
+  - Responsible for creating
+    unique instance.
+  - Provides static method
+    to get the instance.
+end note
+
+note left of Singleton::INSTANCE
+  private read-only
+  instance of Singleton.
+end note
+
+note left of Singleton::getInstance
+  public static method
+  that exposes the private
+  static INSTANCE to the
+  outer world.
+end note
+
+@enduml
