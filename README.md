@@ -47,6 +47,8 @@
          - [UML Diagram &mdash; Generic Abstract Factory Pattern](./resources/images/abstract-factory-uml.svg) | [Code to generate UML diagram for Generic Prototype Pattern](./resources/uml/abstract-factory-uml.puml)
          - [UML Diagram &mdash; `GameUnitFactory` Abstract Factory Pattern](./resources/images/abstract-factory-example.svg) | [Code to generate UML diagram for `GameUnitFactory` Abstract Factory Pattern](./resources/uml/abstract-factory-example.puml)
          - [UML Diagram &mdash; `ResourceFactory` Abstract Factory Pattern](./resources/images/abstract-factory-example-2.svg) | [Code to generate UML diagram for `ResourceFactory` Abstract Factory Pattern](./resources/uml/abstract-factory-example-2.puml)
+         - [Code &mdash; `ResourceFactory` Abstract Factory Pattern](./src/main/java/com/ram/java/designpatterns/abstractfactory/example1/)
+         - [Code &mdash; `DocumentBuilderFactory` Abstract Factory Pattern](./src/main/java/com/ram/java/designpatterns/abstractfactory/documentbuilderfactoryexample/)
 
 ## SOLID Principles
 
@@ -1169,6 +1171,75 @@ __Elasticsearch__:
 > You can find the code to generate the following UML diagram at: [`/resources/uml/abstract-factory-example-2.puml`](./resources/uml/abstract-factory-example-2.puml)
 
 ![abstract-factory-example-uml-diagram-for-resourcefactory](./resources/images/abstract-factory-example-2.svg)
+
+</details>
+
+<details><summary><em>Implementation Considerations for Abstract Factory Pattern</em></summary>
+
+- Factories can be implemented as singletons, we typically ever need only one instance of it anyway. But make sure to famialirise yourself with drawbacks of singletons.
+- Adding a new product type requires changes to the base factory as well as all implementations of factory.
+- We provide the client code with concrete factory so that it can create objects.
+
+</details>
+
+<details><summary><em>Design Considerations for Abstract Factory Pattern</em></summary>
+
+- When you want to constrain object creations so that they all work together, then abstract factory is a good design pattern.
+- Abstract Factory Pattern makes use of [Factory Method Pattern](#factory-method-pattern).
+- If objects are expensive to create, you can transparently switch factory implementations via [Prototype Design Pattern](#prototype-pattern) to create/clone the object.
+
+</details>
+
+<details><summary><em>Real World Examples of Abstract Factory Pattern</em></summary>
+
+- The `javax.xml.parsers.DocumentBuilderFactory` is a good example of an Abstract Factory Pattern.
+  - However this implementation doesn't match 100% with the UML of Abstract Factory from GoF. The class has `static newInstance()` method which returns an actual factory class object.
+  - The `newInstance()` method however uses classpath scanning, system properties, an external property file as ways to find the factory class and creates the factory object.
+    So, _we can change_ the factory class being used, even if this is a static method.
+  - You can find a really good understanding of runtime binding of the factory object for `DocumentBuilderFactory` using an external library called Apache Xerces, here:
+    [`./src/main/java/com/ram/java/designpatterns/abstractfactory/documentbuilderfactoryexample/`](./src/main/java/com/ram/java/designpatterns/abstractfactory/documentbuilderfactoryexample/)
+    > Here, a new JAR is added as a dependency in its classpath, and due to that, during the runtime, Abstract Factory pattern works wonders.
+
+</details>
+
+<details><summary><em>Comparing Abstract Factory Pattern with <a href="#factory-method-pattern">Factory Method Pattern</a></em></summary>
+
+| Abstract Factory | Factory Method |
+| ---------------- | -------------- |
+| Hides factories as well as concrete objects used from the client code. | Hides the concrete object which are used from the client code. |
+| Suitable when multiple objects are designed to work together, and client must use products from single family at a time. | Concerned with one product and its subclasses. Collaboration of product itself with other object is _irrelevant_. |
+
+</details>
+
+<details><summary><em>Pitfalls of Abstract Factory Pattern</em></summary>
+
+- A lot more complex to implement than [Factory Method](#factory-method-pattern).
+- Adding a new product requires changes to base factory as well as ALL implementations of factory.
+- Difficult to visualize the need at start of development and usually starts out as a factory method.
+- Abstract factory design pattern is very specific to the problem of "product families".
+
+</details>
+
+<details><summary><em>Summary</em></summary>
+
+- When you have multiple sets/families of objects where objects in one set/family work together, then you can use Abstract factory pattern to isolate client code from concrete objects and their factories.
+- Abstract factory itself uses [factory method pattern](#factory-method-pattern) and you can think of them as __objects multiple factory methods__.
+- Adding a new product type needs changes to base factory and all its implementations.
+- Concrete factories Singleton, as we need only one instance of them in code.
+- We provide client code with concrete factory instance. Factories can be changed at runtime.
+- You can find the Example UML diagram (and the code to generate the UML diagram), along with Example's implementation code at:
+  1. UML Diagram for Generic Abstract Factory
+     - Diagram: [`/resources/images/abstract-factory-uml.svg`](./resources/images/abstract-factory-uml.svg)
+     - Code to generate UML Diagram: [`/resources/uml/abstract-factory-uml.puml`](./resources/uml/abstract-factory-uml.puml)
+  1. UML Diagram for Example Abstract Factory &mdash; `GameUnitFactory`:
+     - Diagram: [`/resources/images/abstract-factory-example.svg`](./resources/images/abstract-factory-example.svg)
+     - Code to generate UML Diagram: [`/resources/uml/abstract-factory-example.puml`](./resources/uml/abstract-factory-example.puml)
+  1. UML Diagram & Implementation for Example Abstract Factory &mdash; `ResourceFactory`:
+     - Diagram: [`/resources/images/abstract-factory-example-2.svg`](./resources/images/abstract-factory-example-2.svg)
+     - Code to generate UML Diagram: [`/resources/uml/abstract-factory-example-2.puml`](./resources/uml/abstract-factory-example-2.puml)
+     - Implementation: [`/src/main/java/com/ram/java/designpatterns/abstractfactory/example1/`](./src/main/java/com/ram/java/designpatterns/abstractfactory/example1/)
+  1. Code & Configuration for Example Abstract Factory &mdash; `DocumentBuilderFactory`:
+     - Implementation & Explaination: [`/src/main/java/com/ram/java/designpatterns/abstractfactory/documentbuilderfactoryexample/`](./src/main/java/com/ram/java/designpatterns/abstractfactory/documentbuilderfactoryexample/)
 
 </details>
 
