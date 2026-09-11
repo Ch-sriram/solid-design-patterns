@@ -1,0 +1,41 @@
+@startuml
+
+title UML Diagram - Abstract Factory Example (GameUnitFactory)
+
+class Client {}
+
+abstract class GameUnitFactory <<abstract_factory>> #LightYellow {
+  + {abstract} createLandUnit(): LandUnit
+  + {abstract} createNavalUnit(): NavalUnit
+}
+
+class MedievalAgeGameUnitFactory <<concrete_factory>> #Gold extends GameUnitFactory  {
+  + createLandUnit(): SwordsMan
+  + createNavalUnit(): Galley
+}
+
+class IndustrialAgeGameUnitFactory <<concrete_factory>> #LightBlue extends GameUnitFactory {
+  + createLandUnit(): RifleMan
+  + createNavalUnit(): IronClad
+}
+
+abstract class LandUnit <<abstract_product>> {}
+abstract class NavalUnit <<abstract_product>> {}
+
+class SwordsMan <<concrete_product>> #Gold extends LandUnit {}
+class RifleMan <<concrete_product>> #LightBlue extends LandUnit {}
+
+class Galley <<concrete_product>> #Gold extends NavalUnit {}
+class IronClad <<concrete_product>> #LightBlue extends NavalUnit {}
+
+Client ..> GameUnitFactory : <<use>>
+Client ..> LandUnit : <<use>>
+Client ..> NavalUnit : <<use>>
+
+MedievalAgeGameUnitFactory --> SwordsMan : creates
+MedievalAgeGameUnitFactory --> Galley : creates
+
+IndustrialAgeGameUnitFactory --> RifleMan : creates
+IndustrialAgeGameUnitFactory --> IronClad : creates
+
+@enduml

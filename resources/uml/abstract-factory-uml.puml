@@ -1,0 +1,107 @@
+@startuml
+
+title UML Diagram - Abstract Factory Design Pattern
+
+class Client {}
+
+abstract class AbstractFactory <<abstract>> #LightYellow {
+  +{abstract}createProductA(): AbstractProductA
+  +{abstract}createProductB(): AbstractProductB
+}
+
+class ConcreteFactoryOne #LightBlue extends AbstractFactory {
+  +createProductA(): AbstractProductA
+  +createProductB(): AbstractProductB
+}
+
+class ConcreteFactoryTwo #Gold extends AbstractFactory {
+  +createProductA(): AbstractProductA
+  +createProductB(): AbstractProductB
+}
+
+abstract class AbstractProductA {}
+abstract class AbstractProductB {}
+
+Client --> AbstractProductA : Client uses
+Client --> AbstractProductB : Client uses
+Client --> AbstractFactory : receives Product
+
+class ProductAOne #LightBlue extends AbstractProductA {}
+class ProductATwo #Gold extends AbstractProductA {}
+
+class ProductBOne #LightBlue extends AbstractProductB {}
+class ProductBTwo #Gold extends AbstractProductB {}
+
+ConcreteFactoryOne ..> ProductAOne : creates
+ConcreteFactoryOne ..> ProductBOne : creates
+
+ConcreteFactoryTwo ..> ProductATwo : creates
+ConcreteFactoryTwo ..> ProductBTwo : creates
+
+note top of AbstractFactory
+  interface defining operations
+  to create Products
+end note
+
+note right of AbstractFactory::createProductA
+  can create an instance
+  of type 'A' product
+end note
+
+note right of AbstractFactory::createProductB
+  can create an instance
+  of type 'B' product
+end note
+
+note right of ConcreteFactoryOne
+  implements factory & creates products
+  from a particular family, in this
+  case products belonging to family 'One'
+end note
+
+note left of ConcreteFactoryTwo
+  implements factory & creates products
+  from a particular family, in this
+  case products belonging to family 'Two'
+end note
+
+
+note bottom of AbstractProductA
+  interface/abstract class
+  for product of type A
+end note
+
+note bottom of AbstractProductB
+  interface/abstract class
+  for product of type B
+end note
+
+note bottom of ProductAOne
+  concrete implementation
+  for family One's type 'A'
+  product
+end note
+
+note bottom of ProductATwo
+  concrete implementation
+  for family Two's type 'A'
+  product
+end note
+
+note bottom of ProductBOne
+  concrete implementation
+  for family One's type 'B'
+  product
+end note
+
+note bottom of ProductBTwo
+  concrete implementation
+  for family Two's type 'B'
+  product
+end note
+
+note right of Client
+  uses AbstractFactory & AbstractProducts
+end note
+
+@enduml

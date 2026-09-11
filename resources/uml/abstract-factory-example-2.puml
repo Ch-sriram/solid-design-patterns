@@ -1,0 +1,48 @@
+@startuml
+
+title UML Diagram - Abstract Factory Example (ResourceFactory)
+
+class Client {}
+
+abstract class ResourceFactory <<abstract_factory>> #LightYellow {
+  + {abstract} createInstance(capacity: Integer): Instance
+  + {abstract} createStorage(capacityInMiB: Integer): Storage
+}
+
+class GoogleResourceFactory <<concrete_factory>> #Gold extends ResourceFactory  {
+  + createInstance(capacity: Integer): GCEInstance
+  + createStorage(capacityInMiB: Integer): GoogleCloudStorage
+}
+
+class AwsResourceFactory <<concrete_factory>> #LightBlue extends ResourceFactory  {
+  + createInstance(capacity: Integer): Ec2Instance
+  + createStorage(capacityInMiB: Integer): S3Storage
+}
+
+abstract class Instance <<abstract_product>> {
+  + start(): void
+  + stop(): void
+  + attachStorage(storage: Storage): void
+}
+
+abstract class Storage <<abstract_product>> {
+  + getId(): String
+}
+
+class GCEInstance <<concrete_product>> #Gold extends Instance {}
+class Ec2Instance <<concrete_product>> #LightBlue extends Instance {}
+
+class GoogleCloudStorage <<concrete_product>> #Gold extends Storage {}
+class S3Storage <<concrete_product>> #LightBlue extends Storage {}
+
+Client ..> ResourceFactory : <<use>>
+Client ..> Instance : <<use>>
+Client ..> Storage : <<use>>
+
+GoogleResourceFactory --> GCEInstance : creates
+GoogleResourceFactory --> GoogleCloudStorage : creates
+
+AwsResourceFactory --> Ec2Instance : creates
+AwsResourceFactory --> S3Storage : creates
+
+@enduml

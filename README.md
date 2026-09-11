@@ -43,6 +43,10 @@
          - [UML Diagram &mdash; Generic Prototype Pattern](./resources/images/prototype-pattern-uml.svg) | [Code to generate UML diagram for Generic Prototype Pattern](./resources/uml/prototype-pattern-uml.puml)
          - [UML Diagram for Example Prototype Pattern](./resources/images/prototype-pattern-example.svg) | [Code to generate UML diagram for Example Prototype Pattern](./resources/uml/prototype-pattern-example.puml)
          - [Code &mdash; Example Factory "`GameUnit`" Method Implementation](./src/main/java/com/ram/java/designpatterns/prototype/)
+      5. [Abstract Factory Pattern](#abstract-factory-pattern):
+         - [UML Diagram &mdash; Generic Abstract Factory Pattern](./resources/images/abstract-factory-uml.svg) | [Code to generate UML diagram for Generic Prototype Pattern](./resources/uml/abstract-factory-uml.puml)
+         - [UML Diagram &mdash; `GameUnitFactory` Abstract Factory Pattern](./resources/images/abstract-factory-example.svg) | [Code to generate UML diagram for `GameUnitFactory` Abstract Factory Pattern](./resources/uml/abstract-factory-example.puml)
+         - [UML Diagram &mdash; `ResourceFactory` Abstract Factory Pattern](./resources/images/abstract-factory-example-2.svg) | [Code to generate UML diagram for `ResourceFactory` Abstract Factory Pattern](./resources/uml/abstract-factory-example-2.puml)
 
 ## SOLID Principles
 
@@ -1119,5 +1123,53 @@ __Elasticsearch__:
 
 </details>
 
+[ꜛ️](#table-of-contents)
+
+#### Abstract Factory Pattern
+
+<details><summary><em>What is an <strong>Abstract Factory</strong>?</em></summary>
+
+- _Abstract Factory_ is used when we've two or more objects which work together forming a set/family and there can be multiple sets/families that be created by client code.
+- The intent of _Abstract Factory_ is to separate client code from concrete objects forming such a set and also from the code which creates these sets.
+- We're going to understand the Abstract Factory pattern, we make our understanding using a Medieval world building Game like Age of Empires.
+  1. A Naval Unit is essentially the same Product in both Medieval age, and the Industrial ages.
+  1. Similarly, a Land Unit is essentially the same Product in both Medieval and Industrial ages.
+  > Hence, creating Abstract Factory that generates the same family Products in two different ages, is what we essentially need to solve here, using code.
+
+</details>
+
+<details><summary><em>UML Diagram for Generic <strong>Abstract Factory</strong> Design Pattern</em></summary>
+
+> You can find the code to generate the following UML diagram at: [`/resources/uml/abstract-factory-uml.puml`](./resources/uml/abstract-factory-uml.puml)
+
+![abstract-factory-generic-uml-diagram](./resources/images/abstract-factory-uml.svg)
+
+</details>
+
+<details><summary><em>UML Diagram for Example <strong>Abstract Factory</strong> Design Pattern (<code>GameUnitFactory</code>)</em></summary>
+
+> You can find the code to generate the following UML diagram at: [`/resources/uml/abstract-factory-example.puml`](./resources/uml/abstract-factory-example.puml)
+
+![abstract-factory-example-uml-diagram-for-gameunitfactory](./resources/images/abstract-factory-example.svg)
+
+</details>
+
+<details><summary><em>Steps to Implement <strong>Abstract Factory</strong> Pattern</em></summary>
+
+- We start by studying the product "sets" or "families":
+  1. Create abstract factory as an `abstract class` or an `interface`.
+  1. Abstract factory defines `abstract` methods for creating products.
+  1. Provide concrete implementation of factory for set/family of products.
+- Abstract factory makes use of [Factory Method Pattern](#factory-method-pattern). You can think of abstract factory as an object with multiple factory methods.
+
+</details>
+
+<details><summary><em>UML Diagram for Example <strong>Abstract Factory</strong> Design Pattern (<code>ResourceFactory</code>)</em></summary>
+
+> You can find the code to generate the following UML diagram at: [`/resources/uml/abstract-factory-example-2.puml`](./resources/uml/abstract-factory-example-2.puml)
+
+![abstract-factory-example-uml-diagram-for-resourcefactory](./resources/images/abstract-factory-example-2.svg)
+
+</details>
 
 [ꜛ️](#table-of-contents)
