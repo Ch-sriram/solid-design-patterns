@@ -49,6 +49,9 @@
          - [UML Diagram &mdash; `ResourceFactory` Abstract Factory Pattern](./resources/images/abstract-factory-example-2.svg) | [Code to generate UML diagram for `ResourceFactory` Abstract Factory Pattern](./resources/uml/abstract-factory-example-2.puml)
          - [Code &mdash; `ResourceFactory` Abstract Factory Pattern](./src/main/java/com/ram/java/designpatterns/abstractfactory/example1/)
          - [Code &mdash; `DocumentBuilderFactory` Abstract Factory Pattern](./src/main/java/com/ram/java/designpatterns/abstractfactory/documentbuilderfactoryexample/)
+      6. [Singleton](#singleton-pattern)
+         - [UML Diagram &mdash; Generic Singleton Pattern](./resources/images/singleton-uml.svg) | [Code to generate UML diagram Generic Singleton Pattern](./resources/uml/singleton-uml.puml)
+         - [Code &mdash; Eager Singleton Implementation](./src/main/java/com/ram/java/designpatterns/singleton/eagersingleton/)
 
 ## SOLID Principles
 
