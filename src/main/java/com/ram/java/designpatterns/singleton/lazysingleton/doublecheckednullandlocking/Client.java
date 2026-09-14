@@ -1,4 +1,4 @@
-package com.ram.java.designpatterns.singleton.lazysingleton;
+package com.ram.java.designpatterns.singleton.lazysingleton.doublecheckednullandlocking;
 
 /**
  * Demonstrates the usage of {@link LazyRegistryWithDoubleNullCheckLocking}

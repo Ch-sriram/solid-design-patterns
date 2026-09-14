@@ -1,4 +1,4 @@
-package com.ram.java.designpatterns.singleton.lazysingleton;
+package com.ram.java.designpatterns.singleton.lazysingleton.doublecheckednullandlocking;
 
 /**
  * This class doesn't make use of double null checking, but it does locking when getting an instance of this class.

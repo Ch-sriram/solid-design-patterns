@@ -1,4 +1,4 @@
-package com.ram.java.designpatterns.singleton.lazysingleton;
+package com.ram.java.designpatterns.singleton.lazysingleton.doublecheckednullandlocking;
 
 /**
  * This class demonstrates singleton pattern using Double Checked Locking (DCL) or "Classic" Singleton.
