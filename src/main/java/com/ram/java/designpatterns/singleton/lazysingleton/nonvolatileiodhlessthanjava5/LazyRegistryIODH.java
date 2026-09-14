@@ -24,6 +24,36 @@ public class LazyRegistryIODH {
 		static LazyRegistryIODH INSTANCE = new LazyRegistryIODH();
 	}
 
+	/**
+	 * The JVM guarantees that a class is initialized exactly once,
+	 * and that initialization is thread-safe.
+	 *
+	 *     T1                              T2
+     * 
+     * getInstance()                   getInstance()
+     *      │                               │
+     *      ▼                               ▼
+     * SingletonHolder.INSTANCE       SingletonHolder.INSTANCE
+     *      │                               │
+     *      └──────────────┬────────────────┘
+     *                     ▼
+     *              JVM initializes
+     *              SingletonHolder
+     *                     │
+     *                     ▼
+     *         INSTANCE = new Singleton()
+     *                     │
+     *                     ▼
+     *          initialization complete
+     *                     │
+     *              ┌──────┴──────┐
+     *              ▼             ▼
+     *             T1            T2
+     *              │             │
+     *              └──────┬──────┘
+     *                     ▼
+     *              same INSTANCE
+	 */
 	public static LazyRegistryIODH getInstance() {
 		return RegistryHolder.INSTANCE;
 	}
