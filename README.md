@@ -49,7 +49,7 @@
          - [UML Diagram &mdash; `ResourceFactory` Abstract Factory Pattern](./resources/images/abstract-factory-example-2.svg) | [Code to generate UML diagram for `ResourceFactory` Abstract Factory Pattern](./resources/uml/abstract-factory-example-2.puml)
          - [Code &mdash; `ResourceFactory` Abstract Factory Pattern](./src/main/java/com/ram/java/designpatterns/abstractfactory/example1/)
          - [Code &mdash; `DocumentBuilderFactory` Abstract Factory Pattern](./src/main/java/com/ram/java/designpatterns/abstractfactory/documentbuilderfactoryexample/)
-      6. [Singleton](#singleton-pattern)
+      6. [Singleton Pattern](#singleton-pattern)
          - [UML Diagram &mdash; Generic Singleton Pattern](./resources/images/singleton-uml.svg) | [Code to generate UML diagram Generic Singleton Pattern](./resources/uml/singleton-uml.puml)
          - [Code &mdash; Eager Singleton Implementation](./src/main/java/com/ram/java/designpatterns/singleton/eagersingleton/)
          - Code &mdash; Lazy Singleton Implementation:
@@ -59,6 +59,7 @@
          - Code &mdash; Lazy Singleton Implementation (for JMM < v1.5) using Initialization Holder Class:
            - [Implementation of Private Inner Static Class for Singleton](./src/main/java/com/ram/java/designpatterns/singleton/lazysingleton/nonvolatileiodhlessthanjava5/)
          - [Code &mdash; Singleton using `enum`s for (de)serialization](./src/main/java/com/ram/java/designpatterns/singleton/lazysingleton/singletonenumimpl/)
+      7. [Object Pool Pattern](#object-pool-pattern)
 
 ## SOLID Principles
 
@@ -1327,6 +1328,66 @@ __Elasticsearch__:
 | --------- | -------------- |
 | Primary purpose/intent of singleton pattern is to ensure that only one instance of a class is ever created. | Factory method is primarily used to isolate client code from object creation and delegate object creation to subclasses. |
 | Singleton instance is created without any need of arguments from client code. | Factory method allows to parameterize the object creation. |
+
+</details>
+
+<details><summary><em>Pitfalls of Singleton Pattern</em></summary>
+
+- Singleton pattern can deceive you about true dependenices. Since singleton objects are globally accessible, it is easy to miss dependencies.
+- Singletons are hard to test (unit test, integration, etc). You cannot easily mock the instance that is returned.
+- Most common way to implement Singletons in Java is through `static` variables and they're held per class-loader and not per JVM.
+  So they may not be truly _Singleton_ in an OSGi or Web Application.
+- A Singleton carrying around a large _mutable_ global state is a good indication of an abused Singleton.
+
+</details>
+
+<details><summary><em>Summary</em></summary>
+
+- Singleton pattern is used when you want to ensure that only one instance of a class exists in application.
+- In Java, we achieve this by making constructor `private` so that it prevents instance creation externally.
+  This also prevents inheritance and providing a `public static` method which returns the singleton instance.
+- Implementation wise, we've two broad choices:
+  1. In eager loading singleton, we create instance as soon as class is loaded by classloader.
+  1. In lazy loading singleton, we defer creation until some code actually requests the instance.
+  > Always prefer the eager loading instance, unless creation cost is high and startup time impact is noticeable.
+- UML diagrams, and Implementations related to Singleton object can be found at:
+  - [UML Diagram &mdash; Generic Singleton Pattern](./resources/images/singleton-uml.svg) | [Code to generate UML diagram Generic Singleton Pattern](./resources/uml/singleton-uml.puml)
+  - [Code &mdash; Eager Singleton Implementation](./src/main/java/com/ram/java/designpatterns/singleton/eagersingleton/)
+  - Code &mdash; Lazy Singleton Implementation:
+    - Incorrect Implementation &mdash; [Lazy Singletone w/o Double Checked-Null & Locking](./src/main/java/com/ram/java/designpatterns/singleton/lazysingleton/doublecheckednullandlocking/LazySingletonWithoutDoubleNullCheckLock.java)
+    - Correct Implementation &mdash; [Lazy Singletone w/ Double Checked-Null & Locking](./src/main/java/com/ram/java/designpatterns/singleton/lazysingleton/doublecheckednullandlocking/LazyRegistryWithDoubleNullCheckLocking.java)
+      > Makes use of `volatile` keyword.
+  - Code &mdash; Lazy Singleton Implementation (for JMM < v1.5) using Initialization Holder Class:
+    - [Implementation of Private Inner Static Class for Singleton](./src/main/java/com/ram/java/designpatterns/singleton/lazysingleton/nonvolatileiodhlessthanjava5/)
+  - [Code &mdash; Singleton using `enum`s for (de)serialization](./src/main/java/com/ram/java/designpatterns/singleton/lazysingleton/singletonenumimpl/)
+- There are very few situations where a Singleton is really a good choice.
+- Application configuration values can be tracked in a singleton. Typically these are read from file at start and then referred to by other parts of application. The values should be __immutable__.
+- Logging frameworks also make use of Singleton pattern.
+- Spring framework treats all beans by default as singletons. In spring, we don't have to make any changes to ensure single instance, Spring handles that for us.
+
+</details>
+
+[ꜛ️](#table-of-contents)
+
+#### Object Pool Pattern
+
+<details><summary><em>Why & What of <strong>Object Pool</strong> Design Pattern</em></summary>
+
+> If you've ever worked with Connection Pool (from JDBC), or Thread Pool (in Java), then you've already made use of __Object Pool Design Pattern__.
+- In our system, if __cost of creating an instance of a class is high__, and we need a __large number of objects of this class for short duration__, then _we can use an Object Pool_.
+- Here we either:
+  1. pre-create objects of the class, or
+  1. collect unused instances in an in-memory cache.
+  When the code needs an object of this class, we provide it from the in-memory cache.
+- One of the most complicated patterns to implement efficiently (and without any defects).
+
+</details>
+
+<details><summary><em>UML Diagram (Generic) <strong>Object Pool</strong> Pattern</em></summary>
+
+> Find the code to generate the UML diagram here: [`/resources/uml/object-pool-uml.puml`](./resources/uml/object-pool-uml.puml)
+
+![object-pool-uml-diagram](./resources/images/object-pool-uml.svg)
 
 </details>
 

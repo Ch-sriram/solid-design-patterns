@@ -1,0 +1,53 @@
+@startuml
+
+title UML Diagram - Object Pool
+
+class Client {}
+
+abstract class AbstractReusable {
+  + {abstract} operation(): void
+  + {abstract} reset(): void
+}
+
+class ConcreteReusable extends AbstractReusable {
+  - state: Any
+  + operation(): void
+  + reset(): void
+}
+
+class ObjectPool {
+  - available: List<AbstractReusable>
+  - inUse: List<AbstractReusable>
+  + getReusable(): AbstractReusable
+  + releaseReusable(reusable: AbstractReusable): void
+  - createReusable(): AbstractReusable
+}
+
+ObjectPool o--> "0..*" AbstractReusable : manages 
+ObjectPool ..> ConcreteReusable : creates
+Client ..> ObjectPool : requests / releases
+Client ..> AbstractReusable : <<use>>
+
+note left of AbstractReusable
+  Declares operations
+  and life-cycle hooks (reset).
+end note
+
+note left of ConcreteReusable
+  Implementation of
+  reusable product
+  with state.
+end note
+
+note top of ObjectPool
+  Caches instances, manages reuse,
+  and handles reset life-cycle.
+end note
+
+note left of Client
+  Uses Object Pool
+  to get instances
+  of reusable product.
+end note
+
+@enduml
