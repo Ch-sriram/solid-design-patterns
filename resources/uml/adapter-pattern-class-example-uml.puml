@@ -1,0 +1,27 @@
+@startuml
+
+title UML Diagram - Class Adapter Pattern Example
+
+class BusinessCardDesigner <<client>> {}
+
+interface Customer <<interface>> {
+  + {abstract} getName(): String
+  + {abstract} getDesignation(): String
+  + {abstract} getAddress(): String
+}
+
+class Employee <<adaptee>> {
+  + getFullName(): String
+  + getJobTitle(): String
+  + getOfficeLocation(): String
+}
+
+class EmployeeClassAdapter <<adapter>> extends Employee implements Customer {
+  + getName(): String
+  + getDesignation(): String
+  + getAddress(): String
+}
+
+BusinessCardDesigner --> Customer : <<use>>
+
+@enduml

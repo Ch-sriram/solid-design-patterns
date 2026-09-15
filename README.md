@@ -64,6 +64,10 @@
          - [Object Pool Example Implementation](./src/main/java/com/ram/java/designpatterns/objectpool/)
    1. [Structural Design Patterns](#structural-design-patterns)
       1. [Adapter Pattern](#adapter-pattern)
+         - [UML diagram (Generic) &mdash; Class Adapter Pattern](./resources/images/adapter-pattern-uml.svg) | [Code for UML diagram (Generic) &mdash; Class Adapter Pattern](./resources/uml/adapter-pattern-uml.puml)
+         - [UML diagram (Generic) &mdash; Object Adapter Pattern](./resources/images/adapter-pattern-object-uml.svg) | [Code for UML diagram (Generic) &mdash; Object Adapter Pattern](./resources/uml/adapter-pattern-object-uml.puml)
+         - [UML diagram (Example) &mdash; Class Adapter Pattern](./resources/images/adapter-pattern-class-example-uml.svg) | [Code for UML diagram (Example) &mdash; Class Adapter Pattern](./resources/uml/adapter-pattern-class-example-uml.puml)
+         - [UML diagram (Example) &mdash; Object Adapter Pattern](./resources/images/adapter-pattern-object-example-uml.svg) | [Code for UML diagram (Example) &mdash; Object Adapter Pattern](./resources/uml/adapter-pattern-object-example-uml.puml)
 
 ## SOLID Principles
 
@@ -1572,6 +1576,33 @@ __Examples__
 > You can find the code to generate the following UML diagram here: [`/resources/uml/adapter-pattern-object-uml.puml`](./resources/uml/adapter-pattern-object-uml.puml)
 
 ![adapter-pattern-generic-object-uml](./resources/images/adapter-pattern-object-uml.svg)
+
+</details>
+
+<details><summary><em>Implementation Steps (Generic) for <strong>Adapter Design Pattern</strong></em></summary>
+
+- We start by creating a class for Adapter:
+  1. Adapter must implement the interface expected by client.
+  1. First we are going to try implementing a class adapter.
+  1. In class adapter impl, we're simply going to forward the method to another method inherited from adaptee.
+  1. Next, for object adapter, we're only going to implement `Target` interface and accept `Adaptee` as constructor argument in `Adapter`, i.e., make use of composition.
+- An object adapter should take adaptee as an argument in constructor, or as a less preferred solution, you can instantiate it in the constructor, this tightly coupling with a specific adaptee.
+
+</details>
+
+<details><summary><em>UML Diagram (Example) for <strong>Class Adapter Design Pattern</strong></em></summary>
+
+> You can find the code to generate the following UML diagram here: [`/resources/uml/adapter-pattern-class-example-uml.puml`](./resources/uml/adapter-pattern-class-example-uml.puml)
+
+![adapter-pattern-example-class-uml](./resources/images/adapter-pattern-class-example-uml.svg)
+
+</details>
+
+<details><summary><em>UML Diagram (Example) for <strong>Object Adapter Design Pattern</strong></em></summary>
+
+> You can find the code to generate the following UML diagram here: [`/resources/uml/adapter-pattern-object-example-uml.puml`](./resources/uml/adapter-pattern-object-example-uml.puml)
+
+![adapter-pattern-example-object-uml](./resources/images/adapter-pattern-object-example-uml.svg)
 
 </details>
 

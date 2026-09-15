@@ -1,0 +1,34 @@
+@startuml
+
+title UML Diagram - Object Adapter Pattern Example
+
+class BusinessCardDesigner <<client>> {}
+
+interface Customer <<interface>> {
+  + {abstract} getName(): String
+  + {abstract} getDesignation(): String
+  + {abstract} getAddress(): String
+}
+
+class Employee <<adaptee>> {
+  + getFullName(): String
+  + getJobTitle(): String
+  + getOfficeLocation(): String
+}
+
+class EmployeeObjectAdapter <<adapter>> implements Customer {
+  - employee: Employee
+  + getName(): String
+  + getDesignation(): String
+  + getAddress(): String
+}
+
+BusinessCardDesigner --> Customer : <<use>>
+EmployeeObjectAdapter o--> Employee
+
+note right of EmployeeObjectAdapter::employee
+  Contains the employee
+  object (composition).
+end note
+
+@enduml
