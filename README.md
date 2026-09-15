@@ -1492,4 +1492,36 @@ __Examples__
 
 </details>
 
+<details><summary><em>Pitfalls of <strong>Object Pool</strong> Pattern</em></summary>
+
+- Successful implementation depends on correct usage of the object(s) by the client code. Releasing objects back to pool can be vital for correct working.
+- The reusable object needs to take care of resetting its state in efficient way. Some objects may not be suitable for pooling due to its requirement.
+- Object Pool might not be usable in legacy codebases, since legacy code, and reusable objects, both need the knowledge of object pool's existence in the first place.
+- Whenever an object pool is empty, and there's a new request for an object from the object pool, a decision has to be taken:
+  1. Wait for some other object to be released by a client => negative impact on performace. If poorly implemented, a deadlock can also be created.
+  1. Issue a new object, and add that object to the pool, and assign it to the requesting client => negative impact on memory.
+     > This also incurs an additional work of maintaining the pool correctly, otherwise, the pool can become really large.
+
+</details>
+
+<details><summary><em>Summary</em></summary>
+
+- If __cost of creating instances of a class is very high__ and you __need many such objects throughout your application for short duration__, then you can _pool_ them with object pool.
+- Typically objects that represent fixed external system resources like threads, connections, or other system resources are good candidates for pooling.
+- Reclaimed objects into the pool, should be `reset()` for the state to be clean during next acquisition.
+  This operation shouldn't be inefficient, otherwise, the whole purpose of creating an object pool itself will be defeated.
+- The object pool must maintain its internal pool in a thread-safe manner, efficiently, and `reset()` their state before adding them to pool for reuse.
+- Clients have to responsibly release the acquired objects back into the pool for later reuse. Failing to do so can break/crash the system in the long term due to __Out of Memory__ error.
+- Object pools are difficult to optimize because they're sensitive to System load at runtime, meaning, the demand of pooled objects during runtime is to be investigated, and those individual services
+  might've to be optimized, as a dependency of object pool cannot be removed, since that can cause a problem during runtime.
+- Object pools are a great choice when the pooled objects represent a fixed quantity of externally available resources like threads, sockets, connections, etc.
+- When the Object Pool is empty, during implementation, the programmer has to ensure that the pool is of a minimal size such that the pool doesn't occupy a large size in memory, wasting memory
+  by not properly utilizing it.
+- UML diagrams, code, and implementation of Object Pool Design Pattern:
+  1. [UML diagram (generic) &mdash; Object Pool](./resources/images/object-pool-uml.svg) | [Code for UML diagram (generic) &mdash; Object Pool](./resources/uml/object-pool-uml.puml)
+  1. [UML diagram (example) &mdash; Object Pool](./resources/images/object-pool-example.svg) | [Code for UML diagram (generic) &mdash; Object Pool](./resources/uml/object-pool-example.puml)
+  1. [Object Pool Example Implementation](./src/main/java/com/ram/java/designpatterns/objectpool/)
+
+</details>
+
 [ꜛ️](#table-of-contents)
