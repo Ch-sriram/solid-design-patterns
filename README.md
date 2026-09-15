@@ -12,44 +12,43 @@
       - [Code &mdash; SRP Violation](./src/main/java/com/ram/java/solid/singleresponsibilityprinciple/UserController.java#L30-L120)
       - [Code &mdash; SRP Violation: Resolved](./src/main/java/com/ram/java/solid/singleresponsibilityprinciple/UserController.java#L1-L29)
       - [Full Code](./src/main/java/com/ram/java/solid/singleresponsibilityprinciple)
-   2. [Open Closed Principle (OCP)](#open-closed-principle-ocp)
+   1. [Open Closed Principle (OCP)](#open-closed-principle-ocp)
       - [Code &mdash; OCP Violation](./src/main/java/com/ram/java/solid/openclosedprinciple/violation/)
       - [Code &mdash; OCP Violation: Resolved](./src/main/java/com/ram/java/solid/openclosedprinciple/resolved/)
-   3. [Liskov Substitution Principle (LSP)](#liskov-substitution-principle-lsp)
+   1. [Liskov Substitution Principle (LSP)](#liskov-substitution-principle-lsp)
       - [Code &mdash; LSP Violation](./src/main/java/com/ram/java/solid/liskovsubstitutionprinciple/violation/)
       - [Code &mdash; LSP Violation: Resolved](./src/main/java/com/ram/java/solid/liskovsubstitutionprinciple/resolved/)
-   4. [Interface Segregation Principle (ISP)](#interface-segregation-principle-isp)
+   1. [Interface Segregation Principle (ISP)](#interface-segregation-principle-isp)
       - [Code &mdash; ISP Violation](./src/main/java/com/ram/java/solid/interfacesegregation/services/violation/)
       - [Code &mdash; ISP Violation: 1st Resolution](./src/main/java/com/ram/java/solid/interfacesegregation/services/resolved_1/)
       - [Code &mdash; ISP Violation: 2nd Resolution](./src/main/java/com/ram/java/solid/interfacesegregation/services/resolved_2/)
-   5. [Dependency Injection Principle (DI)](#dependency-inversion-principle-di)
+   1. [Dependency Injection Principle (DI)](#dependency-inversion-principle-di)
       - [Code &mdash; DI Violation](./src/main/java/com/ram/java/solid/dependencyinversion/services/violation/)
       - [Code &mdash; DI Violation: Resolved](./src/main/java/com/ram/java/solid/dependencyinversion/services/resolved/)
-
-2. [Design Patterns](#design-patterns)
+1. [Design Patterns](#design-patterns)
    1. [Creational Design Patterns](#creational-design-patterns)
       1. [Builder Pattern](#builder-design-pattern):
          - [UML Diagram  &mdash; `UserDTOBuilder`](./resources/images/builder-pattern-example-userdto.svg) | [Code to generate UML diagram](./resources/uml/builder-pattern-example-userdto.puml)
          - [Traditional Code &mdash; `UserDTOBuilder`](./src/main/java/com/ram/java/designpatterns/builder/traditional/)
          - [Modern Real World Code &mdash; `UserDTOBuilder`](./src/main/java/com/ram/java/designpatterns/builder/modernrealworld/)
-      2. [Simple Factory Pattern](#simple-factory-pattern):
+      1. [Simple Factory Pattern](#simple-factory-pattern):
          - [UML Diagram &mdash; `SimpleFactory`](./resources/images/simple-factory-uml.svg) | [Code to generate UML diagram](./resources/uml/simple-factory-uml.puml)
          - [Code &mdash; `SimpleFactory` Implementation](./src/main/java/com/ram/java/designpatterns/simplefactory/)
-      3. [Factory Method Pattern](#factory-method-pattern):
+      1. [Factory Method Pattern](#factory-method-pattern):
          - [UML Diagram &mdash; `Factory Method` Generic](./resources/images/factory-method-uml.svg) | [Code to generate UML diagram](./resources/uml/factory-method-uml.puml)
          - [UML Diagram &mdash; `Factory Method` Example](./resources/images/factory-method-example.svg) | [Code to generate UML diagram](./resources/uml/factory-method-example.puml)
          - [Code &mdash; `Factory Method` Example Implementation](./src/main/java/com/ram/java/designpatterns/factorymethod/)
-      4. [Prototype Pattern](#prototype-pattern)
+      1. [Prototype Pattern](#prototype-pattern)
          - [UML Diagram &mdash; Generic Prototype Pattern](./resources/images/prototype-pattern-uml.svg) | [Code to generate UML diagram for Generic Prototype Pattern](./resources/uml/prototype-pattern-uml.puml)
          - [UML Diagram for Example Prototype Pattern](./resources/images/prototype-pattern-example.svg) | [Code to generate UML diagram for Example Prototype Pattern](./resources/uml/prototype-pattern-example.puml)
          - [Code &mdash; Example Factory "`GameUnit`" Method Implementation](./src/main/java/com/ram/java/designpatterns/prototype/)
-      5. [Abstract Factory Pattern](#abstract-factory-pattern):
+      1. [Abstract Factory Pattern](#abstract-factory-pattern):
          - [UML Diagram &mdash; Generic Abstract Factory Pattern](./resources/images/abstract-factory-uml.svg) | [Code to generate UML diagram for Generic Prototype Pattern](./resources/uml/abstract-factory-uml.puml)
          - [UML Diagram &mdash; `GameUnitFactory` Abstract Factory Pattern](./resources/images/abstract-factory-example.svg) | [Code to generate UML diagram for `GameUnitFactory` Abstract Factory Pattern](./resources/uml/abstract-factory-example.puml)
          - [UML Diagram &mdash; `ResourceFactory` Abstract Factory Pattern](./resources/images/abstract-factory-example-2.svg) | [Code to generate UML diagram for `ResourceFactory` Abstract Factory Pattern](./resources/uml/abstract-factory-example-2.puml)
          - [Code &mdash; `ResourceFactory` Abstract Factory Pattern](./src/main/java/com/ram/java/designpatterns/abstractfactory/example1/)
          - [Code &mdash; `DocumentBuilderFactory` Abstract Factory Pattern](./src/main/java/com/ram/java/designpatterns/abstractfactory/documentbuilderfactoryexample/)
-      6. [Singleton Pattern](#singleton-pattern)
+      1. [Singleton Pattern](#singleton-pattern)
          - [UML Diagram &mdash; Generic Singleton Pattern](./resources/images/singleton-uml.svg) | [Code to generate UML diagram Generic Singleton Pattern](./resources/uml/singleton-uml.puml)
          - [Code &mdash; Eager Singleton Implementation](./src/main/java/com/ram/java/designpatterns/singleton/eagersingleton/)
          - Code &mdash; Lazy Singleton Implementation:
@@ -59,10 +58,11 @@
          - Code &mdash; Lazy Singleton Implementation (for JMM < v1.5) using Initialization Holder Class:
            - [Implementation of Private Inner Static Class for Singleton](./src/main/java/com/ram/java/designpatterns/singleton/lazysingleton/nonvolatileiodhlessthanjava5/)
          - [Code &mdash; Singleton using `enum`s for (de)serialization](./src/main/java/com/ram/java/designpatterns/singleton/lazysingleton/singletonenumimpl/)
-      7. [Object Pool Pattern](#object-pool-pattern)
+      1. [Object Pool Pattern](#object-pool-pattern)
          - [UML diagram (generic) &mdash; Object Pool](./resources/images/object-pool-uml.svg) | [Code for UML diagram (generic) &mdash; Object Pool](./resources/uml/object-pool-uml.puml)
          - [UML diagram (example) &mdash; Object Pool](./resources/images/object-pool-example.svg) | [Code for UML diagram (generic) &mdash; Object Pool](./resources/uml/object-pool-example.puml)
          - [Object Pool Example Implementation](./src/main/java/com/ram/java/designpatterns/objectpool/)
+   1. [Structural Design Patterns](#structural-design-patterns)
 
 ## SOLID Principles
 
@@ -1523,5 +1523,24 @@ __Examples__
   1. [Object Pool Example Implementation](./src/main/java/com/ram/java/designpatterns/objectpool/)
 
 </details>
+
+[ꜛ️](#table-of-contents)
+
+---
+
+### Structural Design Patterns
+
+- __Structural patterns deal with how classes and objects are arranged or composed__.
+- The following are structural design patterns:
+  1. Adapter
+  1. Bridge
+  1. Decorator
+  1. Composite
+  1. Facade
+  1. Flyweight
+
+  > The structural patterns solve problems like:
+  > 1. Providing method level security to our object, i.e., whoever is calling our object's method, must've been authenticated before.
+  > 1. Let's say we want to simplify the usage of our subsystem, for a set of classes containing multiple functionalities, it slowly becomes tiresome/tedious for the client to use all such classes.
 
 [ꜛ️](#table-of-contents)
