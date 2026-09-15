@@ -1321,4 +1321,13 @@ __Elasticsearch__:
 
 </details>
 
+<details><summary><em>Comparison of Singleton with <a href="#factory-method-pattern">Factory Method</a> Pattern</em></summary>
+
+| Singleton | Factory Method |
+| --------- | -------------- |
+| Primary purpose/intent of singleton pattern is to ensure that only one instance of a class is ever created. | Factory method is primarily used to isolate client code from object creation and delegate object creation to subclasses. |
+| Singleton instance is created without any need of arguments from client code. | Factory method allows to parameterize the object creation. |
+
+</details>
+
 [ꜛ️](#table-of-contents)
