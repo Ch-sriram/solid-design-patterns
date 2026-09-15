@@ -58,6 +58,7 @@
              > Makes use of `volatile` keyword.
          - Code &mdash; Lazy Singleton Implementation (for JMM < v1.5) using Initialization Holder Class:
            - [Implementation of Private Inner Static Class for Singleton](./src/main/java/com/ram/java/designpatterns/singleton/lazysingleton/nonvolatileiodhlessthanjava5/)
+         - [Code &mdash; Singleton using `enum`s for (de)serialization](./src/main/java/com/ram/java/designpatterns/singleton/lazysingleton/singletonenumimpl/)
 
 ## SOLID Principles
 
