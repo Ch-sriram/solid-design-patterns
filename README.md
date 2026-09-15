@@ -60,6 +60,9 @@
            - [Implementation of Private Inner Static Class for Singleton](./src/main/java/com/ram/java/designpatterns/singleton/lazysingleton/nonvolatileiodhlessthanjava5/)
          - [Code &mdash; Singleton using `enum`s for (de)serialization](./src/main/java/com/ram/java/designpatterns/singleton/lazysingleton/singletonenumimpl/)
       7. [Object Pool Pattern](#object-pool-pattern)
+         - [UML diagram (generic) &mdash; Object Pool](./resources/images/object-pool-uml.svg) | [Code for UML diagram (generic) &mdash; Object Pool](./resources/uml/object-pool-uml.puml)
+         - [UML diagram (example) &mdash; Object Pool](./resources/images/object-pool-example.svg) | [Code for UML diagram (generic) &mdash; Object Pool](./resources/uml/object-pool-example.puml)
+         - [Object Pool Example Implementation](./src/main/java/com/ram/java/designpatterns/objectpool/)
 
 ## SOLID Principles
 
@@ -1399,6 +1402,14 @@ __Elasticsearch__:
 - The reusable object must provide methods to `reset()` its state upon `release` of code.
 - We have to decide whether to create new pooled objects when pool is empty, or to wait until an object becomes available.
   Choice is influenced by whether the object is tied to a fixed number of external resources or not.
+
+</details>
+
+<details><summary><em>Example UML diagram for <strong>Object Pool</strong> Pattern</em></summary>
+
+> Find the code to generate the UML diagram here: [`/resources/uml/object-pool-uml.puml`](./resources/uml/object-pool-example.puml)
+
+![object-pool-example-diagram](./resources/images/object-pool-example.svg)
 
 </details>
 

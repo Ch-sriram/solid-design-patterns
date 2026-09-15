@@ -1,0 +1,37 @@
+@startuml
+
+title UML Diagram - Object Pool Example
+
+class Client {}
+
+class ObjectPool {
+  + get()
+  + release(image: Image)
+}
+
+interface Poolable <<interface>> {
+  + reset()
+}
+
+interface Image <<interface>> extends Poolable {
+  + reset(): void
+  + draw(): void
+  + getLocation(): String
+  + setLocation(location: String): void
+}
+
+class Bitmap implements Image {
+  - imageData: Any
+  - location: String
+  - extent: Any
+  + getExtent(): Any
+  + draw(): void
+  + setLocation(location: String): void
+}
+
+ObjectPool o--> "0..*" Image : manages
+ObjectPool ..> Bimap : creates
+Client ..> ObjectPool : requests / releases
+Client ..> Image : <<use>>
+
+@enduml
