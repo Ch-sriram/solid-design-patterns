@@ -1413,4 +1413,74 @@ __Elasticsearch__:
 
 </details>
 
+<details><summary><em>Implementation Considerations for <strong>Object Pool</strong> Pattern</em></summary>
+
+- Resetting object state should NOT be costly operation, otherwise you may end up losing your performance savings.
+- Pre-caching objects; meaning creating objects in advance can be helpful, as it won't slow down the execution using these objects.
+  However, it may add up in overall start time and memory consumption.
+- Object Pool's synchronization should consider the reset time needed and avoid resetting in syncronized context if possible.
+
+</details>
+
+<details><summary><em>Design Considerations for <strong>Object Pool</strong> Pattern</em></summary>
+
+- Object Pool's can be parameterized to cache and return multiple objects and the acquire method can provide selection criteria.
+- Pooling objects is only beneficial if they involve costly initialization because of initialization of external resource like a connection or a thread.
+  Don't pool objects JUST to save memory, unless you're running into __Out of Memory__ errors.
+- Do NOT pool long lived objects or only to save frequent call to new. Pooling may actually negatively impact performance in such cases.
+
+</details>
+
+<details><summary><em>Real World Examples of <strong>Object Pool</strong> Pattern</em></summary>
+
+- Using object pool for saving memory allocation and GC cost is _almost_ deprecated now.
+  > JVMs & H/W are more efficient, and have access to more memory now.
+- However, it's still a very common pattern when we're interacting w/ external resources like threads, connections, etc.
+
+__Examples__
+
+- `java.util.ThreadPoolExecutor` is an excellent example of Object Pool pattern which pools threads.
+  - Even though we can directly use this class, you'll often use it via `ExecutorService` interface using methods like:
+    1. `Executors.newCachedThreadPool()`
+    1. `Executors.newFixedThreadPool()`
+
+    ```java
+    ExecutorService service = Executors.newCachedThreadPool();
+
+    service.submit(() -> System.out.println(Thread.currentThread().getName()));
+    service.submit(() -> System.out.println(Thread.currentThread().getName()));
+    service.submit(() -> System.out.println(Thread.currentThread().getName()));
+
+    service.shutdown();
+    ```
+
+- Apache commons `dbcp` library is used for database connection pooling.
+  Class [`org.apache.commons.dbcp.BasicDataSource`](https://github.com/apache/commons-dbcp/blob/master/src/main/java/org/apache/commons/dbcp2/BasicDataSource.java)
+  in `dbcp` package is an example of object pool pattern which pools database connections. This pool is commonly created and exposed via __JNDI__ or as a Spring bean in applications.
+
+  ```java
+  // Construct BasicDataSource: typically bound to JNDI, or set as a Spring Bean
+  BasicDataSource dataSource = new BasicDataSource();
+  dataSource.setDriverClassName("com.mysql.jdbc.Driver");
+  dataSource.setUrl("jdbc:mysql://localhost/brooklyn_99_topsecret");
+  dataSource.setUsername("ram");
+  dataSource.setPassword("ram@123");
+
+  // During runtime:
+  Connection conn = dataSource.getConnection();
+
+  // Connection is used to run some database queries to apply some CRUD operations...
+  // ...
+  // ...
+  // ...
+
+  // Use connection, and then close it to return it to the pool.
+  conn.close();
+
+  // During application shutdown, close the datasource pool as well.
+  dataSource.close();
+  ```
+
+</details>
+
 [ꜛ️](#table-of-contents)
