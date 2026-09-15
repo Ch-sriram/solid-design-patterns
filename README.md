@@ -1483,4 +1483,13 @@ __Examples__
 
 </details>
 
+<details><summary><em>Comparing <strong>Object Pool</strong> Pattern w/ <a href="#prototype-pattern">Prototype Pattern</a></em></summary>
+
+| Object Pool | Prototype |
+| ----------- | --------- |
+| We've cached objects that frequently live throughout program's entire run. | Prototype creates object when needed and no caching is done. |
+| Code using objects from Object Pool has to return the objects explicitly to the pool. Depending on the implementation, failing to return to pool may lead to memory and/or resource leak. | Once an object is cloned, no special treatment is needed by client code, and object can be used like any regular object. |
+
+</details>
+
 [ꜛ️](#table-of-contents)
