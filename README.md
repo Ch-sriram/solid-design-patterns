@@ -1291,4 +1291,34 @@ __Elasticsearch__:
 
 </details>
 
+<details><summary><em>Implementation Considerations</em></summary>
+
+- Early/Eager Initialization is the simplest & preferred way. Always try to use this approach first.
+  > Iff, your startup time is getting affected by early initialization of your objects, only then you should go for Late/Lazy Initialization.
+- The "classic" singleton pattern implemenation uses double-checked `null`, locking, and `volatile` field.
+  > This implementation is most found in real world since this approach is language agnostic, and doesn't depend on the underlying language features.
+- The lazy _initialization holder_ idiom provides best of both worlds, you don't deal with synchronization issues directly, and it's easy to implement.
+  > However, this particular approach is very specific to Java, and might not be implemented in other languages,
+  > since other languages might just have different architecture, internally.
+- You can also implement singletons using `enum`s. However due to pre-conceptions about what an `enum` is,
+  it may be a hard sell during code review, especially if singleton has mutable fields.
+- If the simple solution works, then use it!
+
+</details>
+
+<details><summary><em>Design Considerations</em></summary>
+
+- Singleton creation does not need any parameters. If you find yourself in need of support for constructor arguments,
+  you need a [simple factory](#simple-factory-pattern), or [factory method pattern](#factory-method-pattern) instead.
+- Make sure that your singletons are __NOT__ carrying a lot of _mutable_ global state.
+  Singleton as it is, is seen as an anti-pattern, because it causes a lot of problems.
+
+</details>
+
+<details><summary><em>Real World Examples of Singleton Design Pattern</em></summary>
+
+- The [`java.lang.Runtime`](https://github.com/openjdk/jdk/blob/328268d89f5c7b077554d822b90634162f08e77d/src/java.base/share/classes/java/lang/Runtime.java#L123-L141) class in standard Java API is a Singleton.
+
+</details>
+
 [ꜛ️](#table-of-contents)
