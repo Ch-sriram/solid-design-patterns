@@ -1391,4 +1391,15 @@ __Elasticsearch__:
 
 </details>
 
+<details><summary><em>Implementation Steps for <strong>Object Pool</strong> Pattern</em></summary>
+
+- We start by creating class for object pool, called `ObjectPool`:
+  1. A thread-safe caching of objects should be done in the `ObjectPool` class.
+  1. Methods to acquire and release objects should be provided and pool should reset cached objects before giving them out.
+- The reusable object must provide methods to `reset()` its state upon `release` of code.
+- We have to decide whether to create new pooled objects when pool is empty, or to wait until an object becomes available.
+  Choice is influenced by whether the object is tied to a fixed number of external resources or not.
+
+</details>
+
 [ꜛ️](#table-of-contents)
