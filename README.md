@@ -63,6 +63,7 @@
          - [UML diagram (example) &mdash; Object Pool](./resources/images/object-pool-example.svg) | [Code for UML diagram (generic) &mdash; Object Pool](./resources/uml/object-pool-example.puml)
          - [Object Pool Example Implementation](./src/main/java/com/ram/java/designpatterns/objectpool/)
    1. [Structural Design Patterns](#structural-design-patterns)
+      1. [Adapter Pattern](#adapter-pattern)
 
 ## SOLID Principles
 
@@ -1542,5 +1543,36 @@ __Examples__
   > The structural patterns solve problems like:
   > 1. Providing method level security to our object, i.e., whoever is calling our object's method, must've been authenticated before.
   > 1. Let's say we want to simplify the usage of our subsystem, for a set of classes containing multiple functionalities, it slowly becomes tiresome/tedious for the client to use all such classes.
+
+[ꜛ️](#table-of-contents)
+
+#### Adapter Pattern
+
+<details><summary><em>What is <strong>Adapter Design Pattern</strong>?</em></summary>
+
+- We've an existing object which provides the functionality that the client needs, but the client cannot use this object because it expects an object with a different interface.
+  > Using adapter design pattern, we make this existing object work with client, by "adapting" the object to client's expected interface.  
+- The pattern is also called as __Wrapper__, as it "Wraps" existing object(s).
+- There are 2 variations of Adapter Pattern:
+  1. Class Adapter (a.k.a Two-Way Adapter), and
+  1. Object Adapter
+
+</details>
+
+<details><summary><em>UML Diagram (Generic) for <strong>Class Adapter Design Pattern</strong></em></summary>
+
+> You can find the code to generate the following UML diagram here: [`/resources/uml/adapter-pattern-uml.puml`](./resources/uml/adapter-pattern-uml.puml)
+
+![adapter-pattern-generic-class-uml](./resources/images/adapter-pattern-uml.svg)
+
+</details>
+
+<details><summary><em>UML Diagram (Generic) for <strong>Object Adapter Design Pattern</strong></em></summary>
+
+> You can find the code to generate the following UML diagram here: [`/resources/uml/adapter-pattern-object-uml.puml`](./resources/uml/adapter-pattern-object-uml.puml)
+
+![adapter-pattern-generic-object-uml](./resources/images/adapter-pattern-object-uml.svg)
+
+</details>
 
 [ꜛ️](#table-of-contents)

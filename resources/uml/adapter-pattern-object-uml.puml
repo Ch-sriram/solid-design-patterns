@@ -1,0 +1,59 @@
+@startuml
+
+title UML Diagram - Object Adapter Pattern
+
+class Client {}
+
+interface Target <<interface>> {
+  + {abstract} operation(): void
+}
+
+class Adaptee {
+  + myOperation(): void
+}
+
+class ObjectAdapter #LightGreen implements Target {
+  + operation(): void
+}
+
+Client --> Target
+ObjectAdapter o--> Adaptee
+
+note left of Adaptee
+  Our existing class
+  providing needed
+  functionality.
+end note
+
+note right of Client
+  Needs functionality
+  provided, but as
+  different interface
+  than Adaptee.
+end note
+
+note left of Target
+  Interface expected
+  by Client.
+end note
+
+note left of ObjectAdapter
+  Adapts existing
+  functionality to
+  Target interface,
+  but makes use of
+  composition instead
+  of inheritance.
+end note
+
+note right of ObjectAdapter
+  Contains:
+    operation(): void
+    adaptee: Adaptee
+  
+  Which can be called as:
+    operation();
+    adaptee.myOperation();
+end note
+
+@enduml

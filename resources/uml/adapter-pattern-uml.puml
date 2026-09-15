@@ -1,0 +1,51 @@
+@startuml
+
+title UML Diagram - Class Adapter Pattern (More Harmful)
+
+class Client {}
+
+interface Target <<interface>> {
+  + {abstract} operation(): void
+}
+
+class Adaptee {
+  + myOperation(): void
+}
+
+class Adapter #LightBlue extends Adaptee implements Target {
+  + operation(): void
+}
+
+Client --> Target
+
+note top of Adaptee
+  Our existing class
+  providing needed
+  functionality.
+end note
+
+note right of Client
+  Needs functionality
+  provided, but as
+  different interface
+  than Adaptee.
+end note
+
+note bottom of Target
+  Interface expected
+  by Client.
+end note
+
+note bottom of Adapter
+  Adapts existing
+  functionality to
+  Target interface.
+end note
+
+note right of Adapter
+  Contains:
+    operation();
+    super.myOperation();
+end note
+
+@enduml
