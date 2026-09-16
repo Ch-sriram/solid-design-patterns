@@ -68,6 +68,9 @@
          - [UML diagram (Generic) &mdash; Object Adapter Pattern](./resources/images/adapter-pattern-object-uml.svg) | [Code for UML diagram (Generic) &mdash; Object Adapter Pattern](./resources/uml/adapter-pattern-object-uml.puml)
          - [UML diagram (Example) &mdash; Class Adapter Pattern](./resources/images/adapter-pattern-class-example-uml.svg) | [Code for UML diagram (Example) &mdash; Class Adapter Pattern](./resources/uml/adapter-pattern-class-example-uml.puml)
          - [UML diagram (Example) &mdash; Object Adapter Pattern](./resources/images/adapter-pattern-object-example-uml.svg) | [Code for UML diagram (Example) &mdash; Object Adapter Pattern](./resources/uml/adapter-pattern-object-example-uml.puml)
+         - Code & Implementation:
+           - [Class/Two-Way Adapter Pattern Implementation](./src/main/java/com/ram/java/designpatterns/adapter/classadapter/)
+           - [Object Adapter Pattern Implementation](./src/main/java/com/ram/java/designpatterns/adapter/objectadapter/)
 
 ## SOLID Principles
 
