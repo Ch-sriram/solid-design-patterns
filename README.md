@@ -1636,4 +1636,13 @@ __Examples__
 
 </details>
 
+<details><summary><em>Adapter Pattern vs. Decorator Pattern</em></summary>
+
+| Adapter | Decorator |
+| ------- | --------- |
+| Simply adapts an object to another interface without changing the underlying behaviour. | Enhances object behaviour without changing its interface. |
+| Not easy to use recursive composition, i.e., an Adapter adapting another adapter since adapters change interface(s). | Since decorators don't change the interface, we can do recursive composition or in other words, decorate a decorator with ease. Since a decorator is indistinguishable from main object. |
+
+</details>
+
 [ꜛ️](#table-of-contents)
