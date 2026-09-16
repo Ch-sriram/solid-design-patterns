@@ -69,8 +69,8 @@
          - [UML diagram (Example) &mdash; Class Adapter Pattern](./resources/images/adapter-pattern-class-example-uml.svg) | [Code for UML diagram (Example) &mdash; Class Adapter Pattern](./resources/uml/adapter-pattern-class-example-uml.puml)
          - [UML diagram (Example) &mdash; Object Adapter Pattern](./resources/images/adapter-pattern-object-example-uml.svg) | [Code for UML diagram (Example) &mdash; Object Adapter Pattern](./resources/uml/adapter-pattern-object-example-uml.puml)
          - Code & Implementation:
-           - [Class/Two-Way Adapter Pattern Implementation](./src/main/java/com/ram/java/designpatterns/adapter/classadapter/)
-           - [Object Adapter Pattern Implementation](./src/main/java/com/ram/java/designpatterns/adapter/objectadapter/)
+           - [Class/Two-Way Adapter Pattern Implementation (Not Recommended to Implement in Production)](./src/main/java/com/ram/java/designpatterns/adapter/classadapter/)
+           - [Object Adapter Pattern Implementation (Recommended Version of Adapter Pattern)](./src/main/java/com/ram/java/designpatterns/adapter/objectadapter/)
 
 ## SOLID Principles
 
@@ -1606,6 +1606,26 @@ __Examples__
 > You can find the code to generate the following UML diagram here: [`/resources/uml/adapter-pattern-object-example-uml.puml`](./resources/uml/adapter-pattern-object-example-uml.puml)
 
 ![adapter-pattern-example-object-uml](./resources/images/adapter-pattern-object-example-uml.svg)
+
+</details>
+
+<details><summary><em>Implementation Considerations for Adapter Pattern</em></summary>
+
+- The amount of work (or new behaviour code definition) depends on the differences between the `Target` interface and the object being adapted.
+  > If the behaviour of both the `Target` and adaptee object are same/similar, the Adapter has very less work to do (=> lesser amount of new behaviour definitions).
+- Using an Adapter class technically "allows" you to override some of the adaptee's behaviour,
+  but this should be avoided, as you end up with an adapter that behaves differently than adaptee, in which case, there's no point of an Adapter pattern at that point.
+  > Stick with simple method delegation using the composed adaptee instance.
+- Object Adapter allows you to change the Adaptee object to one of its subclasses, potentially, in the future, if ever wanted.
+
+</details>
+
+<details><summary><em>Design Considerations for Adapter Pattern</em></summary>
+
+- In Java, _Class Adapter_ may NOT be possible all the time, meaning, when both _Target_ and _Adaptee_ are concrete classes, we won't be able to extend from both classes.
+  - In such cases, the __Object Adapter__ is the ONLY solution. Also, since there's no private inheritance in Java, it's better to stick with Object Adapter.
+- A _Class Adapter_ is also called as a _Two Way Adapter_ because it can be passed-in for both _Target_ interface and _Adaptee_'s references, i.e., we can use object of adapter
+  where either _Target_ interface's reference is expected, as well as where an _Adaptee_ object's reference is expected.
 
 </details>
 
