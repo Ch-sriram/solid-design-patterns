@@ -71,6 +71,7 @@
          - Code & Implementation:
            - [Class/Two-Way Adapter Pattern Implementation (Not Recommended to Implement in Production)](./src/main/java/com/ram/java/designpatterns/adapter/classadapter/)
            - [Object Adapter Pattern Implementation (Recommended Version of Adapter Pattern)](./src/main/java/com/ram/java/designpatterns/adapter/objectadapter/)
+      1. [Bridge Pattern]()
 
 ## SOLID Principles
 
@@ -1671,6 +1672,38 @@ __Examples__
     - Code & Implementation:
       - [Class/Two-Way Adapter Pattern Implementation (Not Recommended to Implement in Production)](./src/main/java/com/ram/java/designpatterns/adapter/classadapter/)
       - [Object Adapter Pattern Implementation (Recommended Version of Adapter Pattern)](./src/main/java/com/ram/java/designpatterns/adapter/objectadapter/)
+
+</details>
+
+[ꜛ️](#table-of-contents)
+
+#### Bridge Design Pattern
+
+<details><summary><em>What is <strong>Bridge Design Pattern</strong>?</em></summary>
+
+- Implementation & Abstractions are generally coupled to each other in normal inheritance.
+- Using Bridge Pattern, we can decouple them so they can both change without affecting each other.
+- We achieve this feat by creating two separate inheritance hierarchies; one for implementation and another for abstraction.
+- We use composition to bridge these two hierarchies.
+
+</details>
+
+<details><summary><em>UML diagram (Generic) for <strong>Bridge Design Pattern</strong></em></summary>
+
+> You can find the code to generate the following UML diagram here: [`/resources/uml/bridge-pattern-uml.puml`](./resources/uml/bridge-pattern-uml.puml)
+
+![bridge-pattern-generic-uml](./resources/images/bridge-pattern-uml.svg)
+
+</details>
+
+<details><summary><em>Implementation Steps for <strong>Bridge Design Pattern</strong></em></summary>
+
+- We start by defining our abstraction as needed by client:
+  1. We determine common base operations and define them in abstraction.
+  1. We can optionally also define a refined abstraction and provide more specialized operations.
+  1. Then we can define our implementor next. Implementor methods do NOT have to match with abstractor. However, abstraction can carry out its work by using implementor methods.
+  1. Then we write one or more concrete implementor providing implementation.
+- Abstractions are created by composing them with an instance of concrete implementor which is used by methods in abstractions.
 
 </details>
 

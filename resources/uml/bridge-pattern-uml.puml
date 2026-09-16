@@ -1,0 +1,62 @@
+@startuml
+
+title UML Diagram - Bridge Pattern (Generic)
+
+class Client {}
+
+interface Abstraction <<abstract>> {
+  + {abstract} operation(): void
+}
+
+class RefinedAbstraction extends Abstraction {}
+
+interface Implementor {
+  + {abstract} step1(): void
+  + {abstract} step2(): void
+}
+
+class ConcreteImplementorA implements Implementor {
+  + step1(): void
+  + step2(): void
+}
+
+class ConcreteImplementorB implements Implementor {
+  + step1(): void
+  + step2(): void
+}
+
+Abstraction o--> Implementor
+Client ..> Abstraction : <<use>>
+
+note left of Implementor
+  - Base interface for
+    implementation classes.
+  - Methods are unrelated
+    to Abstraction &
+    typically represent
+    smaller steps needed.
+end note
+
+note left of Abstraction
+  - Defines abstraction's
+    interface.
+  - Has reference to
+    implementor.
+end note
+
+note bottom of RefinedAbstraction
+  More specialized
+  abstraction.
+end note
+
+note bottom of ConcreteImplementorA
+  Implements Implementor
+  methods.
+end note
+
+note bottom of ConcreteImplementorB
+  Implements Implementor
+  methods.
+end note
+
+@enduml
