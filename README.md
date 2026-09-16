@@ -1629,4 +1629,11 @@ __Examples__
 
 </details>
 
+<details><summary><em>Real World Example(s) of Adapter Pattern</em></summary>
+
+- The [`java.io.InputStreamReader`](https://github.com/openjdk/jdk/blob/a2fa83597756659632053e2b85691fa695e7f6fd/src/java.base/share/classes/java/io/InputStreamReader.java#L69) and [`java.io.OutputStreamWriter`](https://github.com/openjdk/jdk/blob/a2fa83597756659632053e2b85691fa695e7f6fd/src/java.base/share/classes/java/io/OutputStreamWriter.java#L74) classes are examples of Object Adapters.
+  > These classes adapt existing `InputStream`/`OutputStream` object to a `Reader`/`Writer` interface.
+
+</details>
+
 [ꜛ️](#table-of-contents)
