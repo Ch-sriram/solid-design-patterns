@@ -1656,4 +1656,22 @@ __Examples__
 
 </details>
 
+<details><summary><em>Summary</em></summary>
+
+- Why use Adapter?
+  > Whenever we've an existing object with a required functionality, but the client code is expecting a different interface than our object.
+- Two ways to Implement an Adapter:
+  1. Class Adapter: The adapter inherits from adaptee and implements the interface required by the client. Not recommended to be implemenented, as it exposes unnecessary behaviour of Adaptee.
+  1. Object Adapter: The adapter is composed of adaptee object (passed-in from the constructor of Adapter) and implements the interface required by the client. Recommended implementation of Adapter pattern, since the constructor can take in any subclass of the Adaptee, for future usecases.
+- UML Diagrams, Code, and Implementation:
+  - [UML diagram (Generic) &mdash; Class Adapter Pattern](./resources/images/adapter-pattern-uml.svg) | [Code for UML diagram (Generic) &mdash; Class Adapter Pattern](./resources/uml/adapter-pattern-uml.puml)
+    - [UML diagram (Generic) &mdash; Object Adapter Pattern](./resources/images/adapter-pattern-object-uml.svg) | [Code for UML diagram (Generic) &mdash; Object Adapter Pattern](./resources/uml/adapter-pattern-object-uml.puml)
+    - [UML diagram (Example) &mdash; Class Adapter Pattern](./resources/images/adapter-pattern-class-example-uml.svg) | [Code for UML diagram (Example) &mdash; Class Adapter Pattern](./resources/uml/adapter-pattern-class-example-uml.puml)
+    - [UML diagram (Example) &mdash; Object Adapter Pattern](./resources/images/adapter-pattern-object-example-uml.svg) | [Code for UML diagram (Example) &mdash; Object Adapter Pattern](./resources/uml/adapter-pattern-object-example-uml.puml)
+    - Code & Implementation:
+      - [Class/Two-Way Adapter Pattern Implementation (Not Recommended to Implement in Production)](./src/main/java/com/ram/java/designpatterns/adapter/classadapter/)
+      - [Object Adapter Pattern Implementation (Recommended Version of Adapter Pattern)](./src/main/java/com/ram/java/designpatterns/adapter/objectadapter/)
+
+</details>
+
 [ꜛ️](#table-of-contents)
