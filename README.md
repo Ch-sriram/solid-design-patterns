@@ -1645,4 +1645,15 @@ __Examples__
 
 </details>
 
+<details><summary><em>Pitfalls of Adapter Pattern</em></summary>
+
+- Using _Target_ interface and _Adaptee_ class to extend our _Adapter_, we can create a __Class/Two-Way Adapter__ in Java.
+  However, it creates an object which exposes unrelated methods in parts of our code, polluting the Adapter.
+  > Therefore, it's always good to AVOID _Class Adapter_ pattern!
+- Don't add new behaviour apart from the contracting _Target_ interface's behaviour in the _Adapter_ class.
+  > Adding more behaviour in the _Adapter_ apart from what's defined in the _Target_'s behaviour can lead to the _Adapter_ not being an adapter, but something more than the _Adapter_.
+  > Just do a simple Interface Translation.
+
+</details>
+
 [ꜛ️](#table-of-contents)
