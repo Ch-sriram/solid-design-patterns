@@ -52,8 +52,8 @@
          - [UML Diagram &mdash; Generic Singleton Pattern](./resources/images/singleton-uml.svg) | [Code to generate UML diagram Generic Singleton Pattern](./resources/uml/singleton-uml.puml)
          - [Code &mdash; Eager Singleton Implementation](./src/main/java/com/ram/java/designpatterns/singleton/eagersingleton/)
          - Code &mdash; Lazy Singleton Implementation:
-           - Incorrect Implementation &mdash; [Lazy Singletone w/o Double Checked-Null & Locking](./src/main/java/com/ram/java/designpatterns/singleton/lazysingleton/doublecheckednullandlocking/LazySingletonWithoutDoubleNullCheckLock.java)
-           - Correct Implementation &mdash; [Lazy Singletone w/ Double Checked-Null & Locking](./src/main/java/com/ram/java/designpatterns/singleton/lazysingleton/doublecheckednullandlocking/LazyRegistryWithDoubleNullCheckLocking.java)
+           - Incorrect Implementation &mdash; [Lazy Singleton w/o Double Checked-Null & Locking](./src/main/java/com/ram/java/designpatterns/singleton/lazysingleton/doublecheckednullandlocking/LazySingletonWithoutDoubleNullCheckLock.java)
+           - Correct Implementation &mdash; [Lazy Singleton w/ Double Checked-Null & Locking](./src/main/java/com/ram/java/designpatterns/singleton/lazysingleton/doublecheckednullandlocking/LazyRegistryWithDoubleNullCheckLocking.java)
              > Makes use of `volatile` keyword.
          - Code &mdash; Lazy Singleton Implementation (for JMM < v1.5) using Initialization Holder Class:
            - [Implementation of Private Inner Static Class for Singleton](./src/main/java/com/ram/java/designpatterns/singleton/lazysingleton/nonvolatileiodhlessthanjava5/)
@@ -1281,7 +1281,7 @@ __Elasticsearch__:
 
 > You can find the code to generate the following UML diagram at: [`/resources/uml/singleton-uml.puml`](./resources/uml/singleton-uml.puml)
 
-![singletone-uml-svg](./resources/images/singleton-uml.svg)
+![singleton-uml-svg](./resources/images/singleton-uml.svg)
 
 </details>
 
@@ -1365,8 +1365,8 @@ __Elasticsearch__:
   - [UML Diagram &mdash; Generic Singleton Pattern](./resources/images/singleton-uml.svg) | [Code to generate UML diagram Generic Singleton Pattern](./resources/uml/singleton-uml.puml)
   - [Code &mdash; Eager Singleton Implementation](./src/main/java/com/ram/java/designpatterns/singleton/eagersingleton/)
   - Code &mdash; Lazy Singleton Implementation:
-    - Incorrect Implementation &mdash; [Lazy Singletone w/o Double Checked-Null & Locking](./src/main/java/com/ram/java/designpatterns/singleton/lazysingleton/doublecheckednullandlocking/LazySingletonWithoutDoubleNullCheckLock.java)
-    - Correct Implementation &mdash; [Lazy Singletone w/ Double Checked-Null & Locking](./src/main/java/com/ram/java/designpatterns/singleton/lazysingleton/doublecheckednullandlocking/LazyRegistryWithDoubleNullCheckLocking.java)
+    - Incorrect Implementation &mdash; [Lazy Singleton w/o Double Checked-Null & Locking](./src/main/java/com/ram/java/designpatterns/singleton/lazysingleton/doublecheckednullandlocking/LazySingletonWithoutDoubleNullCheckLock.java)
+    - Correct Implementation &mdash; [Lazy Singleton w/ Double Checked-Null & Locking](./src/main/java/com/ram/java/designpatterns/singleton/lazysingleton/doublecheckednullandlocking/LazyRegistryWithDoubleNullCheckLocking.java)
       > Makes use of `volatile` keyword.
   - Code &mdash; Lazy Singleton Implementation (for JMM < v1.5) using Initialization Holder Class:
     - [Implementation of Private Inner Static Class for Singleton](./src/main/java/com/ram/java/designpatterns/singleton/lazysingleton/nonvolatileiodhlessthanjava5/)
