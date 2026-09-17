@@ -1,0 +1,49 @@
+@startuml
+
+title UML Diagram - Composite Pattern (Generic)
+
+class Client {}
+
+interface Component {
+  + {abstract} operation(): void
+  + {abstract} add(component: Component): void
+  + {abstract} remove(component: Component): void
+}
+
+class Leaf implements Component {
+  + operation(): void
+}
+
+class Composite implements Component {
+  - children: Component
+  + operation(): void
+  + add(component: Component): void
+  + remove(component: Component): void
+}
+
+Client ..> Component : <<use>>
+Composite o--> Component
+
+note left of Component
+  - Defines behaviour
+    common to all classes.
+  - Including methods to
+    access children.
+end note
+
+note bottom of Leaf
+  Represents leaf objects
+  and behaviour of primitive
+  objects.
+end note
+
+note bottom of Composite
+  Store child components.
+end note
+
+note left of Client
+  Works with object hierarchy
+  using component interface only.
+end note
+
+@enduml

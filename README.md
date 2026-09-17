@@ -76,11 +76,12 @@
          - [UML diagram (real world example) &mdash; Bridge Pattern](./resources/images/bridge-example-real-world.svg) | [Code for UML diagram (real world example) &mdash; Bridge Pattern](./resources/uml/bridge-example-real-world.puml)
          - [UML diagram (example) &mdash; Bridge Pattern](./resources/images/bridge-pattern-example-uml.svg) | [Code for UML diagram (example) &mdash; Bridge Pattern](./resources/uml/bridge-pattern-example-uml.puml)
          - [Bridge Pattern Example Implementation](./src/main/java/com/ram/java/designpatterns/bridge/)
-      1. [Decorator Pattern](#decorator-pattern)
+      1. [Decorator Pattern](#decorator-design-pattern)
          - [UML diagram (generic) &mdash; Decorator Pattern](./resources/images/decorator-pattern-uml.svg) | [Code for UML diagram (generic) &mdash; Decorator Pattern](./resources/uml/decorator-pattern-uml.puml)
          - [UML diagram (real world example) &mdash; Decorator Pattern](./resources/images/decorator-real-world-example.svg) | [Code for UML diagram (real world example) &mdash; Decorator Pattern](./resources/uml/decorator-real-world-example.puml)
          - [UML diagram (example) &mdash; Decorator Pattern](./resources/images/decorator-pattern-example-uml.svg) | [Code for UML diagram (example) &mdash; Decorator Pattern](./resources/uml/decorator-pattern-example-uml.puml)
          - [Decorator Pattern Example Implementation](./src/main/java/com/ram/java/designpatterns/decorator/)
+      1. [Composite Pattern](#composite-design-pattern)
 
 ## SOLID Principles
 
@@ -1647,7 +1648,7 @@ __Examples__
 
 </details>
 
-<details><summary><em>Adapter Pattern vs. Decorator Pattern</em></summary>
+<details><summary><em>Adapter Pattern vs. <a href="#decorator-design-pattern">Decorator Pattern</a></em></summary>
 
 | Adapter | Decorator |
 | ------- | --------- |
@@ -1783,7 +1784,7 @@ __Examples__
 
 [ꜛ️](#table-of-contents)
 
-#### Decorator Pattern
+#### Decorator Design Pattern
 
 <details><summary><em>What is <strong>Decorator Design Pattern</strong>?</em></summary>
 
@@ -1847,7 +1848,7 @@ __Examples__
 
 </details>
 
-<details><summary><em>Decorator Pattern vs. Composite Pattern</em></summary>
+<details><summary><em>Decorator Pattern vs. <a href="#composite-design-pattern">Composite Pattern</a></em></summary>
 
 | Decorator | Composite |
 | --------- | --------- |
@@ -1875,6 +1876,38 @@ __Examples__
   1. [UML diagram (real world example) &mdash; Decorator Pattern](./resources/images/decorator-real-world-example.svg) | [Code for UML diagram (real world example) &mdash; Decorator Pattern](./resources/uml/decorator-real-world-example.puml)
   1. [UML diagram (example) &mdash; Decorator Pattern](./resources/images/decorator-pattern-example-uml.svg) | [Code for UML diagram (example) &mdash; Decorator Pattern](./resources/uml/decorator-pattern-example-uml.puml)
   1. [Decorator Pattern Example Implementation](./src/main/java/com/ram/java/designpatterns/decorator/)
+
+</details>
+
+[ꜛ️](#table-of-contents)
+
+#### Composite Design Pattern
+
+<details><summary><em>What <strong>Composite Design Pattern</strong>?</em></summary>
+
+- Why do we need composite pattern?
+  > Assume we've a part-whole relationship, or hierarchy of objects, and we want to be able to treat all objects in this hierarchy uniformly/similarly, we make use of Composite design pattern.
+- This is __NOT a simple composition__ from OOP, but a further enhancement to that principal.
+- Think of _composite_ pattern when dealing with __Tree Structure of Objects__.
+
+</details>
+
+<details><summary><em>UML diagram (Generic) for <strong>Composite Design Pattern</strong></em></summary>
+
+> You can find the code to generate the UML, here: [`/resources/uml/composite-pattern-uml.puml`](./resources/uml/composite-pattern-uml.puml)
+
+![composite-pattern-uml-svg](./resources/images/composite-pattern-uml.svg)
+
+</details>
+
+<details><summary><em>Implementation Steps for <strong>Composite Design Pattern</strong></em></summary>
+
+- We start by creating an `abstract class` / `interface` for _Component_.
+  1. _Component_ must declare all methods that are applicable to both _leaf_ and _composite_.
+  1. We've to choose who defines the children management operations, either: _component_, or _composite_.
+  1. Then we implement the _composite_. An operation invoked on _composite_ is propagated to all its children.
+  1. In _leaf_ nodes, we've to handle the non-applicable operations like _add/remove_ a child, if they're defined in _component_.
+- In the end, a _composite_ pattern implementation will allow you to write algorithms without worrying about whether node is _leaf_ or _composite_.
 
 </details>
 
