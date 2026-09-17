@@ -1864,4 +1864,18 @@ __Examples__
 
 </details>
 
+<details><summary><em>Summary</em></summary>
+
+- We use decorator when we want to add small behaviour on top of existing object.
+- A decorator has same interface as the object it decorates/contains.
+- Decorators allow you to dynamically construct behaviour by using composition. A decorator can wrap another decorator which in turn wraps original object.
+- Client of object is unaware of existence of decorator.
+- UML diagrams, code, and impl of Decorator Pattern can be found:
+  1. [UML diagram (generic) &mdash; Decorator Pattern](./resources/images/decorator-pattern-uml.svg) | [Code for UML diagram (generic) &mdash; Decorator Pattern](./resources/uml/decorator-pattern-uml.puml)
+  1. [UML diagram (real world example) &mdash; Decorator Pattern](./resources/images/decorator-real-world-example.svg) | [Code for UML diagram (real world example) &mdash; Decorator Pattern](./resources/uml/decorator-real-world-example.puml)
+  1. [UML diagram (example) &mdash; Decorator Pattern](./resources/images/decorator-pattern-example-uml.svg) | [Code for UML diagram (example) &mdash; Decorator Pattern](./resources/uml/decorator-pattern-example-uml.puml)
+  1. [Decorator Pattern Example Implementation](./src/main/java/com/ram/java/designpatterns/decorator/)
+
+</details>
+
 [ꜛ️](#table-of-contents)
