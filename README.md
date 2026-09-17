@@ -72,8 +72,9 @@
            - [Class/Two-Way Adapter Pattern Implementation (Not Recommended to Implement in Production)](./src/main/java/com/ram/java/designpatterns/adapter/classadapter/)
            - [Object Adapter Pattern Implementation (Recommended Version of Adapter Pattern)](./src/main/java/com/ram/java/designpatterns/adapter/objectadapter/)
       1. [Bridge Pattern](#bridge-design-pattern)
-         - [UML diagram (generic) &mdash; Bridge Pattern](./resources/images/bridge-pattern-uml.svg) | [Code for UML diagram (generic) &mdash; Object Pool](./resources/uml/bridge-pattern-uml.puml)
-         - [UML diagram (example) &mdash; Bridge Pattern](./resources/images/bridge-pattern-example-uml.svg) | [Code for UML diagram (generic) &mdash; Object Pool](./resources/uml/bridge-pattern-example-uml.puml)
+         - [UML diagram (generic) &mdash; Bridge Pattern](./resources/images/bridge-pattern-uml.svg) | [Code for UML diagram (generic) &mdash; Bridge Pattern](./resources/uml/bridge-pattern-uml.puml)
+         - [UML diagram (example) &mdash; Bridge Pattern](./resources/images/bridge-example-real-world.svg) | [Code for UML diagram (generic) &mdash; Bridge Pattern](./resources/uml/bridge-example-real-world.puml)
+         - [UML diagram (example) &mdash; Bridge Pattern](./resources/images/bridge-pattern-example-uml.svg) | [Code for UML diagram (generic) &mdash; Bridge Pattern](./resources/uml/bridge-pattern-example-uml.puml)
          - [Bridge Pattern Example Implementation](./src/main/java/com/ram/java/designpatterns/bridge/)
 
 ## SOLID Principles
@@ -1750,6 +1751,27 @@ __Examples__
 | ------ | ------- |
 | Intent is to allow abstraction and implementation to vary independently. | Adapter is meant to make unrelated classes work together. |
 | Bridge has to be designed up front, only then we've varying abstractions & implementations. | Adapter finds its usage typically where a legacy system is to be integrated with new code. |
+
+</details>
+
+<details><summary><em>Pitfalls of <strong>Bridge Design Pattern</strong></em></summary>
+
+- It is fairly complex to understand and implement Bridge Design Pattern.
+- You need to have a well though out and fairly comprehensive design in front of you before you can decide on Bridge Pattern.
+- Needs to be designed upfront. Adding bridge to legacy code is difficult. Even for ongoing projects, adding bridge at later time in development may require fair amount of rework, and another round of unit tests.
+
+</details>
+
+<details><summary><em>Summary</strong></em></summary>
+
+- We use bridge pattern when we want our abstractions and implementations to be decoupled.
+- Bridge pattern defines separate inheritance hierarchies for our _Abstraction_ and _Implementors_ and bridge these two together using composition.
+- Implementations do not HAVE to define methods that match up with methods in _Abstraction_. It is fairly common to have primitive methods; method which do small work; in _Implementor_. _Abstraction_ uses these methods to provide its functionality.
+- UML diagrams, Code, and Implementation for Bridge Pattern:
+  1. [UML diagram (generic) &mdash; Bridge Pattern](./resources/images/bridge-pattern-uml.svg) | [Code for UML diagram (generic) &mdash; Bridge Pattern](./resources/uml/bridge-pattern-uml.puml)
+  1. [UML diagram (example) &mdash; Bridge Pattern](./resources/images/bridge-example-real-world.svg) | [Code for UML diagram (generic) &mdash; Bridge Pattern](./resources/uml/bridge-example-real-world.puml)
+  1. [UML diagram (example) &mdash; Bridge Pattern](./resources/images/bridge-pattern-example-uml.svg) | [Code for UML diagram (generic) &mdash; Bridge Pattern](./resources/uml/bridge-pattern-example-uml.puml)
+  1. [Bridge Pattern Example Implementation](./src/main/java/com/ram/java/designpatterns/bridge/)
 
 </details>
 
