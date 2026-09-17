@@ -1718,4 +1718,20 @@ __Examples__
 
 </details>
 
+<details><summary><em>Implementation Considerations for <strong>Bridge Design Pattern</strong></em></summary>
+
+- In case we're ever going to have a single impl then we can skip creating Abstract Implementor.
+- Abstraction can decide, either on its own (or delegate the decision to some other class) which concrete implementor to make use of.
+  > In the example impl, the Abstraction [`FIFOCollection.java`](./src/main/java/com/ram/java/designpatterns/bridge/FIFOCollection.java) remains unaware of the concrete implementors and provides greater de-coupling.
+
+</details>
+
+<details><summary><em>Design Considerations for <strong>Bridge Design Pattern</strong></em></summary>
+
+- Bridge provides great extensibility by allowing us to change _Abstraction_ and _Implementor_ independently.
+  > You can build and package them separately to modularize overall system => _Abstractor_ in JAR-A, and _Implementor_ in JAR-B.
+- By using [Abstract Factory Pattern](#abstract-factory-pattern) to create _Abstraction_ Objects with Correct Implementation, you can de-couple concrete _Implementors_ from _Abstraction_.
+
+</details>
+
 [ꜛ️](#table-of-contents)
