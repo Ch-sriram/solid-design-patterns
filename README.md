@@ -82,6 +82,7 @@
          - [UML diagram (example) &mdash; Decorator Pattern](./resources/images/decorator-pattern-example-uml.svg) | [Code for UML diagram (example) &mdash; Decorator Pattern](./resources/uml/decorator-pattern-example-uml.puml)
          - [Decorator Pattern Example Implementation](./src/main/java/com/ram/java/designpatterns/decorator/)
       1. [Composite Pattern](#composite-design-pattern)
+         - [UML diagram (generic) &mdash; Composite Pattern](./resources/images/composite-pattern-uml.svg) | [Code for UML diagram (generic) &mdash; Composite Pattern](./resources/uml/composite-pattern-uml.puml)
 
 ## SOLID Principles
 
