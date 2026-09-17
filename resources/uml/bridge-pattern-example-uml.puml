@@ -1,0 +1,48 @@
+@startuml
+
+title UML Diagram - Bridge Pattern (Example)
+
+class Client {}
+
+interface FIFOCollection <<abstraction>> {
+  - list: LinkedList<T>
+  + {abstract} offer(element: T): void
+  + {abstract} poll(): T
+}
+
+class Queue <<refined-abstraction>> extends FIFOCollection {
+  + offer(element: T): void
+  + poll(): T
+}
+
+interface LinkedList <<implementor>> {
+  + {abstract} addFirst(element: T): void
+  + {abstract} removeFirst(): T
+  + {abstract} addLast(element: T): void
+  + {abstract} removeLast(): T
+}
+
+class SinglyLinkedList <<concrete-implementor>> implements LinkedList {
+  + addFirst(element: T): void
+  + removeFirst(): T
+  + addLast(element: T): void
+  + removeLast(): T
+}
+
+class ArrayLinkedList <<concrete-implementor>> implements LinkedList {
+  + addFirst(element: T): void
+  + removeFirst(): T
+  + addLast(element: T): void
+  + removeLast(): T
+}
+
+FIFOCollection o--> LinkedList
+Client ..> FIFOCollection : <<use>>
+
+note right of FIFOCollection::list
+  - Composes the list
+    object of type
+    LinkedList.
+end note
+
+@enduml

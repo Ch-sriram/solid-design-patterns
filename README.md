@@ -1707,4 +1707,12 @@ __Examples__
 
 </details>
 
+<details><summary><em>UML diagram (Example) for <strong>Bridge Design Pattern</strong></em></summary>
+
+> You can find the code to generate the following UML diagram here: [`/resources/uml/bridge-pattern-example-uml.puml`](./resources/uml/bridge-pattern-example-uml.puml)
+
+![bridge-pattern-example-uml](./resources/images/bridge-pattern-example-uml.svg)
+
+</details>
+
 [ꜛ️](#table-of-contents)
