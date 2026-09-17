@@ -71,7 +71,10 @@
          - Code & Implementation:
            - [Class/Two-Way Adapter Pattern Implementation (Not Recommended to Implement in Production)](./src/main/java/com/ram/java/designpatterns/adapter/classadapter/)
            - [Object Adapter Pattern Implementation (Recommended Version of Adapter Pattern)](./src/main/java/com/ram/java/designpatterns/adapter/objectadapter/)
-      1. [Bridge Pattern]()
+      1. [Bridge Pattern](#bridge-design-pattern)
+         - [UML diagram (generic) &mdash; Bridge Pattern](./resources/images/bridge-pattern-uml.svg) | [Code for UML diagram (generic) &mdash; Object Pool](./resources/uml/bridge-pattern-uml.puml)
+         - [UML diagram (example) &mdash; Bridge Pattern](./resources/images/bridge-pattern-example-uml.svg) | [Code for UML diagram (generic) &mdash; Object Pool](./resources/uml/bridge-pattern-example-uml.puml)
+         - [Bridge Pattern Example Implementation](./src/main/java/com/ram/java/designpatterns/bridge/)
 
 ## SOLID Principles
 
