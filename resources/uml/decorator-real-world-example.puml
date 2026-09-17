@@ -1,0 +1,15 @@
+@startuml
+
+title UML Diagram - Decorator Real World Example (BufferedOutputStream)
+
+interface OutputStream <<abstract-component>> {}
+class FileOutputStream <<concrete-component>> implements OutputStream {
+  - outputStream: OutputStream
+}
+
+class FilterOutputStream <<decorator>> implements OutputStream {}
+class BufferedOutputStream <<decorator>> extends FilterOutputStream {}
+
+FilterOutputStream o--> OutputStream
+
+@enduml

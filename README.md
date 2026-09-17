@@ -73,12 +73,13 @@
            - [Object Adapter Pattern Implementation (Recommended Version of Adapter Pattern)](./src/main/java/com/ram/java/designpatterns/adapter/objectadapter/)
       1. [Bridge Pattern](#bridge-design-pattern)
          - [UML diagram (generic) &mdash; Bridge Pattern](./resources/images/bridge-pattern-uml.svg) | [Code for UML diagram (generic) &mdash; Bridge Pattern](./resources/uml/bridge-pattern-uml.puml)
-         - [UML diagram (example) &mdash; Bridge Pattern](./resources/images/bridge-example-real-world.svg) | [Code for UML diagram (generic) &mdash; Bridge Pattern](./resources/uml/bridge-example-real-world.puml)
-         - [UML diagram (example) &mdash; Bridge Pattern](./resources/images/bridge-pattern-example-uml.svg) | [Code for UML diagram (generic) &mdash; Bridge Pattern](./resources/uml/bridge-pattern-example-uml.puml)
+         - [UML diagram (real world example) &mdash; Bridge Pattern](./resources/images/bridge-example-real-world.svg) | [Code for UML diagram (real world example) &mdash; Bridge Pattern](./resources/uml/bridge-example-real-world.puml)
+         - [UML diagram (example) &mdash; Bridge Pattern](./resources/images/bridge-pattern-example-uml.svg) | [Code for UML diagram (example) &mdash; Bridge Pattern](./resources/uml/bridge-pattern-example-uml.puml)
          - [Bridge Pattern Example Implementation](./src/main/java/com/ram/java/designpatterns/bridge/)
       1. [Decorator Pattern](#decorator-pattern)
          - [UML diagram (generic) &mdash; Decorator Pattern](./resources/images/decorator-pattern-uml.svg) | [Code for UML diagram (generic) &mdash; Decorator Pattern](./resources/uml/decorator-pattern-uml.puml)
-         - [UML diagram (example) &mdash; Decorator Pattern](./resources/images/decorator-pattern-example-uml.svg) | [Code for UML diagram (generic) &mdash; Decorator Pattern](./resources/uml/decorator-pattern-example-uml.puml)
+         - [UML diagram (real world example) &mdash; Decorator Pattern](./resources/images/decorator-real-world-example.svg) | [Code for UML diagram (real world example) &mdash; Decorator Pattern](./resources/uml/decorator-real-world-example.puml)
+         - [UML diagram (example) &mdash; Decorator Pattern](./resources/images/decorator-pattern-example-uml.svg) | [Code for UML diagram (example) &mdash; Decorator Pattern](./resources/uml/decorator-pattern-example-uml.puml)
          - [Decorator Pattern Example Implementation](./src/main/java/com/ram/java/designpatterns/decorator/)
 
 ## SOLID Principles
@@ -1745,6 +1746,7 @@ __Examples__
 - An example of Bridge Pattern often seen, is the JDBC API. More specifically, the [`java.sql.DriverManager`](https://github.com/openjdk/jdk/blob/30f033ac018c9953bfe624285534efd8390e898c/src/java.sql/share/classes/java/sql/DriverManager.java#L81) class with the [`java.sql.Driver`](https://github.com/openjdk/jdk/blob/30f033ac018c9953bfe624285534efd8390e898c/src/java.sql/share/classes/java/sql/Driver.java#L59) interface, that form a bridge pattern.
 
   > You can find the code to generate the UML below, here: [`/resources/uml/bridge-example-real-world.puml`](./resources/uml/bridge-example-real-world.puml)
+
   ![bridge-example-real-world.svg](./resources/images/bridge-example-real-world.svg)
 
 </details>
@@ -1815,6 +1817,33 @@ __Examples__
 > You can find the code that was used to generate the UML diagram, here: [`/resources/uml/decorator-pattern-example-uml.puml`](./resources/uml/decorator-pattern-example-uml.puml)
 
 ![decorator-pattern-example-uml-svg](./resources/images/decorator-pattern-example-uml.svg)
+
+</details>
+
+<details><summary><em>Implementation Considerations for <strong>Decorator Design Pattern</strong></em></summary>
+
+- Since we've decorators and concrete classes extending from common _Component_, avoid maintaining a large state in such a base class, as decorators may not need all that state.
+- Pay attention to `equals()` and `hashCode()` methods of _Decorator_. When using decorators, you've to decide if decorated object is equal to same instance without decorator.
+- _Decorators_ support recursive composition, and so, this pattern lends itself to creation of lots of small objects that add "just a little bit" functionality.
+  > Code using these objects becomes difficult to debug.
+
+</details>
+
+<details><summary><em>Design Considerations for <strong>Decorator Design Pattern</strong></em></summary>
+
+- __Decorators__ are more flexible and powerful than inheritance. _Inheritance_ is _static_ by definition, but _decorators_ allow you to __dynamically__ compose behaviour using objects at __runtime__.
+- _Decorators_ should act like additional skin over your object. The should add helpful small behaviours to object's original behaviour. Do NOT change meaning of operations.
+
+</details>
+
+<details><summary><em>Real World Examples of <strong>Decorator Design Pattern</strong></em></summary>
+
+- Classes in Java's I/O package are great examples of _Decorator_ pattern.
+- Ex: [`java.io.BufferedOutputStream`](https://github.com/openjdk/jdk/blob/977f10c395348814c7ec3452e56b82ff4fbd9b63/src/java.base/share/classes/java/io/BufferedOutputStream.java#L45) class decorates any [`java.io.OutputStream`](https://github.com/openjdk/jdk/blob/977f10c395348814c7ec3452e56b82ff4fbd9b63/src/java.base/share/classes/java/io/OutputStream.java#L48) object and adds buffering to file writing operation, using its superclass [`java.io.FilterOutputStream`](https://github.com/openjdk/jdk/blob/b78eefdcdd79c546243c84d051cd60561260de3d/src/java.base/share/classes/java/io/FilterOutputStream.java#L50). This improves the Disk I/O performance by reducing number of writes to the disk.
+
+  > You can find the code to generate the UML, here: [`/resources/uml/decorator-real-world-example.puml`](./resources/uml/decorator-real-world-example.puml)
+
+  ![decorator-real-world-example-svg](./resources/images/decorator-real-world-example.svg)
 
 </details>
 
