@@ -76,6 +76,10 @@
          - [UML diagram (example) &mdash; Bridge Pattern](./resources/images/bridge-example-real-world.svg) | [Code for UML diagram (generic) &mdash; Bridge Pattern](./resources/uml/bridge-example-real-world.puml)
          - [UML diagram (example) &mdash; Bridge Pattern](./resources/images/bridge-pattern-example-uml.svg) | [Code for UML diagram (generic) &mdash; Bridge Pattern](./resources/uml/bridge-pattern-example-uml.puml)
          - [Bridge Pattern Example Implementation](./src/main/java/com/ram/java/designpatterns/bridge/)
+      1. [Decorator Pattern](#decorator-pattern)
+         - [UML diagram (generic) &mdash; Decorator Pattern](./resources/images/decorator-pattern-uml.svg) | [Code for UML diagram (generic) &mdash; Decorator Pattern](./resources/uml/decorator-pattern-uml.puml)
+         - [UML diagram (example) &mdash; Decorator Pattern](./resources/images/decorator-pattern-example-uml.svg) | [Code for UML diagram (generic) &mdash; Decorator Pattern](./resources/uml/decorator-pattern-example-uml.puml)
+         - [Decorator Pattern Example Implementation](./src/main/java/com/ram/java/designpatterns/decorator/)
 
 ## SOLID Principles
 
@@ -1772,6 +1776,45 @@ __Examples__
   1. [UML diagram (example) &mdash; Bridge Pattern](./resources/images/bridge-example-real-world.svg) | [Code for UML diagram (generic) &mdash; Bridge Pattern](./resources/uml/bridge-example-real-world.puml)
   1. [UML diagram (example) &mdash; Bridge Pattern](./resources/images/bridge-pattern-example-uml.svg) | [Code for UML diagram (generic) &mdash; Bridge Pattern](./resources/uml/bridge-pattern-example-uml.puml)
   1. [Bridge Pattern Example Implementation](./src/main/java/com/ram/java/designpatterns/bridge/)
+
+</details>
+
+[ꜛ️](#table-of-contents)
+
+#### Decorator Pattern
+
+<details><summary><em>What is <strong>Decorator Design Pattern</strong>?</em></summary>
+
+- Whenever __we want to enhance behaviour of our existing object dynamically as and when required, during runtime__, then we can make use of Decorator design pattern.
+- Decorator wraps an object within itself and provides same interface as the wrapped object. So the client of original object doesn't need to change.
+- A decorator provides alternatives to subclasing for extending functionality of existing classes.
+
+</details>
+
+<details><summary><em>UML diagram (Generic) for <strong>Decorator Design Pattern</strong></em></summary>
+
+> You can find the code that was used to generate the UML diagram, here: [`/resources/uml/decorator-pattern-uml.puml`](./resources/uml/decorator-pattern-uml.puml)
+
+![decorator-pattern-uml-svg](./resources/images/decorator-pattern-uml.svg)
+
+</details>
+
+<details><summary><em>Implementation Steps for <strong>Decorator Design Pattern</strong></em></summary>
+
+- We start with our _Component_:
+  1. _Component_ defines interface needed or already used by client.
+  1. _Concrete Component_ implements the component.
+  1. We define our _Decorator_, which implements _Component_, and also needs reference to _Concrete Component_.
+  1. In _Decorator_, we provide additional behaviour on top of already provided behaviour by _Concrete Component_'s methods.
+- _Decorator_ can be `abstract` as well, and depend on subclasses to provide functionality.
+
+</details>
+
+<details><summary><em>UML diagram (Example) for <strong>Decorator Design Pattern</strong></em></summary>
+
+> You can find the code that was used to generate the UML diagram, here: [`/resources/uml/decorator-pattern-example-uml.puml`](./resources/uml/decorator-pattern-example-uml.puml)
+
+![decorator-pattern-example-uml-svg](./resources/images/decorator-pattern-example-uml.svg)
 
 </details>
 

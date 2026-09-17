@@ -1,0 +1,27 @@
+@startuml
+
+title Empty Diagram - Decorator Pattern (Example)
+
+interface Message <<component>> {
+  + {abstract} getContent(): String
+}
+
+class TextMessage <<concrete-component>> implements Message {
+  - message: String
+  + getContent(): String
+}
+
+class Base64EncodedMessage <<decorator>> implements Message {
+  - message: Message
+  + getContent(): String
+}
+
+class HtmlEncodedMessage <<decorator>> implements Message {
+  - message: Message
+  + getContent(): String
+}
+
+Base64EncodedMessage o--> Message
+HtmlEncodedMessage o--> Message
+
+@enduml

@@ -1,0 +1,45 @@
+@startuml
+
+title UML Diagram - Decorator Pattern (Generic)
+
+interface Component {
+ + {abstract} opeeration(): void
+}
+
+class ConcreteComponent implements Component {
+  + operation(): void
+}
+
+class Decorator implements Component {
+  - component: Component
+  # addedBehaviour(): void
+  + operation(): void
+}
+
+Decorator o--> Component
+
+note left of Component
+  Defines interface
+  used by client.
+end note
+
+note bottom of ConcreteComponent
+  Plain object which
+  can be decorated.
+end note
+
+note bottom of Decorator
+  1. Provides Additional
+     Behaviour.
+  2. Maintains reference
+     of Component.
+end note
+
+note left of Decorator::component
+Can invoke the following:
+  1. component.operation()
+  2. operation();
+  3. addedBehaviour();
+end note
+
+@enduml
