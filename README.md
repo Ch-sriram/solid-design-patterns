@@ -1637,6 +1637,7 @@ __Examples__
 
 - The [`java.io.InputStreamReader`](https://github.com/openjdk/jdk/blob/a2fa83597756659632053e2b85691fa695e7f6fd/src/java.base/share/classes/java/io/InputStreamReader.java#L69) and [`java.io.OutputStreamWriter`](https://github.com/openjdk/jdk/blob/a2fa83597756659632053e2b85691fa695e7f6fd/src/java.base/share/classes/java/io/OutputStreamWriter.java#L74) classes are examples of Object Adapters.
   > These classes adapt existing `InputStream`/`OutputStream` object to a `Reader`/`Writer` interface.
+- An example of adapter pattern often given is the [`Collections.newSetFromMap()`](https://github.com/openjdk/jdk/blob/30f033ac018c9953bfe624285534efd8390e898c/src/java.base/share/classes/java/util/Collections.java#L6056) method. This method returns a [`Set` which is backed by given map object](https://github.com/openjdk/jdk/blob/30f033ac018c9953bfe624285534efd8390e898c/src/java.base/share/classes/java/util/Collections.java#L6065).
 
 </details>
 
@@ -1741,7 +1742,14 @@ __Examples__
   > You can find the code to generate the UML below, here: [`/resources/uml/bridge-example-real-world.puml`](./resources/uml/bridge-example-real-world.puml)
   ![bridge-example-real-world.svg](./resources/images/bridge-example-real-world.svg)
 
-- Another example of bridge pattern often given is the [`Collections.newSetFromMap()`](https://github.com/openjdk/jdk/blob/30f033ac018c9953bfe624285534efd8390e898c/src/java.base/share/classes/java/util/Collections.java#L6056) method. This method returns a [`Set` which is backed by given map object](https://github.com/openjdk/jdk/blob/30f033ac018c9953bfe624285534efd8390e898c/src/java.base/share/classes/java/util/Collections.java#L6065).
+</details>
+
+<details><summary><em>Bridge Pattern vs <a href="#adapter-pattern">Adapter Pattern</a></em></summary>
+
+| Bridge | Adapter |
+| ------ | ------- |
+| Intent is to allow abstraction and implementation to vary independently. | Adapter is meant to make unrelated classes work together. |
+| Bridge has to be designed up front, only then we've varying abstractions & implementations. | Adapter finds its usage typically where a legacy system is to be integrated with new code. |
 
 </details>
 
