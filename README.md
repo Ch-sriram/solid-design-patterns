@@ -1847,4 +1847,13 @@ __Examples__
 
 </details>
 
+<details><summary><em>Decorator Pattern vs. Composite Pattern</em></summary>
+
+| Decorator | Composite |
+| --------- | --------- |
+| Intent is to "add to" existing behaviour of existing object. | Composites are meant for object _aggregation_ only. |
+| Decorator can be thought of as a degenerate composite with only one _Component_. | Composites support any number of _Components_ in _aggregation_. |
+
+</details>
+
 [ꜛ️](#table-of-contents)
