@@ -1,0 +1,24 @@
+@startuml
+
+title UML Diagram - Bridge Example Real World - DriverManager & Driver
+
+class DriverManager {
+  - driver: Driver
+  + getConnection(): Connection
+}
+
+interface Driver {
+  + {abstract} connect(): void
+}
+
+class MysqlDriver <<com.mysql.jdbc.Driver>> implements Driver {
+  + connect(): void
+}
+
+class OracleDriver <<oracle.jdbc.driver.OracleDriver>> implements Driver {
+  + connect(): void
+}
+
+DriverManager o--> Driver : <<bridge>>
+
+@enduml

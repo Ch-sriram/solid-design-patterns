@@ -1734,4 +1734,15 @@ __Examples__
 
 </details>
 
+<details><summary><em>Real World Examples of <strong>Bridge Design Pattern</strong></em></summary>
+
+- An example of Bridge Pattern often seen, is the JDBC API. More specifically, the [`java.sql.DriverManager`](https://github.com/openjdk/jdk/blob/30f033ac018c9953bfe624285534efd8390e898c/src/java.sql/share/classes/java/sql/DriverManager.java#L81) class with the [`java.sql.Driver`](https://github.com/openjdk/jdk/blob/30f033ac018c9953bfe624285534efd8390e898c/src/java.sql/share/classes/java/sql/Driver.java#L59) interface, that form a bridge pattern.
+
+  > You can find the code to generate the UML below, here: [`/resources/uml/bridge-example-real-world.puml`](./resources/uml/bridge-example-real-world.puml)
+  ![bridge-example-real-world.svg](./resources/images/bridge-example-real-world.svg)
+
+- Another example of bridge pattern often given is the [`Collections.newSetFromMap()`](https://github.com/openjdk/jdk/blob/30f033ac018c9953bfe624285534efd8390e898c/src/java.base/share/classes/java/util/Collections.java#L6056) method. This method returns a [`Set` which is backed by given map object](https://github.com/openjdk/jdk/blob/30f033ac018c9953bfe624285534efd8390e898c/src/java.base/share/classes/java/util/Collections.java#L6065).
+
+</details>
+
 [ꜛ️](#table-of-contents)
