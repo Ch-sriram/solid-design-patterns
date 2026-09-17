@@ -1856,4 +1856,12 @@ __Examples__
 
 </details>
 
+<details><summary><em>Pitfalls of Decorator Pattern</em></summary>
+
+- Often results in large number of classes being added to the system, leading to __class explosion__, where each class adds a small amount of functionality.
+  > You often end up with lots of objects, one nested inside another, and so on.
+- Sometimes newcomers will start using it as a replacement of inheritance in every scenario. Think of decorators as a think skin over existing object.
+
+</details>
+
 [ꜛ️](#table-of-contents)
